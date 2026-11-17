@@ -432,7 +432,7 @@ a.info-card:hover .go{gap:10px}
     </a>
     <nav class="main-nav" aria-label="Main">
       <a href="#calculator" class="active" data-mode="points" aria-current="page">Grade Calculator</a>
-      <a href="#final-grade">Final Grade</a>
+      <a href="final-grade-calculator/">Final Grade</a>
       <a href="#calculator" data-mode="percent">Semester Grade</a>
       <a href="#grade-scale">GPA Calculator</a>
       <a href="#calculator" data-mode="weighted">Weighted Grade</a>
@@ -447,7 +447,7 @@ a.info-card:hover .go{gap:10px}
     <div class="container">
       <nav aria-label="Mobile">
         <a href="#calculator" class="active" data-mode="points">Grade Calculator</a>
-        <a href="#final-grade">Final Grade</a>
+        <a href="final-grade-calculator/">Final Grade</a>
         <a href="#calculator" data-mode="percent">Semester Grade</a>
         <a href="#grade-scale">GPA Calculator</a>
         <a href="#calculator" data-mode="weighted">Weighted Grade</a>
@@ -569,7 +569,7 @@ a.info-card:hover .go{gap:10px}
           <p>The term "grade calculator" can therefore describe several different calculations. Choose the tool that matches your question:</p>
           <ul>
             <li>To calculate a current class or course grade, use this <a href="#calculator" data-mode="points">Grade Calculator</a>.</li>
-            <li>To find the score needed on an upcoming final exam, use the <a href="#final-grade">Final Grade Calculator</a>.</li>
+            <li>To find the score needed on an upcoming final exam, use the <a href="final-grade-calculator/">Final Grade Calculator</a>.</li>
             <li>To combine grading periods into a semester result, use the <a href="#calculator" data-mode="percent">Semester Grade Calculator</a>.</li>
             <li>To calculate a grade point average from course grades and credits, use the <a href="#grade-scale">GPA Calculator</a>.</li>
           </ul>
@@ -634,7 +634,7 @@ a.info-card:hover .go{gap:10px}
           </div>
         </article>
       </div>
-      <p class="table-note">For a separate calculation that works backward from a target exam result, use the <a href="#final-grade">Final Grade Calculator</a>.</p>
+      <p class="table-note">For a separate calculation that works backward from a target exam result, use the <a href="final-grade-calculator/">Final Grade Calculator</a>.</p>
     </div>
   </section>
 
@@ -820,7 +820,7 @@ a.info-card:hover .go{gap:10px}
           <p>What is my current grade from assignments and exams?</p>
           <span class="go">Calculate my grade <span aria-hidden="true">→</span></span>
         </a>
-        <a class="info-card" href="#final-grade">
+        <a class="info-card" href="final-grade-calculator/">
           <span class="icon" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1" fill="currentColor"/></svg></span>
           <h3>Final Grade Calculator</h3>
           <p>What score do I need on my final exam?</p>
@@ -964,7 +964,7 @@ a.info-card:hover .go{gap:10px}
         <h3>Calculators</h3>
         <ul class="foot-links">
           <li><a href="#calculator" data-mode="points">Grade Calculator</a></li>
-          <li><a href="#final-grade">Final Grade Calculator</a></li>
+          <li><a href="final-grade-calculator/">Final Grade Calculator</a></li>
           <li><a href="#calculator" data-mode="percent">Semester Grade Calculator</a></li>
           <li><a href="#grade-scale">GPA Calculator</a></li>
           <li><a href="#calculator" data-mode="weighted">Weighted Grade Calculator</a></li>
@@ -1499,6 +1499,11 @@ document.getElementById("year").textContent=new Date().getFullYear();
 
 /* ============ Init ============ */
 loadState();
+/* A ?mode= query param (e.g. from the Final Grade page's nav) overrides the saved mode. */
+try{
+  var qMode=new URLSearchParams(window.location.search).get("mode");
+  if(qMode&&HINTS[qMode])state.mode=qMode;
+}catch(e){}
 card.className="calc-card mode-"+state.mode;
 modeTabs.forEach(function(t){
   var on=t.getAttribute("data-mode")===state.mode;

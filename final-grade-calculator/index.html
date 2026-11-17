@@ -1,0 +1,1060 @@
+<!DOCTYPE html>
+<!-- ============================================================
+  Final Grade Calculator — What Grade Do You Need on Your Final Exam?
+  ------------------------------------------------------------
+  Single self-contained index.html file, in the same design system
+  as the Grade Calculator homepage (workspace/grade-calculator/).
+  Inline CSS and vanilla JavaScript only — no frameworks, no
+  sign-up, works offline. The logo lockups and the photo are
+  embedded in this file.
+
+  Brand, logo and all written content on this page are original.
+  ------------------------------------------------------------
+  Sections (top to bottom):
+  1. Sticky header (logo, nav, start button) + mobile drawer
+  2. Breadcrumbs + hero (intro left, calculator right)
+  3. Sticky "On this page" bar
+  4. What Is a Final Grade Calculator?
+  5. How to Use the Final Grade Calculator (4 steps)
+  6. Final Grade Formula
+  7. Worked Example (final worth 20%)
+  8. Final Exam Score Examples (table)
+  9. Highest Grade / Zero on the Final
+  10. Final Course Grade After the Exam
+  11. What If the Course Uses Points?
+  12. Final Exam vs. Semester Grade Calculation
+  13. Common Mistakes
+  14. FAQ (accessible accordion, 7 questions)
+  15. Official and Primary References
+  16. Closing CTA band
+  17. Footer (navy, 4 columns)
+  ============================================================ -->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Free final grade calculator: find the score you need on your final exam to reach a target course grade, or work out your final course grade after the exam. No sign-up.">
+<meta name="color-scheme" content="light">
+<meta name="theme-color" content="#4F46E5">
+<title>Final Grade Calculator: What Grade Do You Need on Your Final Exam?</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22100%22%20height%3D%22100%22%20viewBox%3D%220%200%20100%20100%22%3E%0A%20%20%3Ctitle%3EGrade%20Calculator%3C%2Ftitle%3E%0A%20%20%3Cdefs%3E%0A%20%20%20%20%3ClinearGradient%20id%3D%22gc-grad%22%20x1%3D%220%25%22%20y1%3D%220%25%22%20x2%3D%22100%25%22%20y2%3D%22100%25%22%3E%0A%20%20%20%20%20%20%3Cstop%20offset%3D%220%22%20stop-color%3D%22%234F46E5%22%2F%3E%0A%20%20%20%20%20%20%3Cstop%20offset%3D%221%22%20stop-color%3D%22%237C3AED%22%2F%3E%0A%20%20%20%20%3C%2FlinearGradient%3E%0A%20%20%3C%2Fdefs%3E%0A%20%20%3Cg%3E%0A%20%20%20%20%20%20%3Crect%20x%3D%222%22%20y%3D%222%22%20width%3D%2296%22%20height%3D%2296%22%20rx%3D%2224%22%20fill%3D%22url%28%23gc-grad%29%22%2F%3E%0A%20%20%20%20%20%20%3Cg%20fill%3D%22%23FFFFFF%22%3E%3Crect%20x%3D%2221%22%20y%3D%2256%22%20width%3D%2215%22%20height%3D%2222%22%20rx%3D%223.5%22%2F%3E%3C%2Fg%3E%0A%20%20%20%20%20%20%3Cg%20fill%3D%22%23FFFFFF%22%3E%3Crect%20x%3D%2242.5%22%20y%3D%2244%22%20width%3D%2215%22%20height%3D%2234%22%20rx%3D%223.5%22%2F%3E%3C%2Fg%3E%0A%20%20%20%20%20%20%3Cg%20fill%3D%22%23FFFFFF%22%3E%3Crect%20x%3D%2264%22%20y%3D%2232%22%20width%3D%2215%22%20height%3D%2246%22%20rx%3D%223.5%22%2F%3E%3C%2Fg%3E%0A%20%20%20%20%20%20%3Cg%20stroke%3D%22%23FFFFFF%22%3E%3Cpolyline%20points%3D%2265%2C19%2072%2C27%2084%2C12%22%20fill%3D%22none%22%20stroke-width%3D%227%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%2F%3E%3C%2Fg%3E%0A%20%20%20%20%3C%2Fg%3E%0A%3C%2Fsvg%3E">
+<link rel="icon" type="image/png" sizes="32x32" href="../assets/logo/favicon-32.png">
+<link rel="apple-touch-icon" href="../assets/logo/apple-touch-icon-180.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"Final Grade Calculator","applicationCategory":"EducationalApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":"Free final grade calculator: find the score you need on your final exam to reach a target course grade, or work out your final course grade after the exam. No sign-up."}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"../"},{"@type":"ListItem","position":2,"name":"Final Grade Calculator"}]}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"What grade do I need on my final to get an A?","acceptedAnswer":{"@type":"Answer","text":"Enter your current course grade, the percentage weight of the final exam, and the percentage required for an A under your institution's grading scale. The calculator works out the required score. If the answer is above 100%, the final alone cannot get you to that target."}},
+{"@type":"Question","name":"How much is a final exam worth?","acceptedAnswer":{"@type":"Answer","text":"There is no universal final-exam weight. The percentage is set by the instructor, school, or institution and should be listed in the syllabus or course assessment policy."}},
+{"@type":"Question","name":"Can I still pass if I fail my final exam?","acceptedAnswer":{"@type":"Answer","text":"Possibly. Your overall course grade may remain above the passing threshold even if your exam score is low. However, some courses require a minimum final-exam score or require students to sit the exam. Check the course rules."}},
+{"@type":"Question","name":"What if I need more than 100% on my final?","acceptedAnswer":{"@type":"Answer","text":"It means the target cannot be reached through the final exam alone using the values entered. Check whether other assessments, extra credit, retakes, or course policies could change the calculation. Speak with your instructor rather than assuming an exception is available."}},
+{"@type":"Question","name":"Does the current grade include ungraded assignments?","acceptedAnswer":{"@type":"Answer","text":"That depends on the gradebook and instructor settings. Some systems exclude ungraded work, while others may treat missing work as zero. Confirm how your current grade is calculated before entering it."}},
+{"@type":"Question","name":"Can I calculate a final grade using points?","acceptedAnswer":{"@type":"Answer","text":"Yes. Add the points already earned to the points available on the final, then calculate the total points required for your target percentage. The points method is useful when the course does not publish percentage weights separately."}},
+{"@type":"Question","name":"Is a final grade calculator the same as a semester grade calculator?","acceptedAnswer":{"@type":"Answer","text":"No. A final grade calculator generally works out the impact of one remaining final exam on a course grade. A semester grade calculator combines grading periods and possibly a semester exam. Use the Semester Grade Calculator for quarter, term, or semester structures."}}
+]}
+</script>
+<style>
+/* ================= Design tokens (60/30/10) ================= */
+:root{
+  color-scheme:light;
+  --indigo:#4F46E5; --indigo-hover:#4338CA; --violet:#7C3AED;
+  --navy:#0F172A; --bg:#F5F7FF; --surface:#FFFFFF; --border:#E2E8F0;
+  --muted:#64748B; --text:#334155;
+  --green:#10B981; --amber:#F59E0B; --rose:#F43F5E; --tint:#EEF2FF;
+  /* Accessible dark variants for text on tints / badges (WCAG AA) */
+  --green-dark:#065F46; --green-bg:#D1FAE5; --green-badge:#059669;
+  --amber-dark:#92400E; --amber-bg:#FEF3C7; --amber-badge:#D97706;
+  --rose-dark:#9F1239; --rose-bg:#FFE4E6; --rose-badge:#E11D48;
+  --radius:16px; --radius-sm:12px;
+  --shadow:0 10px 30px rgba(15,23,42,.08);
+  --shadow-sm:0 2px 8px rgba(15,23,42,.06);
+  --header-h:68px; --toc-h:46px;
+  --font:'Inter',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:var(--font);font-size:17px;line-height:1.6;color:var(--text);background:var(--bg);-webkit-font-smoothing:antialiased}
+h1,h2,h3{color:var(--navy);line-height:1.25;margin:0 0 16px}
+h1{font-size:40px;font-weight:800;letter-spacing:-.02em}
+h2{font-size:28px;font-weight:700;letter-spacing:-.01em}
+h3{font-size:20px;font-weight:700}
+p{margin:0 0 16px}
+a{color:var(--indigo)}
+:focus-visible{outline:2px solid var(--indigo);outline-offset:2px;border-radius:4px}
+::selection{background:var(--tint)}
+.container{max-width:1200px;margin:0 auto;padding:0 24px}
+.narrow{max-width:760px}
+section{scroll-margin-top:calc(var(--header-h) + var(--toc-h) + 16px)}
+.section{padding:64px 0}
+.section.white{background:var(--surface)}
+.section.alt{background:var(--bg)}
+.eyebrow{font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--indigo);margin:0 0 8px}
+.lead{font-size:18px;color:var(--muted)}
+.skip-link{position:absolute;left:-999px;top:0;background:var(--navy);color:#fff;padding:10px 16px;border-radius:0 0 8px 0;z-index:200;font-weight:600}
+.skip-link:focus{left:0}
+
+/* ================= Buttons ================= */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;background:var(--indigo);color:#fff;border:1px solid var(--indigo);border-radius:10px;padding:12px 20px;font:inherit;font-weight:700;font-size:15px;cursor:pointer;text-decoration:none;transition:background .15s,border-color .15s,transform .15s;min-height:44px}
+.btn:hover{background:var(--indigo-hover);border-color:var(--indigo-hover)}
+.btn:active{transform:translateY(1px)}
+.btn-secondary{background:var(--surface);color:var(--navy);border-color:var(--border)}
+.btn-secondary:hover{background:#F8FAFC;border-color:#CBD5E1}
+.btn-white{background:#fff;color:var(--indigo);border-color:#fff}
+.btn-white:hover{background:var(--tint)}
+.btn-sm{padding:9px 14px;font-size:14px;min-height:40px}
+
+/* ================= Header ================= */
+.site-header{position:sticky;top:0;z-index:100;background:var(--surface);border-bottom:1px solid var(--border);transition:box-shadow .2s}
+.site-header.scrolled{box-shadow:0 4px 16px rgba(15,23,42,.08)}
+.header-inner{display:flex;align-items:center;gap:32px;height:var(--header-h)}
+.logo-link{display:flex;align-items:center;flex:none;line-height:0}
+.logo-link svg{display:block}
+.main-nav{display:flex;gap:4px;margin:0 auto}
+.main-nav a{color:var(--text);text-decoration:none;font-size:15px;font-weight:600;padding:8px 12px;border-radius:8px;position:relative;white-space:nowrap}
+.main-nav a:hover{color:var(--indigo);background:var(--tint)}
+.main-nav a.active{color:var(--indigo)}
+.main-nav a.active::after{content:"";position:absolute;left:12px;right:12px;bottom:2px;height:2px;border-radius:2px;background:var(--indigo)}
+.header-cta{flex:none}
+.menu-btn{display:none;background:none;border:1px solid var(--border);border-radius:10px;width:44px;height:44px;align-items:center;justify-content:center;cursor:pointer;color:var(--navy)}
+.menu-btn svg{display:block}
+.drawer{display:none;border-top:1px solid var(--border);background:var(--surface);padding:8px 0 16px}
+body.drawer-open .drawer{display:block}
+.drawer nav{display:flex;flex-direction:column}
+.drawer a{color:var(--navy);text-decoration:none;font-weight:600;font-size:16px;padding:12px 4px;min-height:44px;display:flex;align-items:center;border-bottom:1px solid #F1F5F9}
+.drawer a:last-child{border-bottom:0}
+.drawer a:hover,.drawer a.active{color:var(--indigo)}
+
+/* ================= Breadcrumbs ================= */
+.crumbs{padding:20px 0 0;font-size:14px;color:var(--muted)}
+.crumbs ol{list-style:none;margin:0;padding:0;display:flex;gap:8px;flex-wrap:wrap}
+.crumbs li{display:flex;gap:8px;align-items:center}
+.crumbs li+li::before{content:"/";color:#CBD5E1}
+.crumbs a{color:var(--muted);text-decoration:none}
+.crumbs a:hover{color:var(--indigo);text-decoration:underline}
+.crumbs [aria-current]{color:var(--navy);font-weight:600}
+
+/* ================= Hero ================= */
+.hero{padding:24px 0 72px}
+.hero-grid{display:grid;grid-template-columns:1fr 580px;gap:48px;align-items:start}
+.hero-copy{padding-top:16px}
+.badge{display:inline-flex;align-items:center;gap:8px;background:var(--tint);color:var(--indigo);font-size:13px;font-weight:700;padding:7px 14px;border-radius:999px;margin-bottom:20px}
+.badge .dot{width:8px;height:8px;border-radius:50%;background:var(--green);flex:none}
+.hero-intro{font-size:18px;color:var(--muted);max-width:520px}
+.tick-list{list-style:none;margin:24px 0 0;padding:0;display:flex;flex-direction:column;gap:12px}
+.tick-list li{display:flex;gap:12px;align-items:flex-start;font-weight:600;color:var(--navy);font-size:16px}
+.tick-list li span{color:var(--muted);font-weight:400}
+.tick{flex:none;width:24px;height:24px;border-radius:50%;background:var(--green-bg);color:var(--green-dark);display:inline-flex;align-items:center;justify-content:center;margin-top:1px}
+.tick svg{display:block}
+
+/* ================= Sticky "On this page" bar ================= */
+.toc-bar{position:sticky;top:var(--header-h);z-index:90;background:var(--surface);border-bottom:1px solid var(--border)}
+.toc-bar nav{display:flex;gap:4px;overflow-x:auto;scrollbar-width:none;padding:0 24px;max-width:1200px;margin:0 auto}
+.toc-bar nav::-webkit-scrollbar{display:none}
+.toc-bar a{color:var(--muted);text-decoration:none;font-size:14px;font-weight:600;padding:12px 10px;white-space:nowrap;border-bottom:2px solid transparent}
+.toc-bar a:hover{color:var(--indigo)}
+.toc-bar a.active{color:var(--indigo);border-bottom-color:var(--indigo)}
+
+/* ================= Calculator card ================= */
+.calc-card{background:var(--surface);border-radius:var(--radius);box-shadow:var(--shadow);border:1px solid var(--border);padding:24px;scroll-margin-top:calc(var(--header-h) + var(--toc-h) + 16px)}
+.calc-card h2{font-size:20px;margin-bottom:4px}
+.calc-sub{font-size:14px;color:var(--muted);margin-bottom:20px}
+.tabs{display:flex;gap:4px;background:#F1F5F9;border-radius:12px;padding:4px;margin-bottom:20px}
+.tabs [role="tab"]{flex:1;border:0;background:transparent;border-radius:9px;padding:10px 8px;font:inherit;font-size:14px;font-weight:700;color:var(--muted);cursor:pointer;min-height:44px;transition:background .15s,color .15s}
+.tabs [role="tab"]:hover{color:var(--navy)}
+.tabs [role="tab"][aria-selected="true"]{background:var(--surface);color:var(--indigo);box-shadow:var(--shadow-sm)}
+.calc-hint{font-size:14px;color:var(--muted);background:var(--tint);border-radius:10px;padding:10px 14px;margin:0 0 16px}
+.calc-rows{display:flex;flex-direction:column;gap:10px}
+.calc-row{display:grid;grid-template-columns:minmax(0,1.4fr) 96px 96px 96px 36px;gap:8px;align-items:start}
+.calc-row .col-head{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;color:var(--muted);padding:0 2px 2px}
+.calc-row input,.calc-row select{width:100%;border:1px solid var(--border);border-radius:10px;padding:10px 12px;font:inherit;font-size:15px;color:var(--navy);background:var(--surface);min-height:44px}
+.calc-row input:focus,.calc-row select:focus{border-color:var(--indigo);outline:2px solid var(--indigo);outline-offset:0}
+.calc-row input.invalid{border-color:var(--rose);outline-color:var(--rose)}
+/* Mode-specific columns (which row fields each calculator mode shows) */
+.calc-card.mode-points .calc-row{grid-template-columns:minmax(0,1.4fr) 96px 96px 36px}
+.calc-card.mode-points .c-weight{display:none}
+.calc-card.mode-percent .calc-row{grid-template-columns:minmax(0,1.4fr) 110px 36px}
+.calc-card.mode-percent .c-outof,.calc-card.mode-percent .c-weight{display:none}
+.calc-card.mode-weighted .calc-row{grid-template-columns:minmax(0,1.4fr) 96px 96px 96px 36px}
+.calc-card.mode-letter .calc-row{grid-template-columns:minmax(0,1.4fr) 110px 96px 36px}
+.calc-card.mode-letter .c-outof{display:none}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+figure{margin:24px 0 0}
+figure img{width:100%;height:auto;border-radius:var(--radius);box-shadow:var(--shadow);display:block}
+figure figcaption{font-size:13px;color:var(--muted);margin-top:10px;text-align:center}
+.field-error{font-size:13px;color:var(--rose-dark);margin-top:4px;display:none}
+.field-error.show{display:block}
+.row-remove{border:0;background:transparent;color:var(--muted);font-size:22px;line-height:1;cursor:pointer;border-radius:8px;width:36px;height:44px}
+.row-remove:hover{color:var(--rose-dark);background:var(--rose-bg)}
+.calc-actions{display:flex;gap:12px;margin-top:16px;flex-wrap:wrap}
+.calc-error{font-size:14px;color:var(--rose-dark);background:var(--rose-bg);border-radius:10px;padding:10px 14px;margin:16px 0 0;display:none}
+.calc-error.show{display:block}
+
+/* Result panel */
+.result{margin-top:20px;border-radius:var(--radius-sm);padding:20px;border:1px solid transparent;transition:background .2s}
+.result.band-a{background:var(--green-bg);border-color:#A7F3D0}
+.result.band-c{background:var(--amber-bg);border-color:#FDE68A}
+.result.band-f{background:var(--rose-bg);border-color:#FECDD3}
+.result-top{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+.letter-badge{width:64px;height:64px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-size:30px;font-weight:800;flex:none}
+.band-a .letter-badge{background:var(--green-badge)}
+.band-c .letter-badge{background:var(--amber-badge)}
+.band-f .letter-badge{background:var(--rose-badge)}
+.result-pct{font-size:36px;font-weight:800;color:var(--navy);line-height:1}
+.result-label{font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--muted)}
+.chip{display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:700;padding:6px 12px;border-radius:999px;margin-left:auto}
+.band-a .chip{background:#fff;color:var(--green-dark)}
+.band-c .chip{background:#fff;color:var(--amber-dark)}
+.band-f .chip{background:#fff;color:var(--rose-dark)}
+.result-meta{display:flex;gap:24px;flex-wrap:wrap;margin-top:16px;padding-top:16px;border-top:1px solid rgba(15,23,42,.1)}
+.result-meta div{font-size:14px;color:var(--muted)}
+.result-meta strong{display:block;font-size:18px;color:var(--navy)}
+.breakdown{list-style:none;margin:16px 0 0;padding:0;display:flex;flex-direction:column;gap:6px;font-size:14px;color:var(--text)}
+.breakdown li{display:flex;justify-content:space-between;gap:16px}
+.breakdown li span:last-child{font-weight:700;color:var(--navy);white-space:nowrap}
+.copy-btn{margin-top:16px}
+
+/* ================= Formula box ================= */
+.formula-card{background:var(--surface);border:1px solid var(--border);border-left:4px solid var(--indigo);border-radius:var(--radius-sm);box-shadow:var(--shadow-sm);padding:24px 28px;text-align:center}
+.formula-card .formula{font-size:22px;font-weight:700;color:var(--navy);margin:8px 0 4px}
+.formula-card p{margin:0;color:var(--muted);font-size:15px}
+
+/* ================= Method cards ================= */
+.method-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:32px}
+.method-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow-sm);padding:24px;display:flex;flex-direction:column}
+.method-card .step-no{font-size:13px;font-weight:700;color:var(--indigo);text-transform:uppercase;letter-spacing:.06em}
+.method-card h3{margin:8px 0 8px}
+.method-card p{font-size:15px}
+.formula-box{background:#F8FAFC;border:1px solid var(--border);border-radius:10px;padding:14px 16px;font-weight:700;color:var(--navy);font-size:15px;text-align:center;margin:8px 0 16px}
+.worked{margin-top:auto;border-top:1px dashed var(--border);padding-top:16px}
+.worked .worked-label{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin-bottom:10px}
+.steps{display:flex;flex-direction:column;gap:8px}
+.step{display:flex;align-items:center;gap:10px;background:var(--tint);border-radius:8px;padding:8px 12px;font-size:14px;font-weight:600;color:var(--navy)}
+.step .arrow{color:var(--indigo);font-weight:800}
+.step.result-step{background:var(--green-bg);color:var(--green-dark)}
+
+/* ================= Tables ================= */
+.table-scroll{margin-top:24px}
+.table-hint{display:none;font-size:13px;color:var(--muted);text-align:right;margin-bottom:6px}
+table.data{width:100%;border-collapse:separate;border-spacing:0;border:1px solid var(--border);border-radius:var(--radius-sm);background:var(--surface);font-size:15px}
+table.data th,table.data td{padding:13px 16px;text-align:left;border-top:1px solid var(--border);vertical-align:middle}
+table.data thead th{border-top:0}
+table.data thead tr:first-child th:first-child{border-top-left-radius:11px}
+table.data thead tr:first-child th:last-child{border-top-right-radius:11px}
+table.data tbody tr:last-child td:first-child{border-bottom-left-radius:11px}
+table.data tbody tr:last-child td:last-child{border-bottom-right-radius:11px}
+table.data thead th{background:var(--tint);color:var(--navy);font-size:12.5px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;position:sticky;top:calc(var(--header-h) + var(--toc-h));z-index:5}
+table.data tbody tr:nth-child(even) td{background:#F8FAFC}
+table.data tbody tr{transition:background .15s}
+table.data tbody tr:hover td{background:var(--tint)}
+table.data tbody tr:hover td:first-child{box-shadow:inset 3px 0 0 var(--indigo)}
+table.data td.num,table.data th.num{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+.letter-pill{display:inline-flex;align-items:center;justify-content:center;min-width:34px;height:28px;padding:0 8px;border-radius:8px;font-weight:800;font-size:14px;color:#fff}
+.pill-a{background:var(--green-badge)}.pill-b{background:#0EA5E9}.pill-c{background:var(--amber-badge)}.pill-d{background:#F97316}.pill-f{background:var(--rose-badge)}
+.table-note{font-size:14px;color:var(--muted);margin-top:12px}
+
+/* Scale tabs */
+.scale-tabs{max-width:520px}
+.scale-panel{margin-top:0}
+
+/* ================= Split blocks (photo + text) ================= */
+.split{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+.split figure{margin:0}
+.split img{width:100%;height:auto;border-radius:var(--radius);box-shadow:var(--shadow);display:block}
+.split figcaption{font-size:13px;color:var(--muted);margin-top:10px;text-align:center}
+
+/* ================= Final widget ================= */
+.final-grid{display:grid;grid-template-columns:1fr 480px;gap:48px;align-items:start}
+.mini-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow);padding:24px}
+.mini-card h3{font-size:19px;margin-bottom:4px}
+.field{margin-bottom:14px}
+.field label{display:block;font-size:14px;font-weight:600;color:var(--navy);margin-bottom:6px}
+.field input{width:100%;border:1px solid var(--border);border-radius:10px;padding:11px 12px;font:inherit;font-size:15px;color:var(--navy);min-height:44px}
+.field input:focus{border-color:var(--indigo);outline:2px solid var(--indigo);outline-offset:0}
+.field input.invalid{border-color:var(--rose);outline-color:var(--rose)}
+.field .suffix{font-size:13px;color:var(--muted);font-weight:400}
+.final-result{margin-top:16px;border-radius:var(--radius-sm);padding:18px 20px;display:none}
+.final-result.show{display:block}
+.final-result.ok{background:var(--green-bg)}
+.final-result.hard{background:var(--amber-bg)}
+.final-result.impossible{background:var(--rose-bg)}
+.final-result .big{font-size:28px;font-weight:800;color:var(--navy)}
+.final-result p{margin:4px 0 0;font-size:15px}
+
+/* ================= Card grids ================= */
+.card-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;margin-top:32px}
+.info-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow-sm);padding:24px}
+.info-card .icon{width:48px;height:48px;border-radius:12px;background:var(--tint);color:var(--indigo);display:flex;align-items:center;justify-content:center;margin-bottom:16px}
+.info-card h3{font-size:17px;margin-bottom:8px}
+.info-card p{font-size:15px;margin:0}
+a.info-card{text-decoration:none;color:inherit;display:block;transition:transform .15s,box-shadow .15s,border-color .15s}
+a.info-card:hover{transform:translateY(-2px);box-shadow:var(--shadow);border-color:var(--indigo)}
+a.info-card .go{display:inline-flex;align-items:center;gap:6px;margin-top:14px;font-weight:700;font-size:14px;color:var(--indigo)}
+a.info-card:hover .go{gap:10px}
+
+/* ================= Tips ================= */
+.tips-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px 32px;margin-top:32px;list-style:none;padding:0}
+.tips-grid li{display:flex;gap:12px;align-items:flex-start;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-sm);padding:16px 18px;font-size:15px}
+.tips-grid .tick{margin-top:0}
+
+/* ================= FAQ ================= */
+.faq-list{display:flex;flex-direction:column;gap:12px;margin-top:32px}
+.faq-item{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-sm);overflow:hidden}
+.faq-q{width:100%;display:flex;justify-content:space-between;align-items:center;gap:16px;background:none;border:0;padding:18px 20px;font:inherit;font-size:16px;font-weight:700;color:var(--navy);text-align:left;cursor:pointer;min-height:44px}
+.faq-q:hover{color:var(--indigo)}
+.faq-icon{flex:none;width:28px;height:28px;border-radius:50%;background:var(--tint);color:var(--indigo);display:inline-flex;align-items:center;justify-content:center;font-size:20px;font-weight:400;line-height:1;transition:transform .25s}
+.faq-q[aria-expanded="true"] .faq-icon{transform:rotate(45deg)}
+.faq-a{padding:0 20px 20px;font-size:15px}
+.faq-a p:last-child{margin-bottom:0}
+
+/* ================= References ================= */
+.ref-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:32px}
+.ref-card{display:flex;gap:16px;align-items:flex-start;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow-sm);padding:20px 24px;text-decoration:none;color:inherit;transition:transform .15s,box-shadow .15s,border-color .15s}
+.ref-card:hover{transform:translateY(-2px);box-shadow:var(--shadow);border-color:var(--indigo)}
+.ref-card h3{font-size:16px;margin:0 0 4px;color:var(--navy)}
+.ref-card p{font-size:14px;color:var(--muted);margin:0}
+.ref-card .ext{margin-left:auto;color:var(--muted);flex:none;padding-top:2px}
+.ref-card:hover .ext{color:var(--indigo)}
+
+/* ================= CTA band ================= */
+.cta-band{background:linear-gradient(135deg,var(--indigo),var(--violet));color:#fff;text-align:center;padding:64px 24px}
+.cta-band h2{color:#fff;font-size:30px;margin-bottom:8px}
+.cta-band p{color:#E0E7FF;margin-bottom:24px;font-size:17px}
+
+/* ================= Footer ================= */
+.site-footer{background:var(--navy);color:#CBD5E1;padding:56px 0 0;font-size:15px}
+.footer-grid{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:40px;padding-bottom:40px}
+.footer-brand p{font-size:14px;line-height:1.6;margin:16px 0 0;max-width:300px}
+.site-footer h3{color:#fff;font-size:14px;text-transform:uppercase;letter-spacing:.06em;margin-bottom:16px}
+.foot-links{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px}
+.foot-links a{color:#CBD5E1;text-decoration:none}
+.foot-links a:hover{color:#C7D2FE;text-decoration:underline}
+.foot-links .foot-text{color:#94A3B8}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.12);padding:20px 0;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-size:13px;color:#94A3B8}
+.footer-bottom p{margin:0}
+
+/* ================= Back to top ================= */
+.to-top{position:fixed;right:24px;bottom:24px;z-index:90;width:48px;height:48px;border-radius:50%;border:0;background:var(--indigo);color:#fff;font-size:20px;cursor:pointer;box-shadow:var(--shadow);display:none;align-items:center;justify-content:center}
+.to-top.show{display:flex}
+.to-top:hover{background:var(--indigo-hover)}
+
+/* ================= Responsive ================= */
+@media (max-width:1024px){
+  .main-nav,.header-cta{display:none}
+  .menu-btn{display:inline-flex;margin-left:auto}
+  .hero-grid{grid-template-columns:1fr;gap:32px}
+  .hero-copy{padding-top:0}
+  .method-grid{grid-template-columns:1fr 1fr}
+  .card-grid{grid-template-columns:1fr 1fr}
+  .final-grid{grid-template-columns:1fr}
+  .split{grid-template-columns:1fr;gap:32px}
+  .footer-grid{grid-template-columns:1fr 1fr}
+}
+@media (max-width:768px){
+  body{font-size:16px}
+  h1{font-size:32px}
+  h2{font-size:24px}
+  .container{padding:0 16px}
+  .section{padding:48px 0}
+  .calc-card{padding:20px 16px}
+  .calc-card.mode-points .calc-row,.calc-card.mode-percent .calc-row,.calc-card.mode-weighted .calc-row,.calc-card.mode-letter .calc-row{grid-template-columns:1fr 1fr;grid-template-areas:"name name" "score outof" "weight remove"}
+  .calc-row .c-name{grid-area:name}
+  .calc-row .c-score{grid-area:score}
+  .calc-row .c-outof{grid-area:outof}
+  .calc-row .c-weight{grid-area:weight}
+  .calc-row .c-remove{grid-area:remove;justify-self:end}
+  .calc-row .col-head{display:none}
+  .method-grid,.card-grid,.ref-grid,.tips-grid{grid-template-columns:1fr}
+  .table-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .table-hint.show{display:block}
+  table.data{min-width:560px}
+  table.data thead th{position:static}
+  .toc-bar{display:none}
+  .footer-grid{grid-template-columns:1fr;gap:32px}
+  .result-pct{font-size:30px}
+  .letter-badge{width:56px;height:56px;font-size:26px}
+  .chip{margin-left:0}
+}
+@media (max-width:400px){
+  .hero{padding-bottom:48px}
+  .tabs [role="tab"]{font-size:13px;padding:10px 4px}
+  .calc-row{grid-template-columns:1fr 1fr}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *{transition:none!important}
+}
+/* ---- Final-grade page extras ---- */
+.step-cards{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:32px}
+.step-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow-sm);padding:24px}
+.step-card p:last-child{margin-bottom:0}
+.step-num{width:36px;height:36px;border-radius:50%;background:var(--indigo);color:#fff;display:inline-flex;align-items:center;justify-content:center;font-weight:800;font-size:16px;margin-bottom:12px}
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:32px}
+.duo-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow-sm);padding:24px}
+.duo-card p:last-child{margin-bottom:0}
+@media (max-width:768px){.step-cards,.duo{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<a class="skip-link" href="#calculator">Skip to calculator</a>
+
+<header class="site-header" id="site-header">
+  <div class="container header-inner">
+    <a class="logo-link" href="../" aria-label="Grade Calculator — home">
+      <svg xmlns="http://www.w3.org/2000/svg" width="542" height="100" viewBox="0 0 542 100">
+  <title>Grade Calculator</title>
+  <defs>
+    <linearGradient id="gc-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0" stop-color="#4F46E5"/>
+      <stop offset="1" stop-color="#7C3AED"/>
+    </linearGradient>
+  </defs>
+  <g>
+      <rect x="2" y="2" width="96" height="96" rx="24" fill="url(#gc-grad)"/>
+      <g fill="#FFFFFF"><rect x="21" y="56" width="15" height="22" rx="3.5"/></g>
+      <g fill="#FFFFFF"><rect x="42.5" y="44" width="15" height="34" rx="3.5"/></g>
+      <g fill="#FFFFFF"><rect x="64" y="32" width="15" height="46" rx="3.5"/></g>
+      <g stroke="#FFFFFF"><polyline points="65,19 72,27 84,12" fill="none" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/></g>
+    </g>
+  <g fill="#0F172A" transform="translate(126 0)">
+      <path d="M795 -20Q586 -20 428.5 72.5Q271 165 182.5 336.5Q94 508 94 743Q94 985 186.0 1156.5Q278 1328 435.0 1419.0Q592 1510 788 1510Q914 1510 1022.5 1473.5Q1131 1437 1215.5 1370.0Q1300 1303 1353.5 1211.5Q1407 1120 1423 1009H1113Q1097 1063 1068.5 1105.5Q1040 1148 999.5 1178.0Q959 1208 907.0 1223.5Q855 1239 793 1239Q678 1239 590.0 1181.5Q502 1124 453.0 1014.0Q404 904 404 746Q404 588 452.5 477.5Q501 367 589.0 309.0Q677 251 797 251Q905 251 982.0 290.0Q1059 329 1100.5 401.5Q1142 474 1142 571L1206 562H818V794H1438V608Q1438 412 1355.0 271.5Q1272 131 1127.0 55.5Q982 -20 795 -20Z" transform="translate(0.000 68.916) scale(0.025391 -0.025391)"/>
+      <path d="M128 0V1118H418V923H430Q461 1027 533.5 1080.0Q606 1133 700 1133Q723 1133 750.0 1130.5Q777 1128 797 1123V855Q777 862 739.0 866.0Q701 870 667 870Q599 870 544.0 840.5Q489 811 458.5 758.5Q428 706 428 636V0Z" transform="translate(38.245 68.916) scale(0.025391 -0.025391)"/>
+      <path d="M440 -22Q334 -22 249.5 15.5Q165 53 116.5 127.5Q68 202 68 313Q68 406 102.5 469.0Q137 532 196.5 570.0Q256 608 331.5 628.0Q407 648 490 656Q587 666 646.5 674.5Q706 683 733.5 701.5Q761 720 761 756V761Q761 809 741.0 842.0Q721 875 681.5 892.5Q642 910 586 910Q528 910 485.0 892.5Q442 875 415.0 846.0Q388 817 375 781L100 826Q129 924 196.0 992.0Q263 1060 362.5 1096.0Q462 1132 587 1132Q677 1132 762.0 1110.5Q847 1089 914.5 1044.0Q982 999 1021.5 926.5Q1061 854 1061 753V0H777V155H767Q740 103 695.0 63.5Q650 24 586.5 1.0Q523 -22 440 -22ZM525 189Q596 189 649.5 217.0Q703 245 733.0 293.0Q763 341 763 400V521Q750 511 723.0 503.0Q696 495 663.0 489.0Q630 483 598.0 478.0Q566 473 541 470Q486 462 444.0 444.0Q402 426 379.0 396.5Q356 367 356 321Q356 278 378.0 248.5Q400 219 438.0 204.0Q476 189 525 189Z" transform="translate(57.930 68.916) scale(0.025391 -0.025391)"/>
+      <path d="M536 -19Q408 -19 304.5 47.5Q201 114 141.0 242.5Q81 371 81 557Q81 748 143.0 876.0Q205 1004 308.0 1068.0Q411 1132 535 1132Q630 1132 693.0 1100.0Q756 1068 795.0 1021.0Q834 974 853 930H863V1490H1163V0H868V179H853Q833 134 793.5 88.5Q754 43 691.0 12.0Q628 -19 536 -19ZM629 222Q705 222 759.0 264.0Q813 306 841.0 381.5Q869 457 869 558Q869 660 841.5 734.5Q814 809 760.0 850.5Q706 892 629 892Q550 892 496.5 849.0Q443 806 416.0 731.0Q389 656 389 558Q389 460 416.5 384.0Q444 308 497.5 265.0Q551 222 629 222Z" transform="translate(87.340 68.916) scale(0.025391 -0.025391)"/>
+      <path d="M633 -22Q462 -22 338.0 48.0Q214 118 147.5 247.0Q81 376 81 553Q81 726 147.0 856.0Q213 986 334.0 1059.0Q455 1132 618 1132Q728 1132 823.0 1097.0Q918 1062 990.0 991.5Q1062 921 1102.5 815.0Q1143 709 1143 565V481H204V669H996L856 619Q856 706 829.5 770.5Q803 835 750.5 870.5Q698 906 621 906Q543 906 488.5 870.0Q434 834 406.0 772.5Q378 711 378 632V499Q378 402 410.5 336.0Q443 270 501.5 237.0Q560 204 638 204Q691 204 734.0 219.0Q777 234 807.5 263.5Q838 293 854 336L1126 285Q1099 193 1032.0 123.5Q965 54 864.5 16.0Q764 -22 633 -22Z" transform="translate(119.339 68.916) scale(0.025391 -0.025391)"/>
+      <path d="M786 -20Q588 -20 431.5 70.0Q275 160 184.5 331.0Q94 502 94 744Q94 987 185.0 1158.5Q276 1330 433.0 1420.0Q590 1510 786 1510Q913 1510 1022.5 1474.5Q1132 1439 1217.0 1371.0Q1302 1303 1356.0 1204.5Q1410 1106 1427 980H1118Q1108 1042 1079.5 1089.5Q1051 1137 1008.5 1170.5Q966 1204 911.0 1221.5Q856 1239 792 1239Q676 1239 588.5 1181.0Q501 1123 452.5 1012.5Q404 902 404 744Q404 583 453.0 473.0Q502 363 589.0 307.0Q676 251 791 251Q855 251 909.5 268.5Q964 286 1007.5 319.5Q1051 353 1079.5 401.0Q1108 449 1119 510H1428Q1416 406 1366.5 311.0Q1317 216 1235.0 141.0Q1153 66 1040.0 23.0Q927 -20 786 -20Z" transform="translate(161.070 68.916) scale(0.025391 -0.025391)"/>
+      <path d="M440 -22Q334 -22 249.5 15.5Q165 53 116.5 127.5Q68 202 68 313Q68 406 102.5 469.0Q137 532 196.5 570.0Q256 608 331.5 628.0Q407 648 490 656Q587 666 646.5 674.5Q706 683 733.5 701.5Q761 720 761 756V761Q761 809 741.0 842.0Q721 875 681.5 892.5Q642 910 586 910Q528 910 485.0 892.5Q442 875 415.0 846.0Q388 817 375 781L100 826Q129 924 196.0 992.0Q263 1060 362.5 1096.0Q462 1132 587 1132Q677 1132 762.0 1110.5Q847 1089 914.5 1044.0Q982 999 1021.5 926.5Q1061 854 1061 753V0H777V155H767Q740 103 695.0 63.5Q650 24 586.5 1.0Q523 -22 440 -22ZM525 189Q596 189 649.5 217.0Q703 245 733.0 293.0Q763 341 763 400V521Q750 511 723.0 503.0Q696 495 663.0 489.0Q630 483 598.0 478.0Q566 473 541 470Q486 462 444.0 444.0Q402 426 379.0 396.5Q356 367 356 321Q356 278 378.0 248.5Q400 219 438.0 204.0Q476 189 525 189Z" transform="translate(198.757 68.916) scale(0.025391 -0.025391)"/>
+      <path d="M428 1490V0H128V1490Z" transform="translate(228.166 68.916) scale(0.025391 -0.025391)"/>
+      <path d="M628 -22Q459 -22 336.5 50.5Q214 123 147.5 252.5Q81 382 81 554Q81 728 147.5 857.5Q214 987 336.5 1059.5Q459 1132 628 1132Q727 1132 811.0 1106.0Q895 1080 960.0 1032.0Q1025 984 1067.0 915.0Q1109 846 1125 760L846 708Q837 752 818.0 786.5Q799 821 772.0 845.5Q745 870 709.5 883.0Q674 896 631 896Q551 896 496.5 853.0Q442 810 414.5 733.0Q387 656 387 555Q387 456 414.5 379.0Q442 302 496.5 258.0Q551 214 631 214Q674 214 710.0 227.5Q746 241 774.0 266.5Q802 292 821.0 328.0Q840 364 848 409L1127 358Q1111 269 1069.0 199.5Q1027 130 962.0 80.0Q897 30 812.5 4.0Q728 -22 628 -22Z" transform="translate(241.478 68.916) scale(0.025391 -0.025391)"/>
+      <path d="M513 -14Q397 -14 310.0 36.5Q223 87 175.5 181.5Q128 276 128 407V1118H428V459Q428 355 482.0 296.0Q536 237 630 237Q694 237 743.0 264.5Q792 292 819.5 344.5Q847 397 847 471V1118H1148V0H864L860 279H877Q833 138 742.5 62.0Q652 -14 513 -14Z" transform="translate(271.294 68.916) scale(0.025391 -0.025391)"/>
+      <path d="M428 1490V0H128V1490Z" transform="translate(302.887 68.916) scale(0.025391 -0.025391)"/>
+      <path d="M440 -22Q334 -22 249.5 15.5Q165 53 116.5 127.5Q68 202 68 313Q68 406 102.5 469.0Q137 532 196.5 570.0Q256 608 331.5 628.0Q407 648 490 656Q587 666 646.5 674.5Q706 683 733.5 701.5Q761 720 761 756V761Q761 809 741.0 842.0Q721 875 681.5 892.5Q642 910 586 910Q528 910 485.0 892.5Q442 875 415.0 846.0Q388 817 375 781L100 826Q129 924 196.0 992.0Q263 1060 362.5 1096.0Q462 1132 587 1132Q677 1132 762.0 1110.5Q847 1089 914.5 1044.0Q982 999 1021.5 926.5Q1061 854 1061 753V0H777V155H767Q740 103 695.0 63.5Q650 24 586.5 1.0Q523 -22 440 -22ZM525 189Q596 189 649.5 217.0Q703 245 733.0 293.0Q763 341 763 400V521Q750 511 723.0 503.0Q696 495 663.0 489.0Q630 483 598.0 478.0Q566 473 541 470Q486 462 444.0 444.0Q402 426 379.0 396.5Q356 367 356 321Q356 278 378.0 248.5Q400 219 438.0 204.0Q476 189 525 189Z" transform="translate(316.199 68.916) scale(0.025391 -0.025391)"/>
+      <path d="M683 1118V889H20V1118ZM174 1384H474V327Q474 274 497.5 248.5Q521 223 576 223Q593 223 624.0 227.5Q655 232 671 236L714 11Q664 -4 614.5 -10.0Q565 -16 520 -16Q352 -16 263.0 66.0Q174 148 174 301Z" transform="translate(345.608 68.916) scale(0.025391 -0.025391)"/>
+      <path d="M628 -22Q460 -22 337.0 50.5Q214 123 147.5 252.5Q81 382 81 554Q81 728 147.5 857.5Q214 987 337.0 1059.5Q460 1132 628 1132Q797 1132 919.5 1059.5Q1042 987 1108.5 857.5Q1175 728 1175 554Q1175 382 1108.5 252.5Q1042 123 919.5 50.5Q797 -22 628 -22ZM628 214Q708 214 762.0 258.5Q816 303 843.0 380.5Q870 458 870 555Q870 654 843.0 731.0Q816 808 762.0 852.0Q708 896 628 896Q548 896 494.5 852.0Q441 808 414.0 731.0Q387 654 387 555Q387 458 414.0 380.5Q441 303 494.5 258.5Q548 214 628 214Z" transform="translate(363.363 68.916) scale(0.025391 -0.025391)"/>
+      <path d="M128 0V1118H418V923H430Q461 1027 533.5 1080.0Q606 1133 700 1133Q723 1133 750.0 1130.5Q777 1128 797 1123V855Q777 862 739.0 866.0Q701 870 667 870Q599 870 544.0 840.5Q489 811 458.5 758.5Q428 706 428 636V0Z" transform="translate(394.474 68.916) scale(0.025391 -0.025391)"/>
+  </g>
+</svg>
+    </a>
+    <nav class="main-nav" aria-label="Main">
+      <a href="../">Grade Calculator</a>
+      <a href="./" class="active" aria-current="page">Final Grade</a>
+      <a href="../?mode=percent#calculator">Semester Grade</a>
+      <a href="../#grade-scale">GPA Calculator</a>
+      <a href="../?mode=weighted#calculator">Weighted Grade</a>
+      <a href="../#how-to">Guides</a>
+    </nav>
+    <a class="btn header-cta" href="#calculator">Start Calculating</a>
+    <button class="menu-btn" id="menu-btn" type="button" aria-expanded="false" aria-controls="drawer" aria-label="Open menu">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+    </button>
+  </div>
+  <div class="drawer" id="drawer">
+    <div class="container">
+      <nav aria-label="Mobile">
+        <a href="../">Grade Calculator</a>
+        <a href="./" class="active">Final Grade</a>
+        <a href="../?mode=percent#calculator">Semester Grade</a>
+        <a href="../#grade-scale">GPA Calculator</a>
+        <a href="../?mode=weighted#calculator">Weighted Grade</a>
+        <a href="../#how-to">Guides</a>
+      </nav>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+  <!-- ================= Hero + calculator ================= -->
+  <section class="hero" aria-labelledby="page-title">
+    <div class="container">
+      <nav class="crumbs" aria-label="Breadcrumb">
+        <ol>
+          <li><a href="../">Home</a></li>
+          <li><span aria-current="page">Final Grade Calculator</span></li>
+        </ol>
+      </nav>
+      <div class="hero-grid">
+        <div class="hero-copy">
+          <p class="badge"><span class="dot" aria-hidden="true"></span>100% Free. No Sign Up Required</p>
+          <h1 id="page-title">Final Grade Calculator: What Grade Do You Need on Your Final Exam?</h1>
+          <p class="hero-intro">Use this Final Grade Calculator to find the score you need on an upcoming final exam to reach a target course grade. Enter your current grade, desired grade, and the percentage of your course grade assigned to the final.</p>
+          <ul class="tick-list">
+            <li><span class="tick" aria-hidden="true"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5 9.5 18 20 6.5"/></svg></span><div>Required score <span>— what you need on the final to hit your target</span></div></li>
+            <li><span class="tick" aria-hidden="true"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5 9.5 18 20 6.5"/></svg></span><div>Maximum grade <span>— the best you can finish with, even at 100% on the final</span></div></li>
+            <li><span class="tick" aria-hidden="true"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5 9.5 18 20 6.5"/></svg></span><div>After the exam <span>— your final course grade once you know your exam score</span></div></li>
+          </ul>
+        </div>
+
+        <div class="mini-card" id="calculator" style="scroll-margin-top:calc(var(--header-h) + var(--toc-h) + 16px)">
+          <h3>Final grade calculator</h3>
+          <p class="calc-sub">Work out the score you need — or your course grade after the exam.</p>
+          <div class="tabs" role="tablist" aria-label="Calculator mode">
+            <button type="button" role="tab" id="tab-need" aria-selected="true" aria-controls="panel-need" data-widget="need">Score I need</button>
+            <button type="button" role="tab" id="tab-after" aria-selected="false" aria-controls="panel-after" data-widget="after" tabindex="-1">Grade after exam</button>
+          </div>
+          <div id="panel-need" role="tabpanel" aria-labelledby="tab-need">
+            <form id="need-form" novalidate>
+              <div class="field">
+                <label for="need-current">Current grade <span class="suffix">(%)</span></label>
+                <input type="number" id="need-current" inputmode="decimal" min="0" max="100" step="any" value="82" aria-describedby="need-current-error">
+                <p class="field-error" id="need-current-error">Enter a number between 0 and 100.</p>
+              </div>
+              <div class="field">
+                <label for="need-desired">Grade you want <span class="suffix">(%)</span></label>
+                <input type="number" id="need-desired" inputmode="decimal" min="0" max="100" step="any" value="90" aria-describedby="need-desired-error">
+                <p class="field-error" id="need-desired-error">Enter a number between 0 and 100.</p>
+              </div>
+              <div class="field">
+                <label for="need-weight">Final exam weight <span class="suffix">(%)</span></label>
+                <input type="number" id="need-weight" inputmode="decimal" min="1" max="100" step="any" value="30" aria-describedby="need-weight-error">
+                <p class="field-error" id="need-weight-error">Enter a weight between 1 and 100.</p>
+              </div>
+              <button class="btn" type="submit" style="width:100%">Calculate required score</button>
+            </form>
+            <div class="final-result impossible show" id="need-result" aria-live="polite">
+              <div class="big" id="need-needed">You need 108.7% on the final</div>
+              <p id="need-line">That target is out of reach with this final weight.</p>
+            </div>
+          </div>
+          <div id="panel-after" role="tabpanel" aria-labelledby="tab-after" hidden>
+            <form id="after-form" novalidate>
+              <div class="field">
+                <label for="after-current">Grade before the final <span class="suffix">(%)</span></label>
+                <input type="number" id="after-current" inputmode="decimal" min="0" max="100" step="any" value="86" aria-describedby="after-current-error">
+                <p class="field-error" id="after-current-error">Enter a number between 0 and 100.</p>
+              </div>
+              <div class="field">
+                <label for="after-exam">Final exam score <span class="suffix">(%)</span></label>
+                <input type="number" id="after-exam" inputmode="decimal" min="0" max="100" step="any" value="90" aria-describedby="after-exam-error">
+                <p class="field-error" id="after-exam-error">Enter a number between 0 and 100.</p>
+              </div>
+              <div class="field">
+                <label for="after-weight">Final exam weight <span class="suffix">(%)</span></label>
+                <input type="number" id="after-weight" inputmode="decimal" min="1" max="100" step="any" value="20" aria-describedby="after-weight-error">
+                <p class="field-error" id="after-weight-error">Enter a weight between 1 and 100.</p>
+              </div>
+              <button class="btn" type="submit" style="width:100%">Calculate my course grade</button>
+            </form>
+            <div class="final-result ok show" id="after-result" aria-live="polite">
+              <div class="big" id="after-grade">Your final course grade would be 86.8% (B)</div>
+              <p id="after-line">86 × 0.80 + 90 × 0.20 = 86.8%.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= Sticky "On this page" ================= -->
+  <div class="toc-bar" aria-label="On this page">
+    <nav id="toc-nav">
+      <a href="#calculator" data-spy="calculator">Calculator</a>
+      <a href="#what-is" data-spy="what-is">What is it</a>
+      <a href="#how-to" data-spy="how-to">How to use</a>
+      <a href="#formula" data-spy="formula">Formula</a>
+      <a href="#examples" data-spy="examples">Examples</a>
+      <a href="#max-grade" data-spy="max-grade">Highest grade</a>
+      <a href="#after-exam" data-spy="after-exam">After the exam</a>
+      <a href="#points" data-spy="points">Points method</a>
+      <a href="#mistakes" data-spy="mistakes">Mistakes</a>
+      <a href="#faq" data-spy="faq">FAQ</a>
+      <a href="#references" data-spy="references">References</a>
+    </nav>
+  </div>
+
+  <!-- ================= What is ================= -->
+  <section class="section white" id="what-is" aria-labelledby="what-is-title">
+    <div class="container">
+      <div class="split">
+        <div>
+          <h2 id="what-is-title">What Is a Final Grade Calculator?</h2>
+          <p>A final grade calculator works backward from a target course result. It estimates how well you need to perform on the remaining final exam to finish the course with a particular percentage.</p>
+          <p>For example, you may currently have 84% in a class and want to finish with 90%. If the final exam is worth 25% of the course grade, the calculator uses the remaining 75% and the exam's 25% contribution to find the score required.</p>
+          <p>This is different from a general <a href="../">Grade Calculator</a>, which combines the scores you have already received to calculate your current grade.</p>
+          <p>You can also use it after the exam to estimate your final course grade. The result depends on the accuracy of your current grade and exam weight, so check your syllabus or course gradebook before relying on it.</p>
+        </div>
+        <figure>
+          <img src="data:image/webp;base64,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" alt="A stack of final exam papers marked A+ beside a calculator" width="1200" height="800" loading="lazy" decoding="async">
+          <figcaption>One exam can still move your course grade — work out by how much before you sit it.</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= How to use ================= -->
+  <section class="section alt" id="how-to" aria-labelledby="how-to-title">
+    <div class="container">
+      <h2 id="how-to-title">How to Use the Final Grade Calculator</h2>
+      <div class="step-cards">
+        <article class="step-card">
+          <span class="step-num" aria-hidden="true">1</span>
+          <h3>Enter Your Current Grade</h3>
+          <p>Enter your current course percentage before the final exam. Use the overall course grade, not just your latest test score.</p>
+          <p>If your learning platform displays a running grade, check whether it includes ungraded assignments and whether category weights are applied.</p>
+        </article>
+        <article class="step-card">
+          <span class="step-num" aria-hidden="true">2</span>
+          <h3>Enter Your Desired Final Grade</h3>
+          <p>Enter the course percentage you want to achieve. This could be your target for an A, B, passing grade, or another result required by your program.</p>
+          <p>Do not assume that a particular percentage always represents the same letter grade. Use your school's grading scale.</p>
+        </article>
+        <article class="step-card">
+          <span class="step-num" aria-hidden="true">3</span>
+          <h3>Enter the Final Exam Weight</h3>
+          <p>Find the final exam's percentage weight in your course syllabus or official grading breakdown. For example, enter 20 if the final contributes 20% of the overall course grade.</p>
+          <p>The exam weight is not the percentage of questions on the exam. It is the share of the course grade determined by the exam.</p>
+        </article>
+        <article class="step-card">
+          <span class="step-num" aria-hidden="true">4</span>
+          <h3>Calculate the Required Score</h3>
+          <p>Calculate the result and check whether it is within the possible exam score range. A required score above 100% means the target cannot be reached through the final exam alone under the entered assumptions.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= Formula ================= -->
+  <section class="section white" id="formula" aria-labelledby="formula-title">
+    <div class="container narrow">
+      <h2 id="formula-title">Final Grade Formula</h2>
+      <p>When the current grade represents all coursework before the final and the final exam is the only remaining component, use:</p>
+      <div class="formula-card">
+        <p class="formula">Required Final Exam Score = (Target Grade − Current Grade × (1 − Final Weight)) ÷ Final Weight</p>
+        <p>Enter the final weight as a decimal. For example, 20% becomes 0.20.</p>
+      </div>
+      <p style="margin-top:24px">The formula comes from the weighted course-grade equation:</p>
+      <div class="formula-card">
+        <p class="formula">Final Course Grade = Current Grade × (1 − Final Weight) + Final Exam Score × Final Weight</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= Worked example ================= -->
+  <section class="section alt" id="worked-example" aria-labelledby="worked-example-title">
+    <div class="container narrow">
+      <h2 id="worked-example-title">Worked Example: What Do I Need on a Final Worth 20%?</h2>
+      <p>Suppose:</p>
+      <ul>
+        <li>Current grade: 88%</li>
+        <li>Desired course grade: 90%</li>
+        <li>Final exam weight: 20%</li>
+      </ul>
+      <p>Convert the exam weight to 0.20.</p>
+      <div class="steps">
+        <div class="step"><span>Required score = (90 − 88 × 0.80) ÷ 0.20</span></div>
+        <div class="step"><span>= (90 − 70.4) ÷ 0.20</span></div>
+        <div class="step"><span>= 19.6 ÷ 0.20</span></div>
+        <div class="step result-step"><span>= 98% — you need 98% on the final exam to finish with 90%</span></div>
+      </div>
+      <p style="margin-top:24px">If you score 100%, your final course grade would be:</p>
+      <div class="steps">
+        <div class="step"><span>88 × 0.80 + 100 × 0.20</span><span class="arrow">→</span><span>70.4 + 20</span></div>
+        <div class="step result-step"><span>= 90.4%</span></div>
+      </div>
+      <p class="table-note">These results assume the current grade and weight are correct and there are no additional course rules.</p>
+    </div>
+  </section>
+
+  <!-- ================= Examples table ================= -->
+  <section class="section white" id="examples" aria-labelledby="examples-title">
+    <div class="container narrow">
+      <h2 id="examples-title">Final Exam Score Examples</h2>
+      <p>The following table shows how the required score changes with the current grade and final exam weight. It assumes the current grade represents the completed portion of the course and that the final is the only remaining assessment.</p>
+      <div class="table-scroll" data-scroll-hint>
+        <p class="table-hint">Scroll sideways to see the full table →</p>
+        <table class="data">
+          <thead><tr><th class="num">Current grade</th><th class="num">Target grade</th><th class="num">Final weight</th><th class="num">Required final score</th><th>Reachable?</th></tr></thead>
+          <tbody>
+            <tr><td class="num">90%</td><td class="num">90%</td><td class="num">20%</td><td class="num">90%</td><td><span class="letter-pill pill-a">Yes</span></td></tr>
+            <tr><td class="num">85%</td><td class="num">90%</td><td class="num">20%</td><td class="num">110%</td><td><span class="letter-pill pill-f">No</span></td></tr>
+            <tr><td class="num">88%</td><td class="num">90%</td><td class="num">20%</td><td class="num">98%</td><td><span class="letter-pill pill-a">Yes</span></td></tr>
+            <tr><td class="num">80%</td><td class="num">85%</td><td class="num">25%</td><td class="num">100%</td><td><span class="letter-pill pill-a">Yes</span></td></tr>
+            <tr><td class="num">82%</td><td class="num">80%</td><td class="num">30%</td><td class="num">75.33%</td><td><span class="letter-pill pill-a">Yes</span></td></tr>
+            <tr><td class="num">75%</td><td class="num">80%</td><td class="num">40%</td><td class="num">87.50%</td><td><span class="letter-pill pill-a">Yes</span></td></tr>
+            <tr><td class="num">70%</td><td class="num">70%</td><td class="num">20%</td><td class="num">70%</td><td><span class="letter-pill pill-a">Yes</span></td></tr>
+            <tr><td class="num">60%</td><td class="num">70%</td><td class="num">25%</td><td class="num">100%</td><td><span class="letter-pill pill-a">Yes</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="table-note">A result above 100% indicates that the target is out of reach through the final alone. A result below 0% means the target is already secured mathematically under the assumptions used, although course-specific minimum exam rules may still apply.</p>
+    </div>
+  </section>
+
+  <!-- ================= Highest grade / zero ================= -->
+  <section class="section alt" id="max-grade" aria-labelledby="max-grade-title">
+    <div class="container">
+      <h2 id="max-grade-title">The Best and Worst Cases</h2>
+      <div class="duo">
+        <article class="duo-card">
+          <h3>What Is the Highest Grade You Can Get on the Final?</h3>
+          <p>Your maximum possible course grade is found by assuming you score 100% on the final:</p>
+          <p class="formula-box">Maximum Course Grade = Current Grade × (1 − Final Weight) + 100 × Final Weight</p>
+          <p>For example, if your current grade is 82% and the final is worth 30%:</p>
+          <div class="steps">
+            <div class="step"><span>82 × 0.70 + 100 × 0.30</span><span class="arrow">→</span><span>57.4 + 30</span></div>
+            <div class="step result-step"><span>= 87.4% — your highest possible course grade</span></div>
+          </div>
+          <p class="table-note">This helps you set a realistic target before the exam. It does not account for extra credit, dropped assignments, retakes, grade curves, or other policies unless those are already reflected in your current grade.</p>
+        </article>
+        <article class="duo-card" id="zero-final">
+          <h3>What Happens If You Get Zero on the Final?</h3>
+          <p>The lowest course grade under the simple formula is the current grade multiplied by the portion of the course already completed:</p>
+          <p class="formula-box">Minimum Course Grade = Current Grade × (1 − Final Weight)</p>
+          <p>For a current grade of 82% and a final worth 30%:</p>
+          <div class="steps">
+            <div class="step"><span>82 × 0.70</span><span class="arrow">→</span><span>57.4</span></div>
+            <div class="step result-step"><span>= 57.4% with a zero on the final</span></div>
+          </div>
+          <p class="table-note">Some courses have a separate rule requiring students to sit or pass the final exam, so check the syllabus.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= After the exam ================= -->
+  <section class="section white" id="after-exam" aria-labelledby="after-exam-title">
+    <div class="container narrow">
+      <h2 id="after-exam-title">Calculate Your Final Course Grade After the Exam</h2>
+      <p>If you already know your final exam score, use the weighted course-grade formula:</p>
+      <div class="formula-card">
+        <p class="formula">Final Course Grade = Current Grade × (1 − Final Weight) + Exam Score × Final Weight</p>
+      </div>
+      <p style="margin-top:24px">Example:</p>
+      <ul>
+        <li>Grade before final: 86%</li>
+        <li>Final exam score: 90%</li>
+        <li>Final exam weight: 20%</li>
+      </ul>
+      <div class="steps">
+        <div class="step"><span>86 × 0.80 + 90 × 0.20</span><span class="arrow">→</span><span>68.8 + 18</span></div>
+        <div class="step result-step"><span>= 86.8% — your calculated course grade</span></div>
+      </div>
+      <p class="table-note">For a course with several remaining assignments rather than one final exam, use the main <a href="../">Grade Calculator</a> to combine all assessment categories and weights. You can also try the "Grade after exam" mode in the calculator at the top of this page.</p>
+    </div>
+  </section>
+
+  <!-- ================= Points method ================= -->
+  <section class="section alt" id="points" aria-labelledby="points-title">
+    <div class="container narrow">
+      <h2 id="points-title">What If the Course Uses Points Instead of Percentages?</h2>
+      <p>Some instructors assign a fixed number of points to each assessment. In that case, the final's weight can be calculated from the total course points.</p>
+      <p>Suppose you have earned 530 points out of 600 possible points, and the final exam is worth 200 points. The course will have 800 points in total if no other points are added.</p>
+      <p>The final represents 25% of the total course points:</p>
+      <div class="steps">
+        <div class="step"><span>200 ÷ 800</span><span class="arrow">→</span><span>0.25 (25%)</span></div>
+      </div>
+      <p style="margin-top:24px">If you want 90% overall, you need 720 total points. You already have 530, so you need 190 points on the final:</p>
+      <div class="steps">
+        <div class="step"><span>720 − 530</span><span class="arrow">→</span><span>190 points</span></div>
+        <div class="step"><span>190 ÷ 200 × 100</span><span class="arrow">→</span><span>95%</span></div>
+        <div class="step result-step"><span>You need 95% on the final exam</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= Final vs semester ================= -->
+  <section class="section white" id="vs-semester" aria-labelledby="vs-semester-title">
+    <div class="container narrow">
+      <h2 id="vs-semester-title">Final Exam vs. Semester Grade Calculation</h2>
+      <p>A final grade calculator usually combines a current course grade with one remaining exam. A semester grade calculator may combine several grading periods, such as two quarters and a semester exam.</p>
+      <p>If your school uses separate quarter or term marks, use the <strong>Semester Grade Calculator</strong>. If you need to calculate the current grade from assignments, use the <a href="../">Grade Calculator</a>.</p>
+      <p>After a course is complete, you can use the <strong>GPA Calculator</strong> to calculate grade points across courses and credit hours.</p>
+    </div>
+  </section>
+
+  <!-- ================= Common mistakes ================= -->
+  <section class="section alt" id="mistakes" aria-labelledby="mistakes-title">
+    <div class="container narrow">
+      <h2 id="mistakes-title">Common Mistakes When Calculating a Final Grade</h2>
+      <ul class="tips-grid">
+        <li><span class="tick" aria-hidden="true"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5 9.5 18 20 6.5"/></svg></span><div><strong>Using a test score as the current course grade:</strong> Enter the overall current course percentage, not one assessment result.</div></li>
+        <li><span class="tick" aria-hidden="true"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5 9.5 18 20 6.5"/></svg></span><div><strong>Guessing the final weight:</strong> Check the syllabus or official course outline.</div></li>
+        <li><span class="tick" aria-hidden="true"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5 9.5 18 20 6.5"/></svg></span><div><strong>Mixing percentages and whole numbers:</strong> Use 20% as 0.20 in the formula, not 20.</div></li>
+        <li><span class="tick" aria-hidden="true"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5 9.5 18 20 6.5"/></svg></span><div><strong>Ignoring remaining coursework:</strong> If other assignments remain, the simple one-exam formula is incomplete.</div></li>
+        <li><span class="tick" aria-hidden="true"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5 9.5 18 20 6.5"/></svg></span><div><strong>Assuming the target is possible:</strong> Check the maximum possible course grade.</div></li>
+        <li><span class="tick" aria-hidden="true"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5 9.5 18 20 6.5"/></svg></span><div><strong>Assuming a passing threshold:</strong> Some programs require a minimum grade in a specific course or a minimum score on the final itself.</div></li>
+        <li><span class="tick" aria-hidden="true"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5 9.5 18 20 6.5"/></svg></span><div><strong>Rounding too early:</strong> Keep decimals during the calculation and apply the institution's rounding policy to the final result.</div></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ================= FAQ ================= -->
+  <section class="section white" id="faq" aria-labelledby="faq-title">
+    <div class="container narrow">
+      <h2 id="faq-title">Frequently Asked Questions</h2>
+      <div class="faq-list">
+        <div class="faq-item open">
+          <button class="faq-q" type="button" aria-expanded="true" aria-controls="fq1" id="fq1-btn">What grade do I need on my final to get an A?</button>
+          <div class="faq-a" id="fq1" role="region" aria-labelledby="fq1-btn">
+            <p>Enter your current course grade, the percentage weight of the final exam, and the percentage required for an A under your institution's grading scale. The calculator works out the required score. If the answer is above 100%, the final alone cannot get you to that target.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" type="button" aria-expanded="false" aria-controls="fq2" id="fq2-btn">How much is a final exam worth?</button>
+          <div class="faq-a" id="fq2" role="region" aria-labelledby="fq2-btn">
+            <p>There is no universal final-exam weight. The percentage is set by the instructor, school, or institution and should be listed in the syllabus or course assessment policy.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" type="button" aria-expanded="false" aria-controls="fq3" id="fq3-btn">Can I still pass if I fail my final exam?</button>
+          <div class="faq-a" id="fq3" role="region" aria-labelledby="fq3-btn">
+            <p>Possibly. Your overall course grade may remain above the passing threshold even if your exam score is low. However, some courses require a minimum final-exam score or require students to sit the exam. Check the course rules.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" type="button" aria-expanded="false" aria-controls="fq4" id="fq4-btn">What if I need more than 100% on my final?</button>
+          <div class="faq-a" id="fq4" role="region" aria-labelledby="fq4-btn">
+            <p>It means the target cannot be reached through the final exam alone using the values entered. Check whether other assessments, extra credit, retakes, or course policies could change the calculation. Speak with your instructor rather than assuming an exception is available.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" type="button" aria-expanded="false" aria-controls="fq5" id="fq5-btn">Does the current grade include ungraded assignments?</button>
+          <div class="faq-a" id="fq5" role="region" aria-labelledby="fq5-btn">
+            <p>That depends on the gradebook and instructor settings. Some systems exclude ungraded work, while others may treat missing work as zero. Confirm how your current grade is calculated before entering it.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" type="button" aria-expanded="false" aria-controls="fq6" id="fq6-btn">Can I calculate a final grade using points?</button>
+          <div class="faq-a" id="fq6" role="region" aria-labelledby="fq6-btn">
+            <p>Yes. Add the points already earned to the points available on the final, then calculate the total points required for your target percentage. The points method is useful when the course does not publish percentage weights separately.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" type="button" aria-expanded="false" aria-controls="fq7" id="fq7-btn">Is a final grade calculator the same as a semester grade calculator?</button>
+          <div class="faq-a" id="fq7" role="region" aria-labelledby="fq7-btn">
+            <p>No. A final grade calculator generally works out the impact of one remaining final exam on a course grade. A semester grade calculator combines grading periods and possibly a semester exam. Use the <strong>Semester Grade Calculator</strong> for quarter, term, or semester structures.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= Official references ================= -->
+  <section class="section alt" id="references" aria-labelledby="references-title">
+    <div class="container">
+      <h2 id="references-title">Official and Primary References</h2>
+      <div class="ref-grid">
+        <a class="ref-card" href="https://registrar.asu.edu/grades" target="_blank" rel="noopener"><span class="ref-uni">Arizona State University</span><span class="ref-desc">Grades and grading policies</span><span class="ref-link">Visit registrar.asu.edu <span aria-hidden="true">↗</span></span></a>
+        <a class="ref-card" href="https://www.umass.edu/senate/book/export/html/25" target="_blank" rel="noopener"><span class="ref-uni">University of Massachusetts Amherst</span><span class="ref-desc">Grading system and GPA calculation</span><span class="ref-link">Visit umass.edu <span aria-hidden="true">↗</span></span></a>
+        <a class="ref-card" href="https://registrar.arizona.edu/records-enrollment/enrollment/grades/grades-and-grade-point-average-gpa-calculation" target="_blank" rel="noopener"><span class="ref-uni">University of Arizona</span><span class="ref-desc">Grades and GPA calculation</span><span class="ref-link">Visit registrar.arizona.edu <span aria-hidden="true">↗</span></span></a>
+        <a class="ref-card" href="https://www.colorado.edu/center/teaching-learning/teaching-resources" target="_blank" rel="noopener"><span class="ref-uni">University of Colorado Boulder</span><span class="ref-desc">Teaching and learning resources</span><span class="ref-link">Visit colorado.edu <span aria-hidden="true">↗</span></span></a>
+      </div>
+      <p class="table-note">External links open in a new tab. They lead to official university pages describing grading policies and teaching resources.</p>
+    </div>
+  </section>
+
+  <!-- ================= Closing CTA ================= -->
+  <section class="cta-band">
+    <div class="container">
+      <h2>Ready to check your grade?</h2>
+      <p>Enter your current grade and exam weight — get your required score in seconds.</p>
+      <a class="btn btn-light" href="#calculator">Open the calculator</a>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a class="logo-link" href="../" aria-label="Grade Calculator — home"><svg xmlns="http://www.w3.org/2000/svg" width="542" height="100" viewBox="0 0 542 100">
+  <title>Grade Calculator</title>
+  <path d="M26,2 H74 A24,24 0 0 1 98,26 V74 A24,24 0 0 1 74,98 H26 A24,24 0 0 1 2,74 V26 A24,24 0 0 1 26,2 Z M24.5,56 H32.5 A3.5,3.5 0 0 1 36,59.5 V74.5 A3.5,3.5 0 0 1 32.5,78 H24.5 A3.5,3.5 0 0 1 21,74.5 V59.5 A3.5,3.5 0 0 1 24.5,56 Z M46.0,44 H54.0 A3.5,3.5 0 0 1 57.5,47.5 V74.5 A3.5,3.5 0 0 1 54.0,78 H46.0 A3.5,3.5 0 0 1 42.5,74.5 V47.5 A3.5,3.5 0 0 1 46.0,44 Z M67.5,32 H75.5 A3.5,3.5 0 0 1 79,35.5 V74.5 A3.5,3.5 0 0 1 75.5,78 H67.5 A3.5,3.5 0 0 1 64,74.5 V35.5 A3.5,3.5 0 0 1 67.5,32 Z M69.37,29.30 L69.86,29.77 L70.44,30.13 L71.07,30.37 L71.74,30.49 L72.42,30.48 L73.08,30.33 L73.70,30.06 L74.26,29.67 L74.73,29.19 L86.73,14.19 L87.11,13.61 L87.36,12.97 L87.49,12.30 L87.48,11.61 L87.34,10.94 L87.07,10.31 L86.68,9.75 L86.19,9.27 L85.61,8.89 L84.97,8.64 L84.30,8.51 L83.61,8.52 L82.94,8.66 L82.31,8.93 L81.75,9.32 L81.27,9.81 L71.88,21.55 L67.63,16.70 L67.13,16.23 L66.55,15.86 L65.91,15.62 L65.23,15.51 L64.55,15.53 L63.88,15.68 L63.25,15.97 L62.70,16.37 L62.23,16.87 L61.86,17.45 L61.62,18.09 L61.51,18.77 L61.53,19.45 L61.68,20.12 L61.97,20.75 L62.37,21.30 L69.37,29.30 Z" fill="#FFFFFF" fill-rule="evenodd"/>
+  <g fill="#FFFFFF" transform="translate(126 0)">
+      <path d="M795 -20Q586 -20 428.5 72.5Q271 165 182.5 336.5Q94 508 94 743Q94 985 186.0 1156.5Q278 1328 435.0 1419.0Q592 1510 788 1510Q914 1510 1022.5 1473.5Q1131 1437 1215.5 1370.0Q1300 1303 1353.5 1211.5Q1407 1120 1423 1009H1113Q1097 1063 1068.5 1105.5Q1040 1148 999.5 1178.0Q959 1208 907.0 1223.5Q855 1239 793 1239Q678 1239 590.0 1181.5Q502 1124 453.0 1014.0Q404 904 404 746Q404 588 452.5 477.5Q501 367 589.0 309.0Q677 251 797 251Q905 251 982.0 290.0Q1059 329 1100.5 401.5Q1142 474 1142 571L1206 562H818V794H1438V608Q1438 412 1355.0 271.5Q1272 131 1127.0 55.5Q982 -20 795 -20Z" transform="translate(0.000 68.916) scale(0.025391 -0.025391)"/>
+      <path d="M128 0V1118H418V923H430Q461 1027 533.5 1080.0Q606 1133 700 1133Q723 1133 750.0 1130.5Q777 1128 797 1123V855Q777 862 739.0 866.0Q701 870 667 870Q599 870 544.0 840.5Q489 811 458.5 758.5Q428 706 428 636V0Z" transform="translate(38.245 68.916) scale(0.025391 -0.025391)"/>
+      <path d="M440 -22Q334 -22 249.5 15.5Q165 53 116.5 127.5Q68 202 68 313Q68 406 102.5 469.0Q137 532 196.5 570.0Q256 608 331.5 628.0Q407 648 490 656Q587 666 646.5 674.5Q706 683 733.5 701.5Q761 720 761 756V761Q761 809 741.0 842.0Q721 875 681.5 892.5Q642 910 586 910Q528 910 485.0 892.5Q442 875 415.0 846.0Q388 817 375 781L100 826Q129 924 196.0 992.0Q263 1060 362.5 1096.0Q462 1132 587 1132Q677 1132 762.0 1110.5Q847 1089 914.5 1044.0Q982 999 1021.5 926.5Q1061 854 1061 753V0H777V155H767Q740 103 695.0 63.5Q650 24 586.5 1.0Q523 -22 440 -22ZM525 189Q596 189 649.5 217.0Q703 245 733.0 293.0Q763 341 763 400V521Q750 511 723.0 503.0Q696 495 663.0 489.0Q630 483 598.0 478.0Q566 473 541 470Q486 462 444.0 444.0Q402 426 379.0 396.5Q356 367 356 321Q356 278 378.0 248.5Q400 219 438.0 204.0Q476 189 525 189Z" transform="translate(57.930 68.916) scale(0.025391 -0.025391)"/>
+      <path d="M536 -19Q408 -19 304.5 47.5Q201 114 141.0 242.5Q81 371 81 557Q81 748 143.0 876.0Q205 1004 308.0 1068.0Q411 1132 535 1132Q630 1132 693.0 1100.0Q756 1068 795.0 1021.0Q834 974 853 930H863V1490H1163V0H868V179H853Q833 134 793.5 88.5Q754 43 691.0 12.0Q628 -19 536 -19ZM629 222Q705 222 759.0 264.0Q813 306 841.0 381.5Q869 457 869 558Q869 660 841.5 734.5Q814 809 760.0 850.5Q706 892 629 892Q550 892 496.5 849.0Q443 806 416.0 731.0Q389 656 389 558Q389 460 416.5 384.0Q444 308 497.5 265.0Q551 222 629 222Z" transform="translate(87.340 68.916) scale(0.025391 -0.025391)"/>
+      <path d="M633 -22Q462 -22 338.0 48.0Q214 118 147.5 247.0Q81 376 81 553Q81 726 147.0 856.0Q213 986 334.0 1059.0Q455 1132 618 1132Q728 1132 823.0 1097.0Q918 1062 990.0 991.5Q1062 921 1102.5 815.0Q1143 709 1143 565V481H204V669H996L856 619Q856 706 829.5 770.5Q803 835 750.5 870.5Q698 906 621 906Q543 906 488.5 870.0Q434 834 406.0 772.5Q378 711 378 632V499Q378 402 410.5 336.0Q443 270 501.5 237.0Q560 204 638 204Q691 204 734.0 219.0Q777 234 807.5 263.5Q838 293 854 336L1126 285Q1099 193 1032.0 123.5Q965 54 864.5 16.0Q764 -22 633 -22Z" transform="translate(119.339 68.916) scale(0.025391 -0.025391)"/>
+      <path d="M786 -20Q588 -20 431.5 70.0Q275 160 184.5 331.0Q94 502 94 744Q94 987 185.0 1158.5Q276 1330 433.0 1420.0Q590 1510 786 1510Q913 1510 1022.5 1474.5Q1132 1439 1217.0 1371.0Q1302 1303 1356.0 1204.5Q1410 1106 1427 980H1118Q1108 1042 1079.5 1089.5Q1051 1137 1008.5 1170.5Q966 1204 911.0 1221.5Q856 1239 792 1239Q676 1239 588.5 1181.0Q501 1123 452.5 1012.5Q404 902 404 744Q404 583 453.0 473.0Q502 363 589.0 307.0Q676 251 791 251Q855 251 909.5 268.5Q964 286 1007.5 319.5Q1051 353 1079.5 401.0Q1108 449 1119 510H1428Q1416 406 1366.5 311.0Q1317 216 1235.0 141.0Q1153 66 1040.0 23.0Q927 -20 786 -20Z" transform="translate(161.070 68.916) scale(0.025391 -0.025391)"/>
+      <path d="M440 -22Q334 -22 249.5 15.5Q165 53 116.5 127.5Q68 202 68 313Q68 406 102.5 469.0Q137 532 196.5 570.0Q256 608 331.5 628.0Q407 648 490 656Q587 666 646.5 674.5Q706 683 733.5 701.5Q761 720 761 756V761Q761 809 741.0 842.0Q721 875 681.5 892.5Q642 910 586 910Q528 910 485.0 892.5Q442 875 415.0 846.0Q388 817 375 781L100 826Q129 924 196.0 992.0Q263 1060 362.5 1096.0Q462 1132 587 1132Q677 1132 762.0 1110.5Q847 1089 914.5 1044.0Q982 999 1021.5 926.5Q1061 854 1061 753V0H777V155H767Q740 103 695.0 63.5Q650 24 586.5 1.0Q523 -22 440 -22ZM525 189Q596 189 649.5 217.0Q703 245 733.0 293.0Q763 341 763 400V521Q750 511 723.0 503.0Q696 495 663.0 489.0Q630 483 598.0 478.0Q566 473 541 470Q486 462 444.0 444.0Q402 426 379.0 396.5Q356 367 356 321Q356 278 378.0 248.5Q400 219 438.0 204.0Q476 189 525 189Z" transform="translate(198.757 68.916) scale(0.025391 -0.025391)"/>
+      <path d="M428 1490V0H128V1490Z" transform="translate(228.166 68.916) scale(0.025391 -0.025391)"/>
+      <path d="M628 -22Q459 -22 336.5 50.5Q214 123 147.5 252.5Q81 382 81 554Q81 728 147.5 857.5Q214 987 336.5 1059.5Q459 1132 628 1132Q727 1132 811.0 1106.0Q895 1080 960.0 1032.0Q1025 984 1067.0 915.0Q1109 846 1125 760L846 708Q837 752 818.0 786.5Q799 821 772.0 845.5Q745 870 709.5 883.0Q674 896 631 896Q551 896 496.5 853.0Q442 810 414.5 733.0Q387 656 387 555Q387 456 414.5 379.0Q442 302 496.5 258.0Q551 214 631 214Q674 214 710.0 227.5Q746 241 774.0 266.5Q802 292 821.0 328.0Q840 364 848 409L1127 358Q1111 269 1069.0 199.5Q1027 130 962.0 80.0Q897 30 812.5 4.0Q728 -22 628 -22Z" transform="translate(241.478 68.916) scale(0.025391 -0.025391)"/>
+      <path d="M513 -14Q397 -14 310.0 36.5Q223 87 175.5 181.5Q128 276 128 407V1118H428V459Q428 355 482.0 296.0Q536 237 630 237Q694 237 743.0 264.5Q792 292 819.5 344.5Q847 397 847 471V1118H1148V0H864L860 279H877Q833 138 742.5 62.0Q652 -14 513 -14Z" transform="translate(271.294 68.916) scale(0.025391 -0.025391)"/>
+      <path d="M428 1490V0H128V1490Z" transform="translate(302.887 68.916) scale(0.025391 -0.025391)"/>
+      <path d="M440 -22Q334 -22 249.5 15.5Q165 53 116.5 127.5Q68 202 68 313Q68 406 102.5 469.0Q137 532 196.5 570.0Q256 608 331.5 628.0Q407 648 490 656Q587 666 646.5 674.5Q706 683 733.5 701.5Q761 720 761 756V761Q761 809 741.0 842.0Q721 875 681.5 892.5Q642 910 586 910Q528 910 485.0 892.5Q442 875 415.0 846.0Q388 817 375 781L100 826Q129 924 196.0 992.0Q263 1060 362.5 1096.0Q462 1132 587 1132Q677 1132 762.0 1110.5Q847 1089 914.5 1044.0Q982 999 1021.5 926.5Q1061 854 1061 753V0H777V155H767Q740 103 695.0 63.5Q650 24 586.5 1.0Q523 -22 440 -22ZM525 189Q596 189 649.5 217.0Q703 245 733.0 293.0Q763 341 763 400V521Q750 511 723.0 503.0Q696 495 663.0 489.0Q630 483 598.0 478.0Q566 473 541 470Q486 462 444.0 444.0Q402 426 379.0 396.5Q356 367 356 321Q356 278 378.0 248.5Q400 219 438.0 204.0Q476 189 525 189Z" transform="translate(316.199 68.916) scale(0.025391 -0.025391)"/>
+      <path d="M683 1118V889H20V1118ZM174 1384H474V327Q474 274 497.5 248.5Q521 223 576 223Q593 223 624.0 227.5Q655 232 671 236L714 11Q664 -4 614.5 -10.0Q565 -16 520 -16Q352 -16 263.0 66.0Q174 148 174 301Z" transform="translate(345.608 68.916) scale(0.025391 -0.025391)"/>
+      <path d="M628 -22Q460 -22 337.0 50.5Q214 123 147.5 252.5Q81 382 81 554Q81 728 147.5 857.5Q214 987 337.0 1059.5Q460 1132 628 1132Q797 1132 919.5 1059.5Q1042 987 1108.5 857.5Q1175 728 1175 554Q1175 382 1108.5 252.5Q1042 123 919.5 50.5Q797 -22 628 -22ZM628 214Q708 214 762.0 258.5Q816 303 843.0 380.5Q870 458 870 555Q870 654 843.0 731.0Q816 808 762.0 852.0Q708 896 628 896Q548 896 494.5 852.0Q441 808 414.0 731.0Q387 654 387 555Q387 458 414.0 380.5Q441 303 494.5 258.5Q548 214 628 214Z" transform="translate(363.363 68.916) scale(0.025391 -0.025391)"/>
+      <path d="M128 0V1118H418V923H430Q461 1027 533.5 1080.0Q606 1133 700 1133Q723 1133 750.0 1130.5Q777 1128 797 1123V855Q777 862 739.0 866.0Q701 870 667 870Q599 870 544.0 840.5Q489 811 458.5 758.5Q428 706 428 636V0Z" transform="translate(394.474 68.916) scale(0.025391 -0.025391)"/>
+  </g>
+</svg></a>
+        <p>Free grade calculators for students, teachers and parents. No sign-up, no downloads — just your grade, worked out.</p>
+        <p class="footer-note">Results are estimates. Your school or university's grading rules determine the official grade.</p>
+      </div>
+      <nav aria-label="Calculators">
+        <h3>Calculators</h3>
+        <ul>
+          <li><a href="../">Grade Calculator</a></li>
+          <li><a href="./" aria-current="page">Final Grade Calculator</a></li>
+          <li><a href="../?mode=percent#calculator">Semester Grade Calculator</a></li>
+          <li><a href="../#grade-scale">GPA Calculator</a></li>
+          <li><a href="../?mode=weighted#calculator">Weighted Grade Calculator</a></li>
+          <li><a href="../?mode=percent#calculator">Average Grade Calculator</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Resources">
+        <h3>Resources</h3>
+        <ul>
+          <li><a href="../#how-to">How to calculate your grade</a></li>
+          <li><a href="../#grade-scale">Grade scales</a></li>
+          <li><a href="#faq">Frequently asked questions</a></li>
+          <li><a href="#references">Official references</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Company">
+        <h3>Company</h3>
+        <!-- Company pages do not exist yet, so these are text, not links. -->
+        <ul class="footer-text-list">
+          <li>About</li>
+          <li>Contact</li>
+          <li>Privacy Policy</li>
+          <li>Terms</li>
+          <li>Disclaimer</li>
+        </ul>
+      </nav>
+    </div>
+    <div class="footer-bottom">
+      <p>© <span id="year">2026</span> Grade Calculator</p>
+      <p>Results are estimates. Your school or university's grading rules determine the official grade.</p>
+    </div>
+  </div>
+</footer>
+
+<button class="to-top" id="to-top" type="button" aria-label="Back to top">↑</button>
+
+<script>
+/* Letter grade scale (US). */
+var LETTER_SCALE=[["A+",97],["A",93],["A-",90],["B+",87],["B",83],["B-",80],["C+",77],["C",73],["C-",70],["D+",67],["D",63],["D-",60],["F",0]];
+function letterFor(p){for(var i=0;i<LETTER_SCALE.length;i++){if(p>=LETTER_SCALE[i][1])return LETTER_SCALE[i][0];}return "F";}
+
+var $=function(id){return document.getElementById(id);};
+function setFieldError(input,errEl,show){input.classList.toggle("field-invalid",show);errEl.classList.toggle("show",show);input.setAttribute("aria-invalid",show?"true":"false");return !show;}
+function readPct(input,errEl,min,max){var v=parseFloat(input.value);var ok=!isNaN(v)&&v>=min&&v<=max;setFieldError(input,errEl,!ok);return ok?v:null;}
+
+function round1(x){return Math.round(x*10)/10;}
+function fmt1(x){return (Math.round(x*10)/10).toFixed(1);}
+
+/* --- Widget: mode A — required score --- */
+function calcNeed(){
+  var cur=readPct($("need-current"),$("need-current-error"),0,100);
+  var des=readPct($("need-desired"),$("need-desired-error"),0,100);
+  var w=readPct($("need-weight"),$("need-weight-error"),1,100);
+  var box=$("need-result");
+  if(cur===null||des===null||w===null){box.classList.remove("show");return;}
+  var need=(des-cur*(1-w/100))/(w/100);
+  var band,line;
+  if(need>100){band="impossible";line="That target is out of reach with this final weight.";}
+  else if(need>=90){band="hard";line="Tough, but possible — you would need a very strong exam.";}
+  else if(need<0){band="ok";line="Your target is already secured — even a zero on the final keeps you there.";}
+  else{band="ok";line="That target is within reach with this final weight.";}
+  box.className="final-result "+band+" show";
+  $("need-needed").textContent="You need "+fmt1(need)+"% on the final";
+  $("need-line").textContent=line;
+}
+
+/* --- Widget: mode B — course grade after the exam --- */
+function calcAfter(){
+  var cur=readPct($("after-current"),$("after-current-error"),0,100);
+  var ex=readPct($("after-exam"),$("after-exam-error"),0,100);
+  var w=readPct($("after-weight"),$("after-weight-error"),1,100);
+  var box=$("after-result");
+  if(cur===null||ex===null||w===null){box.classList.remove("show");return;}
+  var grade=cur*(1-w/100)+ex*(w/100);
+  var band=grade>=80?"ok":(grade>=70?"hard":"impossible");
+  box.className="final-result "+band+" show";
+  $("after-grade").textContent="Your final course grade would be "+fmt1(grade)+"% ("+letterFor(round1(grade))+")";
+  $("after-line").textContent=cur+" × "+(1-w/100).toFixed(2)+" + "+ex+" × "+(w/100).toFixed(2)+" = "+fmt1(grade)+"%.";
+}
+
+/* --- Widget mode tabs --- */
+var widgetTabs=Array.prototype.slice.call(document.querySelectorAll('[data-widget]'));
+function setWidget(mode){
+  widgetTabs.forEach(function(t){
+    var on=t.getAttribute("data-widget")===mode;
+    t.setAttribute("aria-selected",on?"true":"false");
+    t.tabIndex=on?0:-1;
+  });
+  $("panel-need").hidden=mode!=="need";
+  $("panel-after").hidden=mode!=="after";
+}
+widgetTabs.forEach(function(t){
+  t.addEventListener("click",function(){setWidget(t.getAttribute("data-widget"));});
+  t.addEventListener("keydown",function(e){
+    if(e.key!=="ArrowRight"&&e.key!=="ArrowLeft")return;
+    var i=widgetTabs.indexOf(t);
+    var next=widgetTabs[(i+(e.key==="ArrowRight"?1:widgetTabs.length-1))%widgetTabs.length];
+    setWidget(next.getAttribute("data-widget"));
+    next.focus();
+  });
+});
+$("need-form").addEventListener("submit",function(e){e.preventDefault();calcNeed();});
+$("after-form").addEventListener("submit",function(e){e.preventDefault();calcAfter();});
+["need-current","need-desired","need-weight"].forEach(function(id){$(id).addEventListener("input",calcNeed);});
+["after-current","after-exam","after-weight"].forEach(function(id){$(id).addEventListener("input",calcAfter);});
+
+/* --- Mobile drawer --- */
+var menuBtn=$("menu-btn"),drawer=$("drawer");
+function closeDrawer(){
+  drawer.classList.remove("open");menuBtn.setAttribute("aria-expanded","false");
+  menuBtn.setAttribute("aria-label","Open menu");
+}
+menuBtn.addEventListener("click",function(){
+  var open=drawer.classList.toggle("open");
+  menuBtn.setAttribute("aria-expanded",open?"true":"false");
+  menuBtn.setAttribute("aria-label",open?"Close menu":"Open menu");
+});
+drawer.querySelectorAll("a").forEach(function(a){a.addEventListener("click",closeDrawer);});
+document.addEventListener("keydown",function(e){if(e.key==="Escape")closeDrawer();});
+
+/* --- FAQ accordion --- */
+document.querySelectorAll(".faq-q").forEach(function(btn){
+  btn.addEventListener("click",function(){
+    var item=btn.parentElement,open=item.classList.contains("open");
+    document.querySelectorAll(".faq-item.open").forEach(function(i){
+      i.classList.remove("open");
+      i.querySelector(".faq-q").setAttribute("aria-expanded","false");
+    });
+    if(!open){item.classList.add("open");btn.setAttribute("aria-expanded","true");}
+  });
+});
+
+/* --- Sticky "On this page" scroll-spy --- */
+var tocLinks=Array.prototype.slice.call(document.querySelectorAll("#toc-nav a"));
+function setActiveSpy(id){
+  tocLinks.forEach(function(a){a.classList.toggle("active",a.getAttribute("data-spy")===id);});
+}
+if("IntersectionObserver" in window){
+  var spy=new IntersectionObserver(function(entries){
+    entries.forEach(function(en){if(en.isIntersecting)setActiveSpy(en.target.id);});
+  },{rootMargin:"-25% 0px -70% 0px"});
+  tocLinks.forEach(function(a){var el=$(a.getAttribute("data-spy"));if(el)spy.observe(el);});
+}
+
+/* --- Header shadow + back-to-top --- */
+var header=$("site-header"),toTop=$("to-top");
+window.addEventListener("scroll",function(){
+  var y=window.scrollY||document.documentElement.scrollTop;
+  header.classList.toggle("scrolled",y>8);
+  toTop.classList.toggle("show",y>600);
+},{passive:true});
+toTop.addEventListener("click",function(){window.scrollTo({top:0,behavior:"smooth"});});
+
+/* --- Table scroll hint --- */
+document.querySelectorAll("[data-scroll-hint]").forEach(function(wrap){
+  if(wrap.scrollWidth>wrap.clientWidth+4)wrap.classList.add("overflowing");
+});
+
+/* --- Footer year --- */
+$("year").textContent=new Date().getFullYear();
+
+/* --- Initial render --- */
+calcNeed();
+calcAfter();
+</script>
+</body>
+</html>
