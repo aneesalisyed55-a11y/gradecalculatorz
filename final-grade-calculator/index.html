@@ -997,14 +997,15 @@ $("after-form").addEventListener("submit",function(e){e.preventDefault();calcAft
 ["need-current","need-desired","need-weight"].forEach(function(id){$(id).addEventListener("input",calcNeed);});
 ["after-current","after-exam","after-weight"].forEach(function(id){$(id).addEventListener("input",calcAfter);});
 
-/* --- Mobile drawer --- */
+/* --- Mobile drawer (the v4 stylesheet shows it via body.drawer-open) --- */
 var menuBtn=$("menu-btn"),drawer=$("drawer");
 function closeDrawer(){
-  drawer.classList.remove("open");menuBtn.setAttribute("aria-expanded","false");
+  document.body.classList.remove("drawer-open");
+  menuBtn.setAttribute("aria-expanded","false");
   menuBtn.setAttribute("aria-label","Open menu");
 }
 menuBtn.addEventListener("click",function(){
-  var open=drawer.classList.toggle("open");
+  var open=document.body.classList.toggle("drawer-open");
   menuBtn.setAttribute("aria-expanded",open?"true":"false");
   menuBtn.setAttribute("aria-label",open?"Close menu":"Open menu");
 });
