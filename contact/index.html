@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<!-- ============================================================
+  Contact Us
+  ------------------------------------------------------------
+  Single self-contained index.html file, in the same design system
+  as the site homepage.
+  Built by company/build-company.py from
+  this shared template. Inline CSS and vanilla JavaScript only —
+  no frameworks, no sign-up, works offline. The logo lockups are
+  embedded in this file.
+
+  Brand, logo and all written content on this page are original.
+  ============================================================ -->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Contact Us: get in touch about this site — questions, corrections, or suggestions. Email us and we will reply as soon as we can.">
+<meta name="robots" content="index, follow">
+<meta name="color-scheme" content="light">
+<meta name="theme-color" content="#4F46E5">
+<title>Contact Us</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22100%22%20height%3D%22100%22%20viewBox%3D%220%200%20100%20100%22%3E%0A%20%20%3Ctitle%3EGrade%20Calculator%3C%2Ftitle%3E%0A%20%20%3Cdefs%3E%0A%20%20%20%20%3ClinearGradient%20id%3D%22gc-grad%22%20x1%3D%220%25%22%20y1%3D%220%25%22%20x2%3D%22100%25%22%20y2%3D%22100%25%22%3E%0A%20%20%20%20%20%20%3Cstop%20offset%3D%220%22%20stop-color%3D%22%234F46E5%22%2F%3E%0A%20%20%20%20%20%20%3Cstop%20offset%3D%221%22%20stop-color%3D%22%237C3AED%22%2F%3E%0A%20%20%20%20%3C%2FlinearGradient%3E%0A%20%20%3C%2Fdefs%3E%0A%20%20%3Cg%3E%0A%20%20%20%20%20%20%3Crect%20x%3D%222%22%20y%3D%222%22%20width%3D%2296%22%20height%3D%2296%22%20rx%3D%2224%22%20fill%3D%22url%28%23gc-grad%29%22%2F%3E%0A%20%20%20%20%20%20%3Cg%20fill%3D%22%23FFFFFF%22%3E%3Crect%20x%3D%2221%22%20y%3D%2256%22%20width%3D%2215%22%20height%3D%2222%22%20rx%3D%223.5%22%2F%3E%3C%2Fg%3E%0A%20%20%20%20%20%20%3Cg%20fill%3D%22%23FFFFFF%22%3E%3Crect%20x%3D%2242.5%22%20y%3D%2244%22%20width%3D%2215%22%20height%3D%2234%22%20rx%3D%223.5%22%2F%3E%3C%2Fg%3E%0A%20%20%20%20%20%20%3Cg%20fill%3D%22%23FFFFFF%22%3E%3Crect%20x%3D%2264%22%20y%3D%2232%22%20width%3D%2215%22%20height%3D%2246%22%20rx%3D%223.5%22%2F%3E%3C%2Fg%3E%0A%20%20%20%20%20%20%3Cg%20stroke%3D%22%23FFFFFF%22%3E%3Cpolyline%20points%3D%2265%2C19%2072%2C27%2084%2C12%22%20fill%3D%22none%22%20stroke-width%3D%227%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%2F%3E%3C%2Fg%3E%0A%20%20%20%20%3C%2Fg%3E%0A%3C%2Fsvg%3E">
+<link rel="icon" type="image/png" sizes="32x32" href="../assets/logo/favicon-32.png">
+<link rel="apple-touch-icon" href="../assets/logo/apple-touch-icon-180.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://gradezcalculator.com/"},{"@type":"ListItem","position":2,"name":"Contact Us","item":"https://gradezcalculator.com/contact/"}]}
+</script>
+<style>
+/* ================= Design tokens (60/30/10) ================= */
+:root{
+  color-scheme:light;
+  --indigo:#4F46E5; --indigo-hover:#4338CA; --violet:#7C3AED;
+  --navy:#0F172A; --bg:#F5F7FF; --surface:#FFFFFF; --border:#E2E8F0;
+  --muted:#64748B; --text:#334155;
+  --green:#10B981; --amber:#F59E0B; --rose:#F43F5E; --tint:#EEF2FF;
+  /* Accessible dark variants for text on tints / badges (WCAG AA) */
+  --green-dark:#065F46; --green-bg:#D1FAE5; --green-badge:#059669;
+  --amber-dark:#92400E; --amber-bg:#FEF3C7; --amber-badge:#D97706;
+  --rose-dark:#9F1239; --rose-bg:#FFE4E6; --rose-badge:#E11D48;
+  --radius:16px; --radius-sm:12px;
+  --shadow:0 10px 30px rgba(15,23,42,.08);
+  --shadow-sm:0 2px 8px rgba(15,23,42,.06);
+  --header-h:68px; --toc-h:46px;
+  --font:'Inter',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:var(--font);font-size:17px;line-height:1.6;color:var(--text);background:var(--bg);-webkit-font-smoothing:antialiased}
+h1,h2,h3{color:var(--navy);line-height:1.25;margin:0 0 16px}
+h1{font-size:40px;font-weight:800;letter-spacing:-.02em}
+h2{font-size:28px;font-weight:700;letter-spacing:-.01em}
+h3{font-size:20px;font-weight:700}
+p{margin:0 0 16px}
+a{color:var(--indigo)}
+:focus-visible{outline:2px solid var(--indigo);outline-offset:2px;border-radius:4px}
+::selection{background:var(--tint)}
+.container{max-width:1200px;margin:0 auto;padding:0 24px}
+.narrow{max-width:760px}
+section{scroll-margin-top:calc(var(--header-h) + var(--toc-h) + 16px)}
+.section{padding:64px 0}
+.section.white{background:var(--surface)}
+.section.alt{background:var(--bg)}
+.eyebrow{font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--indigo);margin:0 0 8px}
+.lead{font-size:18px;color:var(--muted)}
+.skip-link{position:absolute;left:-999px;top:0;background:var(--navy);color:#fff;padding:10px 16px;border-radius:0 0 8px 0;z-index:200;font-weight:600}
+.skip-link:focus{left:0}
+
+/* ================= Buttons ================= */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;background:var(--indigo);color:#fff;border:1px solid var(--indigo);border-radius:10px;padding:12px 20px;font:inherit;font-weight:700;font-size:15px;cursor:pointer;text-decoration:none;transition:background .15s,border-color .15s,transform .15s;min-height:44px}
+.btn:hover{background:var(--indigo-hover);border-color:var(--indigo-hover)}
+.btn:active{transform:translateY(1px)}
+.btn-secondary{background:var(--surface);color:var(--navy);border-color:var(--border)}
+.btn-secondary:hover{background:#F8FAFC;border-color:#CBD5E1}
+.btn-white{background:#fff;color:var(--indigo);border-color:#fff}
+.btn-white:hover{background:var(--tint)}
+.btn-sm{padding:9px 14px;font-size:14px;min-height:40px}
+
+/* ================= Header ================= */
+.site-header{position:sticky;top:0;z-index:100;background:var(--surface);border-bottom:1px solid var(--border);transition:box-shadow .2s}
+.site-header.scrolled{box-shadow:0 4px 16px rgba(15,23,42,.08)}
+.header-inner{display:flex;align-items:center;gap:32px;height:var(--header-h)}
+.logo-link{display:flex;align-items:center;flex:none;line-height:0}
+.logo-link svg{display:block}
+.main-nav{display:flex;gap:4px;margin:0 auto}
+.main-nav a{color:var(--text);text-decoration:none;font-size:15px;font-weight:600;padding:8px 12px;border-radius:8px;position:relative;white-space:nowrap}
+.main-nav a:hover{color:var(--indigo);background:var(--tint)}
+.main-nav a.active{color:var(--indigo)}
+.main-nav a.active::after{content:"";position:absolute;left:12px;right:12px;bottom:2px;height:2px;border-radius:2px;background:var(--indigo)}
+.header-cta{flex:none}
+.menu-btn{display:none;background:none;border:1px solid var(--border);border-radius:10px;width:44px;height:44px;align-items:center;justify-content:center;cursor:pointer;color:var(--navy)}
+.menu-btn svg{display:block}
+.drawer{display:none;border-top:1px solid var(--border);background:var(--surface);padding:8px 0 16px}
+body.drawer-open .drawer{display:block}
+.drawer nav{display:flex;flex-direction:column}
+.drawer a{color:var(--navy);text-decoration:none;font-weight:600;font-size:16px;padding:12px 4px;min-height:44px;display:flex;align-items:center;border-bottom:1px solid #F1F5F9}
+.drawer a:last-child{border-bottom:0}
+.drawer a:hover,.drawer a.active{color:var(--indigo)}
+
+/* ================= Breadcrumbs ================= */
+.crumbs{padding:20px 0 0;font-size:14px;color:var(--muted)}
+.crumbs ol{list-style:none;margin:0;padding:0;display:flex;gap:8px;flex-wrap:wrap}
+.crumbs li{display:flex;gap:8px;align-items:center}
+.crumbs li+li::before{content:"/";color:#CBD5E1}
+.crumbs a{color:var(--muted);text-decoration:none}
+.crumbs a:hover{color:var(--indigo);text-decoration:underline}
+.crumbs [aria-current]{color:var(--navy);font-weight:600}
+
+/* ================= Hero ================= */
+.hero{padding:24px 0 72px}
+.hero-grid{display:grid;grid-template-columns:1fr 580px;gap:48px;align-items:start}
+.hero-copy{padding-top:16px}
+.badge{display:inline-flex;align-items:center;gap:8px;background:var(--tint);color:var(--indigo);font-size:13px;font-weight:700;padding:7px 14px;border-radius:999px;margin-bottom:20px}
+.badge .dot{width:8px;height:8px;border-radius:50%;background:var(--green);flex:none}
+.hero-intro{font-size:18px;color:var(--muted);max-width:520px}
+.tick-list{list-style:none;margin:24px 0 0;padding:0;display:flex;flex-direction:column;gap:12px}
+.tick-list li{display:flex;gap:12px;align-items:flex-start;font-weight:600;color:var(--navy);font-size:16px}
+.tick-list li span{color:var(--muted);font-weight:400}
+.tick{flex:none;width:24px;height:24px;border-radius:50%;background:var(--green-bg);color:var(--green-dark);display:inline-flex;align-items:center;justify-content:center;margin-top:1px}
+.tick svg{display:block}
+
+/* ================= Sticky "On this page" bar ================= */
+.toc-bar{position:sticky;top:var(--header-h);z-index:90;background:var(--surface);border-bottom:1px solid var(--border)}
+.toc-bar nav{display:flex;gap:4px;overflow-x:auto;scrollbar-width:none;padding:0 24px;max-width:1200px;margin:0 auto}
+.toc-bar nav::-webkit-scrollbar{display:none}
+.toc-bar a{color:var(--muted);text-decoration:none;font-size:14px;font-weight:600;padding:12px 10px;white-space:nowrap;border-bottom:2px solid transparent}
+.toc-bar a:hover{color:var(--indigo)}
+.toc-bar a.active{color:var(--indigo);border-bottom-color:var(--indigo)}
+
+/* ================= Calculator card ================= */
+.calc-card{background:var(--surface);border-radius:var(--radius);box-shadow:var(--shadow);border:1px solid var(--border);padding:24px;scroll-margin-top:calc(var(--header-h) + var(--toc-h) + 16px)}
+.calc-card h2{font-size:20px;margin-bottom:4px}
+.calc-sub{font-size:14px;color:var(--muted);margin-bottom:20px}
+.tabs{display:flex;gap:4px;background:#F1F5F9;border-radius:12px;padding:4px;margin-bottom:20px}
+.tabs [role="tab"]{flex:1;border:0;background:transparent;border-radius:9px;padding:10px 8px;font:inherit;font-size:14px;font-weight:700;color:var(--muted);cursor:pointer;min-height:44px;transition:background .15s,color .15s}
+.tabs [role="tab"]:hover{color:var(--navy)}
+.tabs [role="tab"][aria-selected="true"]{background:var(--surface);color:var(--indigo);box-shadow:var(--shadow-sm)}
+.calc-hint{font-size:14px;color:var(--muted);background:var(--tint);border-radius:10px;padding:10px 14px;margin:0 0 16px}
+.calc-rows{display:flex;flex-direction:column;gap:10px}
+.calc-row{display:grid;grid-template-columns:minmax(0,1.4fr) 96px 96px 96px 36px;gap:8px;align-items:start}
+.calc-row .col-head{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;color:var(--muted);padding:0 2px 2px}
+.calc-row input,.calc-row select{width:100%;border:1px solid var(--border);border-radius:10px;padding:10px 12px;font:inherit;font-size:15px;color:var(--navy);background:var(--surface);min-height:44px}
+.calc-row input:focus,.calc-row select:focus{border-color:var(--indigo);outline:2px solid var(--indigo);outline-offset:0}
+.calc-row input.invalid{border-color:var(--rose);outline-color:var(--rose)}
+/* Mode-specific columns (which row fields each calculator mode shows) */
+.calc-card.mode-points .calc-row{grid-template-columns:minmax(0,1.4fr) 96px 96px 36px}
+.calc-card.mode-points .c-weight{display:none}
+.calc-card.mode-percent .calc-row{grid-template-columns:minmax(0,1.4fr) 110px 36px}
+.calc-card.mode-percent .c-outof,.calc-card.mode-percent .c-weight{display:none}
+.calc-card.mode-weighted .calc-row{grid-template-columns:minmax(0,1.4fr) 96px 96px 96px 36px}
+.calc-card.mode-letter .calc-row{grid-template-columns:minmax(0,1.4fr) 110px 96px 36px}
+.calc-card.mode-letter .c-outof{display:none}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+figure{margin:24px 0 0}
+figure img{width:100%;height:auto;border-radius:var(--radius);box-shadow:var(--shadow);display:block}
+figure figcaption{font-size:13px;color:var(--muted);margin-top:10px;text-align:center}
+.field-error{font-size:13px;color:var(--rose-dark);margin-top:4px;display:none}
+.field-error.show{display:block}
+.row-remove{border:0;background:transparent;color:var(--muted);font-size:22px;line-height:1;cursor:pointer;border-radius:8px;width:36px;height:44px}
+.row-remove:hover{color:var(--rose-dark);background:var(--rose-bg)}
+.calc-actions{display:flex;gap:12px;margin-top:16px;flex-wrap:wrap}
+.calc-error{font-size:14px;color:var(--rose-dark);background:var(--rose-bg);border-radius:10px;padding:10px 14px;margin:16px 0 0;display:none}
+.calc-error.show{display:block}
+
+/* Result panel */
+.result{margin-top:20px;border-radius:var(--radius-sm);padding:20px;border:1px solid transparent;transition:background .2s}
+.result.band-a{background:var(--green-bg);border-color:#A7F3D0}
+.result.band-c{background:var(--amber-bg);border-color:#FDE68A}
+.result.band-f{background:var(--rose-bg);border-color:#FECDD3}
+.result-top{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+.letter-badge{width:64px;height:64px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-size:30px;font-weight:800;flex:none}
+.band-a .letter-badge{background:var(--green-badge)}
+.band-c .letter-badge{background:var(--amber-badge)}
+.band-f .letter-badge{background:var(--rose-badge)}
+.result-pct{font-size:36px;font-weight:800;color:var(--navy);line-height:1}
+.result-label{font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--muted)}
+.chip{display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:700;padding:6px 12px;border-radius:999px;margin-left:auto}
+.band-a .chip{background:#fff;color:var(--green-dark)}
+.band-c .chip{background:#fff;color:var(--amber-dark)}
+.band-f .chip{background:#fff;color:var(--rose-dark)}
+.result-meta{display:flex;gap:24px;flex-wrap:wrap;margin-top:16px;padding-top:16px;border-top:1px solid rgba(15,23,42,.1)}
+.result-meta div{font-size:14px;color:var(--muted)}
+.result-meta strong{display:block;font-size:18px;color:var(--navy)}
+.breakdown{list-style:none;margin:16px 0 0;padding:0;display:flex;flex-direction:column;gap:6px;font-size:14px;color:var(--text)}
+.breakdown li{display:flex;justify-content:space-between;gap:16px}
+.breakdown li span:last-child{font-weight:700;color:var(--navy);white-space:nowrap}
+.copy-btn{margin-top:16px}
+
+/* ================= Formula box ================= */
+.formula-card{background:var(--surface);border:1px solid var(--border);border-left:4px solid var(--indigo);border-radius:var(--radius-sm);box-shadow:var(--shadow-sm);padding:24px 28px;text-align:center}
+.formula-card .formula{font-size:22px;font-weight:700;color:var(--navy);margin:8px 0 4px}
+.formula-card p{margin:0;color:var(--muted);font-size:15px}
+
+/* ================= Method cards ================= */
+.method-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:32px}
+.method-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow-sm);padding:24px;display:flex;flex-direction:column}
+.method-card .step-no{font-size:13px;font-weight:700;color:var(--indigo);text-transform:uppercase;letter-spacing:.06em}
+.method-card h3{margin:8px 0 8px}
+.method-card p{font-size:15px}
+.formula-box{background:#F8FAFC;border:1px solid var(--border);border-radius:10px;padding:14px 16px;font-weight:700;color:var(--navy);font-size:15px;text-align:center;margin:8px 0 16px}
+.worked{margin-top:auto;border-top:1px dashed var(--border);padding-top:16px}
+.worked .worked-label{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin-bottom:10px}
+.steps{display:flex;flex-direction:column;gap:8px}
+.step{display:flex;align-items:center;gap:10px;background:var(--tint);border-radius:8px;padding:8px 12px;font-size:14px;font-weight:600;color:var(--navy)}
+.step .arrow{color:var(--indigo);font-weight:800}
+.step.result-step{background:var(--green-bg);color:var(--green-dark)}
+
+/* ================= Tables ================= */
+.table-scroll{margin-top:24px}
+.table-hint{display:none;font-size:13px;color:var(--muted);text-align:right;margin-bottom:6px}
+table.data{width:100%;border-collapse:separate;border-spacing:0;border:1px solid var(--border);border-radius:var(--radius-sm);background:var(--surface);font-size:15px}
+table.data th,table.data td{padding:13px 16px;text-align:left;border-top:1px solid var(--border);vertical-align:middle}
+table.data thead th{border-top:0}
+table.data thead tr:first-child th:first-child{border-top-left-radius:11px}
+table.data thead tr:first-child th:last-child{border-top-right-radius:11px}
+table.data tbody tr:last-child td:first-child{border-bottom-left-radius:11px}
+table.data tbody tr:last-child td:last-child{border-bottom-right-radius:11px}
+table.data thead th{background:var(--tint);color:var(--navy);font-size:12.5px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;position:sticky;top:calc(var(--header-h) + var(--toc-h));z-index:5}
+table.data tbody tr:nth-child(even) td{background:#F8FAFC}
+table.data tbody tr{transition:background .15s}
+table.data tbody tr:hover td{background:var(--tint)}
+table.data tbody tr:hover td:first-child{box-shadow:inset 3px 0 0 var(--indigo)}
+table.data td.num,table.data th.num{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+.letter-pill{display:inline-flex;align-items:center;justify-content:center;min-width:34px;height:28px;padding:0 8px;border-radius:8px;font-weight:800;font-size:14px;color:#fff}
+.pill-a{background:var(--green-badge)}.pill-b{background:#0EA5E9}.pill-c{background:var(--amber-badge)}.pill-d{background:#F97316}.pill-f{background:var(--rose-badge)}
+.table-note{font-size:14px;color:var(--muted);margin-top:12px}
+
+/* Scale tabs */
+.scale-tabs{max-width:520px}
+.scale-panel{margin-top:0}
+
+/* ================= Split blocks (photo + text) ================= */
+.split{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+.split figure{margin:0}
+.split img{width:100%;height:auto;border-radius:var(--radius);box-shadow:var(--shadow);display:block}
+.split figcaption{font-size:13px;color:var(--muted);margin-top:10px;text-align:center}
+
+/* ================= Final widget ================= */
+.final-grid{display:grid;grid-template-columns:1fr 480px;gap:48px;align-items:start}
+.mini-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow);padding:24px}
+.mini-card h3{font-size:19px;margin-bottom:4px}
+.field{margin-bottom:14px}
+.field label{display:block;font-size:14px;font-weight:600;color:var(--navy);margin-bottom:6px}
+.field input{width:100%;border:1px solid var(--border);border-radius:10px;padding:11px 12px;font:inherit;font-size:15px;color:var(--navy);min-height:44px}
+.field input:focus{border-color:var(--indigo);outline:2px solid var(--indigo);outline-offset:0}
+.field input.invalid{border-color:var(--rose);outline-color:var(--rose)}
+.field .suffix{font-size:13px;color:var(--muted);font-weight:400}
+.final-result{margin-top:16px;border-radius:var(--radius-sm);padding:18px 20px;display:none}
+.final-result.show{display:block}
+.final-result.ok{background:var(--green-bg)}
+.final-result.hard{background:var(--amber-bg)}
+.final-result.impossible{background:var(--rose-bg)}
+.final-result .big{font-size:28px;font-weight:800;color:var(--navy)}
+.final-result p{margin:4px 0 0;font-size:15px}
+
+/* ================= Card grids ================= */
+.card-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;margin-top:32px}
+.info-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow-sm);padding:24px}
+.info-card .icon{width:48px;height:48px;border-radius:12px;background:var(--tint);color:var(--indigo);display:flex;align-items:center;justify-content:center;margin-bottom:16px}
+.info-card h3{font-size:17px;margin-bottom:8px}
+.info-card p{font-size:15px;margin:0}
+a.info-card{text-decoration:none;color:inherit;display:block;transition:transform .15s,box-shadow .15s,border-color .15s}
+a.info-card:hover{transform:translateY(-2px);box-shadow:var(--shadow);border-color:var(--indigo)}
+a.info-card .go{display:inline-flex;align-items:center;gap:6px;margin-top:14px;font-weight:700;font-size:14px;color:var(--indigo)}
+a.info-card:hover .go{gap:10px}
+
+/* ================= Tips ================= */
+.tips-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px 32px;margin-top:32px;list-style:none;padding:0}
+.tips-grid li{display:flex;gap:12px;align-items:flex-start;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-sm);padding:16px 18px;font-size:15px}
+.tips-grid .tick{margin-top:0}
+
+/* ================= FAQ ================= */
+.faq-list{display:flex;flex-direction:column;gap:12px;margin-top:32px}
+.faq-item{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-sm);overflow:hidden}
+.faq-q{width:100%;display:flex;justify-content:space-between;align-items:center;gap:16px;background:none;border:0;padding:18px 20px;font:inherit;font-size:16px;font-weight:700;color:var(--navy);text-align:left;cursor:pointer;min-height:44px}
+.faq-q:hover{color:var(--indigo)}
+.faq-icon{flex:none;width:28px;height:28px;border-radius:50%;background:var(--tint);color:var(--indigo);display:inline-flex;align-items:center;justify-content:center;font-size:20px;font-weight:400;line-height:1;transition:transform .25s}
+.faq-q[aria-expanded="true"] .faq-icon{transform:rotate(45deg)}
+.faq-a{padding:0 20px 20px;font-size:15px}
+.faq-a p:last-child{margin-bottom:0}
+
+/* ================= References ================= */
+.ref-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:32px}
+.ref-card{display:flex;gap:16px;align-items:flex-start;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow-sm);padding:20px 24px;text-decoration:none;color:inherit;transition:transform .15s,box-shadow .15s,border-color .15s}
+.ref-card:hover{transform:translateY(-2px);box-shadow:var(--shadow);border-color:var(--indigo)}
+.ref-card h3{font-size:16px;margin:0 0 4px;color:var(--navy)}
+.ref-card p{font-size:14px;color:var(--muted);margin:0}
+.ref-card .ext{margin-left:auto;color:var(--muted);flex:none;padding-top:2px}
+.ref-card:hover .ext{color:var(--indigo)}
+
+/* ================= CTA band ================= */
+.cta-band{background:linear-gradient(135deg,var(--indigo),var(--violet));color:#fff;text-align:center;padding:64px 24px}
+.cta-band h2{color:#fff;font-size:30px;margin-bottom:8px}
+.cta-band p{color:#E0E7FF;margin-bottom:24px;font-size:17px}
+
+/* ================= Footer ================= */
+.site-footer{background:var(--navy);color:#CBD5E1;padding:56px 0 0;font-size:15px}
+.footer-grid{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:40px;padding-bottom:40px}
+.footer-brand p{font-size:14px;line-height:1.6;margin:16px 0 0;max-width:300px}
+.site-footer h3{color:#fff;font-size:14px;text-transform:uppercase;letter-spacing:.06em;margin-bottom:16px}
+.foot-links{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px}
+.foot-links a{color:#CBD5E1;text-decoration:none}
+.foot-links a:hover{color:#C7D2FE;text-decoration:underline}
+.foot-links .foot-text{color:#94A3B8}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.12);padding:20px 0;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-size:13px;color:#94A3B8}
+.footer-bottom p{margin:0}
+
+/* ================= Back to top ================= */
+.to-top{position:fixed;right:24px;bottom:24px;z-index:90;width:48px;height:48px;border-radius:50%;border:0;background:var(--indigo);color:#fff;font-size:20px;cursor:pointer;box-shadow:var(--shadow);display:none;align-items:center;justify-content:center}
+.to-top.show{display:flex}
+.to-top:hover{background:var(--indigo-hover)}
+
+/* ================= Responsive ================= */
+@media (max-width:1024px){
+  .main-nav,.header-cta{display:none}
+  .menu-btn{display:inline-flex;margin-left:auto}
+  .hero-grid{grid-template-columns:1fr;gap:32px}
+  .hero-copy{padding-top:0}
+  .method-grid{grid-template-columns:1fr 1fr}
+  .card-grid{grid-template-columns:1fr 1fr}
+  .final-grid{grid-template-columns:1fr}
+  .split{grid-template-columns:1fr;gap:32px}
+  .footer-grid{grid-template-columns:1fr 1fr}
+}
+@media (max-width:768px){
+  body{font-size:16px}
+  h1{font-size:32px}
+  h2{font-size:24px}
+  .container{padding:0 16px}
+  .section{padding:48px 0}
+  .calc-card{padding:20px 16px}
+  .calc-card.mode-points .calc-row,.calc-card.mode-percent .calc-row,.calc-card.mode-weighted .calc-row,.calc-card.mode-letter .calc-row{grid-template-columns:1fr 1fr;grid-template-areas:"name name" "score outof" "weight remove"}
+  .calc-row .c-name{grid-area:name}
+  .calc-row .c-score{grid-area:score}
+  .calc-row .c-outof{grid-area:outof}
+  .calc-row .c-weight{grid-area:weight}
+  .calc-row .c-remove{grid-area:remove;justify-self:end}
+  .calc-row .col-head{display:none}
+  .method-grid,.card-grid,.ref-grid,.tips-grid{grid-template-columns:1fr}
+  .table-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .table-hint.show{display:block}
+  table.data{min-width:560px}
+  table.data thead th{position:static}
+  .toc-bar{display:none}
+  .footer-grid{grid-template-columns:1fr;gap:32px}
+  .result-pct{font-size:30px}
+  .letter-badge{width:56px;height:56px;font-size:26px}
+  .chip{margin-left:0}
+}
+@media (max-width:400px){
+  .hero{padding-bottom:48px}
+  .tabs [role="tab"]{font-size:13px;padding:10px 4px}
+  .calc-row{grid-template-columns:1fr 1fr}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *{transition:none!important}
+}
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header" id="site-header">
+  <div class="container header-inner">
+    <a class="logo-link" href="../" aria-label="Home">
+      <svg xmlns="http://www.w3.org/2000/svg" width="189" height="35" viewBox="0 0 542 100" aria-hidden="true">
+  
+  <defs>
+    <linearGradient id="gc-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0" stop-color="#4F46E5"/>
+      <stop offset="1" stop-color="#7C3AED"/>
+    </linearGradient>
+  </defs>
+  <g>
+      <rect x="2" y="2" width="96" height="96" rx="24" fill="url(#gc-grad)"/>
+      <g fill="#FFFFFF"><rect x="21" y="56" width="15" height="22" rx="3.5"/></g>
+      <g fill="#FFFFFF"><rect x="42.5" y="44" width="15" height="34" rx="3.5"/></g>
+      <g fill="#FFFFFF"><rect x="64" y="32" width="15" height="46" rx="3.5"/></g>
+      <g stroke="#FFFFFF"><polyline points="65,19 72,27 84,12" fill="none" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/></g>
+    </g>
+  <g fill="#0F172A" transform="translate(126 0)">
+      <path d="M795 -20Q586 -20 428.5 72.5Q271 165 182.5 336.5Q94 508 94 743Q94 985 186.0 1156.5Q278 1328 435.0 1419.0Q592 1510 788 1510Q914 1510 1022.5 1473.5Q1131 1437 1215.5 1370.0Q1300 1303 1353.5 1211.5Q1407 1120 1423 1009H1113Q1097 1063 1068.5 1105.5Q1040 1148 999.5 1178.0Q959 1208 907.0 1223.5Q855 1239 793 1239Q678 1239 590.0 1181.5Q502 1124 453.0 1014.0Q404 904 404 746Q404 588 452.5 477.5Q501 367 589.0 309.0Q677 251 797 251Q905 251 982.0 290.0Q1059 329 1100.5 401.5Q1142 474 1142 571L1206 562H818V794H1438V608Q1438 412 1355.0 271.5Q1272 131 1127.0 55.5Q982 -20 795 -20Z" transform="translate(0.000 68.916) scale(0.025391 -0.025391)"/>
+      <path d="M128 0V1118H418V923H430Q461 1027 533.5 1080.0Q606 1133 700 1133Q723 1133 750.0 1130.5Q777 1128 797 1123V855Q777 862 739.0 866.0Q701 870 667 870Q599 870 544.0 840.5Q489 811 458.5 758.5Q428 706 428 636V0Z" transform="translate(38.245 68.916) scale(0.025391 -0.025391)"/>
+      <path d="M440 -22Q334 -22 249.5 15.5Q165 53 116.5 127.5Q68 202 68 313Q68 406 102.5 469.0Q137 532 196.5 570.0Q256 608 331.5 628.0Q407 648 490 656Q587 666 646.5 674.5Q706 683 733.5 701.5Q761 720 761 756V761Q761 809 741.0 842.0Q721 875 681.5 892.5Q642 910 586 910Q528 910 485.0 892.5Q442 875 415.0 846.0Q388 817 375 781L100 826Q129 924 196.0 992.0Q263 1060 362.5 1096.0Q462 1132 587 1132Q677 1132 762.0 1110.5Q847 1089 914.5 1044.0Q982 999 1021.5 926.5Q1061 854 1061 753V0H777V155H767Q740 103 695.0 63.5Q650 24 586.5 1.0Q523 -22 440 -22ZM525 189Q596 189 649.5 217.0Q703 245 733.0 293.0Q763 341 763 400V521Q750 511 723.0 503.0Q696 495 663.0 489.0Q630 483 598.0 478.0Q566 473 541 470Q486 462 444.0 444.0Q402 426 379.0 396.5Q356 367 356 321Q356 278 378.0 248.5Q400 219 438.0 204.0Q476 189 525 189Z" transform="translate(57.930 68.916) scale(0.025391 -0.025391)"/>
+      <path d="M536 -19Q408 -19 304.5 47.5Q201 114 141.0 242.5Q81 371 81 557Q81 748 143.0 876.0Q205 1004 308.0 1068.0Q411 1132 535 1132Q630 1132 693.0 1100.0Q756 1068 795.0 1021.0Q834 974 853 930H863V1490H1163V0H868V179H853Q833 134 793.5 88.5Q754 43 691.0 12.0Q628 -19 536 -19ZM629 222Q705 222 759.0 264.0Q813 306 841.0 381.5Q869 457 869 558Q869 660 841.5 734.5Q814 809 760.0 850.5Q706 892 629 892Q550 892 496.5 849.0Q443 806 416.0 731.0Q389 656 389 558Q389 460 416.5 384.0Q444 308 497.5 265.0Q551 222 629 222Z" transform="translate(87.340 68.916) scale(0.025391 -0.025391)"/>
+      <path d="M633 -22Q462 -22 338.0 48.0Q214 118 147.5 247.0Q81 376 81 553Q81 726 147.0 856.0Q213 986 334.0 1059.0Q455 1132 618 1132Q728 1132 823.0 1097.0Q918 1062 990.0 991.5Q1062 921 1102.5 815.0Q1143 709 1143 565V481H204V669H996L856 619Q856 706 829.5 770.5Q803 835 750.5 870.5Q698 906 621 906Q543 906 488.5 870.0Q434 834 406.0 772.5Q378 711 378 632V499Q378 402 410.5 336.0Q443 270 501.5 237.0Q560 204 638 204Q691 204 734.0 219.0Q777 234 807.5 263.5Q838 293 854 336L1126 285Q1099 193 1032.0 123.5Q965 54 864.5 16.0Q764 -22 633 -22Z" transform="translate(119.339 68.916) scale(0.025391 -0.025391)"/>
+      <path d="M786 -20Q588 -20 431.5 70.0Q275 160 184.5 331.0Q94 502 94 744Q94 987 185.0 1158.5Q276 1330 433.0 1420.0Q590 1510 786 1510Q913 1510 1022.5 1474.5Q1132 1439 1217.0 1371.0Q1302 1303 1356.0 1204.5Q1410 1106 1427 980H1118Q1108 1042 1079.5 1089.5Q1051 1137 1008.5 1170.5Q966 1204 911.0 1221.5Q856 1239 792 1239Q676 1239 588.5 1181.0Q501 1123 452.5 1012.5Q404 902 404 744Q404 583 453.0 473.0Q502 363 589.0 307.0Q676 251 791 251Q855 251 909.5 268.5Q964 286 1007.5 319.5Q1051 353 1079.5 401.0Q1108 449 1119 510H1428Q1416 406 1366.5 311.0Q1317 216 1235.0 141.0Q1153 66 1040.0 23.0Q927 -20 786 -20Z" transform="translate(161.070 68.916) scale(0.025391 -0.025391)"/>
+      <path d="M440 -22Q334 -22 249.5 15.5Q165 53 116.5 127.5Q68 202 68 313Q68 406 102.5 469.0Q137 532 196.5 570.0Q256 608 331.5 628.0Q407 648 490 656Q587 666 646.5 674.5Q706 683 733.5 701.5Q761 720 761 756V761Q761 809 741.0 842.0Q721 875 681.5 892.5Q642 910 586 910Q528 910 485.0 892.5Q442 875 415.0 846.0Q388 817 375 781L100 826Q129 924 196.0 992.0Q263 1060 362.5 1096.0Q462 1132 587 1132Q677 1132 762.0 1110.5Q847 1089 914.5 1044.0Q982 999 1021.5 926.5Q1061 854 1061 753V0H777V155H767Q740 103 695.0 63.5Q650 24 586.5 1.0Q523 -22 440 -22ZM525 189Q596 189 649.5 217.0Q703 245 733.0 293.0Q763 341 763 400V521Q750 511 723.0 503.0Q696 495 663.0 489.0Q630 483 598.0 478.0Q566 473 541 470Q486 462 444.0 444.0Q402 426 379.0 396.5Q356 367 356 321Q356 278 378.0 248.5Q400 219 438.0 204.0Q476 189 525 189Z" transform="translate(198.757 68.916) scale(0.025391 -0.025391)"/>
+      <path d="M428 1490V0H128V1490Z" transform="translate(228.166 68.916) scale(0.025391 -0.025391)"/>
+      <path d="M628 -22Q459 -22 336.5 50.5Q214 123 147.5 252.5Q81 382 81 554Q81 728 147.5 857.5Q214 987 336.5 1059.5Q459 1132 628 1132Q727 1132 811.0 1106.0Q895 1080 960.0 1032.0Q1025 984 1067.0 915.0Q1109 846 1125 760L846 708Q837 752 818.0 786.5Q799 821 772.0 845.5Q745 870 709.5 883.0Q674 896 631 896Q551 896 496.5 853.0Q442 810 414.5 733.0Q387 656 387 555Q387 456 414.5 379.0Q442 302 496.5 258.0Q551 214 631 214Q674 214 710.0 227.5Q746 241 774.0 266.5Q802 292 821.0 328.0Q840 364 848 409L1127 358Q1111 269 1069.0 199.5Q1027 130 962.0 80.0Q897 30 812.5 4.0Q728 -22 628 -22Z" transform="translate(241.478 68.916) scale(0.025391 -0.025391)"/>
+      <path d="M513 -14Q397 -14 310.0 36.5Q223 87 175.5 181.5Q128 276 128 407V1118H428V459Q428 355 482.0 296.0Q536 237 630 237Q694 237 743.0 264.5Q792 292 819.5 344.5Q847 397 847 471V1118H1148V0H864L860 279H877Q833 138 742.5 62.0Q652 -14 513 -14Z" transform="translate(271.294 68.916) scale(0.025391 -0.025391)"/>
+      <path d="M428 1490V0H128V1490Z" transform="translate(302.887 68.916) scale(0.025391 -0.025391)"/>
+      <path d="M440 -22Q334 -22 249.5 15.5Q165 53 116.5 127.5Q68 202 68 313Q68 406 102.5 469.0Q137 532 196.5 570.0Q256 608 331.5 628.0Q407 648 490 656Q587 666 646.5 674.5Q706 683 733.5 701.5Q761 720 761 756V761Q761 809 741.0 842.0Q721 875 681.5 892.5Q642 910 586 910Q528 910 485.0 892.5Q442 875 415.0 846.0Q388 817 375 781L100 826Q129 924 196.0 992.0Q263 1060 362.5 1096.0Q462 1132 587 1132Q677 1132 762.0 1110.5Q847 1089 914.5 1044.0Q982 999 1021.5 926.5Q1061 854 1061 753V0H777V155H767Q740 103 695.0 63.5Q650 24 586.5 1.0Q523 -22 440 -22ZM525 189Q596 189 649.5 217.0Q703 245 733.0 293.0Q763 341 763 400V521Q750 511 723.0 503.0Q696 495 663.0 489.0Q630 483 598.0 478.0Q566 473 541 470Q486 462 444.0 444.0Q402 426 379.0 396.5Q356 367 356 321Q356 278 378.0 248.5Q400 219 438.0 204.0Q476 189 525 189Z" transform="translate(316.199 68.916) scale(0.025391 -0.025391)"/>
+      <path d="M683 1118V889H20V1118ZM174 1384H474V327Q474 274 497.5 248.5Q521 223 576 223Q593 223 624.0 227.5Q655 232 671 236L714 11Q664 -4 614.5 -10.0Q565 -16 520 -16Q352 -16 263.0 66.0Q174 148 174 301Z" transform="translate(345.608 68.916) scale(0.025391 -0.025391)"/>
+      <path d="M628 -22Q460 -22 337.0 50.5Q214 123 147.5 252.5Q81 382 81 554Q81 728 147.5 857.5Q214 987 337.0 1059.5Q460 1132 628 1132Q797 1132 919.5 1059.5Q1042 987 1108.5 857.5Q1175 728 1175 554Q1175 382 1108.5 252.5Q1042 123 919.5 50.5Q797 -22 628 -22ZM628 214Q708 214 762.0 258.5Q816 303 843.0 380.5Q870 458 870 555Q870 654 843.0 731.0Q816 808 762.0 852.0Q708 896 628 896Q548 896 494.5 852.0Q441 808 414.0 731.0Q387 654 387 555Q387 458 414.0 380.5Q441 303 494.5 258.5Q548 214 628 214Z" transform="translate(363.363 68.916) scale(0.025391 -0.025391)"/>
+      <path d="M128 0V1118H418V923H430Q461 1027 533.5 1080.0Q606 1133 700 1133Q723 1133 750.0 1130.5Q777 1128 797 1123V855Q777 862 739.0 866.0Q701 870 667 870Q599 870 544.0 840.5Q489 811 458.5 758.5Q428 706 428 636V0Z" transform="translate(394.474 68.916) scale(0.025391 -0.025391)"/>
+  </g>
+</svg>
+    </a>
+    <nav class="main-nav" aria-label="Main">
+      <a href="../">Home</a>
+      <a href="../final-grade-calculator/">Final Grade</a>
+      <a href="../semester-grade-calculator/">Semester Grade</a>
+      <a href="../gpa-calculator/">GPA Calculator</a>
+      <a href="../?mode=weighted#calculator">Weighted Grade</a>
+      <a href="../#how-to">Guides</a>
+    </nav>
+    <a class="btn header-cta" href="../#calculator">Start Calculating</a>
+    <button class="menu-btn" id="menu-btn" type="button" aria-expanded="false" aria-controls="drawer" aria-label="Open menu">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+    </button>
+  </div>
+  <div class="drawer" id="drawer">
+    <div class="container">
+      <nav aria-label="Mobile">
+        <a href="../">Home</a>
+        <a href="../final-grade-calculator/">Final Grade</a>
+        <a href="../semester-grade-calculator/">Semester Grade</a>
+        <a href="../gpa-calculator/">GPA Calculator</a>
+        <a href="../?mode=weighted#calculator">Weighted Grade</a>
+        <a href="../#how-to">Guides</a>
+      </nav>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+  <!-- ================= Hero ================= -->
+  <section class="hero" aria-labelledby="page-title">
+    <div class="container narrow">
+      <nav class="crumbs" aria-label="Breadcrumb">
+        <ol>
+          <li><a href="../">Home</a></li>
+          <li><span aria-current="page">Contact Us</span></li>
+        </ol>
+      </nav>
+      <h1 id="page-title">Contact Us</h1>
+      <p class="hero-intro">Have a question, spotted a mistake, or want to suggest an improvement? We would like to hear from you.</p>
+    </div>
+  </section>
+
+<section class="section white" id="email" aria-labelledby="email-title">
+    <div class="container narrow">
+      <h2 id="email-title">Email us</h2>
+      <p>You can reach us by email at <a href="mailto:aneesalisyed55@gmail.com">aneesalisyed55@gmail.com</a>. We read every message and reply as soon as we can.</p>
+    </div>
+  </section>
+
+  <section class="section alt" id="include" aria-labelledby="include-title">
+    <div class="container narrow">
+      <h2 id="include-title">What to include</h2>
+      <p>A few details help us answer faster:</p>
+      <ul>
+        <li>Which page you were using.</li>
+        <li>What you were trying to do, or what went wrong.</li>
+        <li>The numbers you entered, if your message is about a result.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section white" id="before" aria-labelledby="before-title">
+    <div class="container narrow">
+      <h2 id="before-title">Before you write</h2>
+      <p>Common questions are answered in the <a href="../#faq">frequently asked questions</a> on the main calculator page — it may already have the answer you need.</p>
+    </div>
+  </section>
+
+  <!-- ================= Closing CTA ================= -->
+  <section class="cta-band">
+    <div class="container">
+      <h2>Ready to check your grade?</h2>
+      <p>Enter your scores — get your grade in seconds.</p>
+      <a class="btn btn-light" href="../#calculator">Open the calculator</a>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a class="logo-link" href="../" aria-label="Home"><svg xmlns="http://www.w3.org/2000/svg" width="216" height="40" viewBox="0 0 542 100" aria-hidden="true">
+  
+  <path d="M26,2 H74 A24,24 0 0 1 98,26 V74 A24,24 0 0 1 74,98 H26 A24,24 0 0 1 2,74 V26 A24,24 0 0 1 26,2 Z M24.5,56 H32.5 A3.5,3.5 0 0 1 36,59.5 V74.5 A3.5,3.5 0 0 1 32.5,78 H24.5 A3.5,3.5 0 0 1 21,74.5 V59.5 A3.5,3.5 0 0 1 24.5,56 Z M46.0,44 H54.0 A3.5,3.5 0 0 1 57.5,47.5 V74.5 A3.5,3.5 0 0 1 54.0,78 H46.0 A3.5,3.5 0 0 1 42.5,74.5 V47.5 A3.5,3.5 0 0 1 46.0,44 Z M67.5,32 H75.5 A3.5,3.5 0 0 1 79,35.5 V74.5 A3.5,3.5 0 0 1 75.5,78 H67.5 A3.5,3.5 0 0 1 64,74.5 V35.5 A3.5,3.5 0 0 1 67.5,32 Z M69.37,29.30 L69.86,29.77 L70.44,30.13 L71.07,30.37 L71.74,30.49 L72.42,30.48 L73.08,30.33 L73.70,30.06 L74.26,29.67 L74.73,29.19 L86.73,14.19 L87.11,13.61 L87.36,12.97 L87.49,12.30 L87.48,11.61 L87.34,10.94 L87.07,10.31 L86.68,9.75 L86.19,9.27 L85.61,8.89 L84.97,8.64 L84.30,8.51 L83.61,8.52 L82.94,8.66 L82.31,8.93 L81.75,9.32 L81.27,9.81 L71.88,21.55 L67.63,16.70 L67.13,16.23 L66.55,15.86 L65.91,15.62 L65.23,15.51 L64.55,15.53 L63.88,15.68 L63.25,15.97 L62.70,16.37 L62.23,16.87 L61.86,17.45 L61.62,18.09 L61.51,18.77 L61.53,19.45 L61.68,20.12 L61.97,20.75 L62.37,21.30 L69.37,29.30 Z" fill="#FFFFFF" fill-rule="evenodd"/>
+  <g fill="#FFFFFF" transform="translate(126 0)">
+      <path d="M795 -20Q586 -20 428.5 72.5Q271 165 182.5 336.5Q94 508 94 743Q94 985 186.0 1156.5Q278 1328 435.0 1419.0Q592 1510 788 1510Q914 1510 1022.5 1473.5Q1131 1437 1215.5 1370.0Q1300 1303 1353.5 1211.5Q1407 1120 1423 1009H1113Q1097 1063 1068.5 1105.5Q1040 1148 999.5 1178.0Q959 1208 907.0 1223.5Q855 1239 793 1239Q678 1239 590.0 1181.5Q502 1124 453.0 1014.0Q404 904 404 746Q404 588 452.5 477.5Q501 367 589.0 309.0Q677 251 797 251Q905 251 982.0 290.0Q1059 329 1100.5 401.5Q1142 474 1142 571L1206 562H818V794H1438V608Q1438 412 1355.0 271.5Q1272 131 1127.0 55.5Q982 -20 795 -20Z" transform="translate(0.000 68.916) scale(0.025391 -0.025391)"/>
+      <path d="M128 0V1118H418V923H430Q461 1027 533.5 1080.0Q606 1133 700 1133Q723 1133 750.0 1130.5Q777 1128 797 1123V855Q777 862 739.0 866.0Q701 870 667 870Q599 870 544.0 840.5Q489 811 458.5 758.5Q428 706 428 636V0Z" transform="translate(38.245 68.916) scale(0.025391 -0.025391)"/>
+      <path d="M440 -22Q334 -22 249.5 15.5Q165 53 116.5 127.5Q68 202 68 313Q68 406 102.5 469.0Q137 532 196.5 570.0Q256 608 331.5 628.0Q407 648 490 656Q587 666 646.5 674.5Q706 683 733.5 701.5Q761 720 761 756V761Q761 809 741.0 842.0Q721 875 681.5 892.5Q642 910 586 910Q528 910 485.0 892.5Q442 875 415.0 846.0Q388 817 375 781L100 826Q129 924 196.0 992.0Q263 1060 362.5 1096.0Q462 1132 587 1132Q677 1132 762.0 1110.5Q847 1089 914.5 1044.0Q982 999 1021.5 926.5Q1061 854 1061 753V0H777V155H767Q740 103 695.0 63.5Q650 24 586.5 1.0Q523 -22 440 -22ZM525 189Q596 189 649.5 217.0Q703 245 733.0 293.0Q763 341 763 400V521Q750 511 723.0 503.0Q696 495 663.0 489.0Q630 483 598.0 478.0Q566 473 541 470Q486 462 444.0 444.0Q402 426 379.0 396.5Q356 367 356 321Q356 278 378.0 248.5Q400 219 438.0 204.0Q476 189 525 189Z" transform="translate(57.930 68.916) scale(0.025391 -0.025391)"/>
+      <path d="M536 -19Q408 -19 304.5 47.5Q201 114 141.0 242.5Q81 371 81 557Q81 748 143.0 876.0Q205 1004 308.0 1068.0Q411 1132 535 1132Q630 1132 693.0 1100.0Q756 1068 795.0 1021.0Q834 974 853 930H863V1490H1163V0H868V179H853Q833 134 793.5 88.5Q754 43 691.0 12.0Q628 -19 536 -19ZM629 222Q705 222 759.0 264.0Q813 306 841.0 381.5Q869 457 869 558Q869 660 841.5 734.5Q814 809 760.0 850.5Q706 892 629 892Q550 892 496.5 849.0Q443 806 416.0 731.0Q389 656 389 558Q389 460 416.5 384.0Q444 308 497.5 265.0Q551 222 629 222Z" transform="translate(87.340 68.916) scale(0.025391 -0.025391)"/>
+      <path d="M633 -22Q462 -22 338.0 48.0Q214 118 147.5 247.0Q81 376 81 553Q81 726 147.0 856.0Q213 986 334.0 1059.0Q455 1132 618 1132Q728 1132 823.0 1097.0Q918 1062 990.0 991.5Q1062 921 1102.5 815.0Q1143 709 1143 565V481H204V669H996L856 619Q856 706 829.5 770.5Q803 835 750.5 870.5Q698 906 621 906Q543 906 488.5 870.0Q434 834 406.0 772.5Q378 711 378 632V499Q378 402 410.5 336.0Q443 270 501.5 237.0Q560 204 638 204Q691 204 734.0 219.0Q777 234 807.5 263.5Q838 293 854 336L1126 285Q1099 193 1032.0 123.5Q965 54 864.5 16.0Q764 -22 633 -22Z" transform="translate(119.339 68.916) scale(0.025391 -0.025391)"/>
+      <path d="M786 -20Q588 -20 431.5 70.0Q275 160 184.5 331.0Q94 502 94 744Q94 987 185.0 1158.5Q276 1330 433.0 1420.0Q590 1510 786 1510Q913 1510 1022.5 1474.5Q1132 1439 1217.0 1371.0Q1302 1303 1356.0 1204.5Q1410 1106 1427 980H1118Q1108 1042 1079.5 1089.5Q1051 1137 1008.5 1170.5Q966 1204 911.0 1221.5Q856 1239 792 1239Q676 1239 588.5 1181.0Q501 1123 452.5 1012.5Q404 902 404 744Q404 583 453.0 473.0Q502 363 589.0 307.0Q676 251 791 251Q855 251 909.5 268.5Q964 286 1007.5 319.5Q1051 353 1079.5 401.0Q1108 449 1119 510H1428Q1416 406 1366.5 311.0Q1317 216 1235.0 141.0Q1153 66 1040.0 23.0Q927 -20 786 -20Z" transform="translate(161.070 68.916) scale(0.025391 -0.025391)"/>
+      <path d="M440 -22Q334 -22 249.5 15.5Q165 53 116.5 127.5Q68 202 68 313Q68 406 102.5 469.0Q137 532 196.5 570.0Q256 608 331.5 628.0Q407 648 490 656Q587 666 646.5 674.5Q706 683 733.5 701.5Q761 720 761 756V761Q761 809 741.0 842.0Q721 875 681.5 892.5Q642 910 586 910Q528 910 485.0 892.5Q442 875 415.0 846.0Q388 817 375 781L100 826Q129 924 196.0 992.0Q263 1060 362.5 1096.0Q462 1132 587 1132Q677 1132 762.0 1110.5Q847 1089 914.5 1044.0Q982 999 1021.5 926.5Q1061 854 1061 753V0H777V155H767Q740 103 695.0 63.5Q650 24 586.5 1.0Q523 -22 440 -22ZM525 189Q596 189 649.5 217.0Q703 245 733.0 293.0Q763 341 763 400V521Q750 511 723.0 503.0Q696 495 663.0 489.0Q630 483 598.0 478.0Q566 473 541 470Q486 462 444.0 444.0Q402 426 379.0 396.5Q356 367 356 321Q356 278 378.0 248.5Q400 219 438.0 204.0Q476 189 525 189Z" transform="translate(198.757 68.916) scale(0.025391 -0.025391)"/>
+      <path d="M428 1490V0H128V1490Z" transform="translate(228.166 68.916) scale(0.025391 -0.025391)"/>
+      <path d="M628 -22Q459 -22 336.5 50.5Q214 123 147.5 252.5Q81 382 81 554Q81 728 147.5 857.5Q214 987 336.5 1059.5Q459 1132 628 1132Q727 1132 811.0 1106.0Q895 1080 960.0 1032.0Q1025 984 1067.0 915.0Q1109 846 1125 760L846 708Q837 752 818.0 786.5Q799 821 772.0 845.5Q745 870 709.5 883.0Q674 896 631 896Q551 896 496.5 853.0Q442 810 414.5 733.0Q387 656 387 555Q387 456 414.5 379.0Q442 302 496.5 258.0Q551 214 631 214Q674 214 710.0 227.5Q746 241 774.0 266.5Q802 292 821.0 328.0Q840 364 848 409L1127 358Q1111 269 1069.0 199.5Q1027 130 962.0 80.0Q897 30 812.5 4.0Q728 -22 628 -22Z" transform="translate(241.478 68.916) scale(0.025391 -0.025391)"/>
+      <path d="M513 -14Q397 -14 310.0 36.5Q223 87 175.5 181.5Q128 276 128 407V1118H428V459Q428 355 482.0 296.0Q536 237 630 237Q694 237 743.0 264.5Q792 292 819.5 344.5Q847 397 847 471V1118H1148V0H864L860 279H877Q833 138 742.5 62.0Q652 -14 513 -14Z" transform="translate(271.294 68.916) scale(0.025391 -0.025391)"/>
+      <path d="M428 1490V0H128V1490Z" transform="translate(302.887 68.916) scale(0.025391 -0.025391)"/>
+      <path d="M440 -22Q334 -22 249.5 15.5Q165 53 116.5 127.5Q68 202 68 313Q68 406 102.5 469.0Q137 532 196.5 570.0Q256 608 331.5 628.0Q407 648 490 656Q587 666 646.5 674.5Q706 683 733.5 701.5Q761 720 761 756V761Q761 809 741.0 842.0Q721 875 681.5 892.5Q642 910 586 910Q528 910 485.0 892.5Q442 875 415.0 846.0Q388 817 375 781L100 826Q129 924 196.0 992.0Q263 1060 362.5 1096.0Q462 1132 587 1132Q677 1132 762.0 1110.5Q847 1089 914.5 1044.0Q982 999 1021.5 926.5Q1061 854 1061 753V0H777V155H767Q740 103 695.0 63.5Q650 24 586.5 1.0Q523 -22 440 -22ZM525 189Q596 189 649.5 217.0Q703 245 733.0 293.0Q763 341 763 400V521Q750 511 723.0 503.0Q696 495 663.0 489.0Q630 483 598.0 478.0Q566 473 541 470Q486 462 444.0 444.0Q402 426 379.0 396.5Q356 367 356 321Q356 278 378.0 248.5Q400 219 438.0 204.0Q476 189 525 189Z" transform="translate(316.199 68.916) scale(0.025391 -0.025391)"/>
+      <path d="M683 1118V889H20V1118ZM174 1384H474V327Q474 274 497.5 248.5Q521 223 576 223Q593 223 624.0 227.5Q655 232 671 236L714 11Q664 -4 614.5 -10.0Q565 -16 520 -16Q352 -16 263.0 66.0Q174 148 174 301Z" transform="translate(345.608 68.916) scale(0.025391 -0.025391)"/>
+      <path d="M628 -22Q460 -22 337.0 50.5Q214 123 147.5 252.5Q81 382 81 554Q81 728 147.5 857.5Q214 987 337.0 1059.5Q460 1132 628 1132Q797 1132 919.5 1059.5Q1042 987 1108.5 857.5Q1175 728 1175 554Q1175 382 1108.5 252.5Q1042 123 919.5 50.5Q797 -22 628 -22ZM628 214Q708 214 762.0 258.5Q816 303 843.0 380.5Q870 458 870 555Q870 654 843.0 731.0Q816 808 762.0 852.0Q708 896 628 896Q548 896 494.5 852.0Q441 808 414.0 731.0Q387 654 387 555Q387 458 414.0 380.5Q441 303 494.5 258.5Q548 214 628 214Z" transform="translate(363.363 68.916) scale(0.025391 -0.025391)"/>
+      <path d="M128 0V1118H418V923H430Q461 1027 533.5 1080.0Q606 1133 700 1133Q723 1133 750.0 1130.5Q777 1128 797 1123V855Q777 862 739.0 866.0Q701 870 667 870Q599 870 544.0 840.5Q489 811 458.5 758.5Q428 706 428 636V0Z" transform="translate(394.474 68.916) scale(0.025391 -0.025391)"/>
+  </g>
+</svg></a>
+        <p>Free online calculators for students, teachers and parents. No sign-up, no downloads — just your grade, worked out.</p>
+        <p class="footer-note">Results are estimates. Your school or university's grading rules determine the official grade.</p>
+      </div>
+      <nav aria-label="Calculators">
+        <h3>Calculators</h3>
+        <ul>
+          <li><a href="../">Main Calculator</a></li>
+          <li><a href="../final-grade-calculator/">Final Grade</a></li>
+          <li><a href="../semester-grade-calculator/">Semester Grade</a></li>
+          <li><a href="../gpa-calculator/">GPA Calculator</a></li>
+          <li><a href="../?mode=weighted#calculator">Weighted Grade</a></li>
+          <li><a href="../?mode=percent#calculator">Average Grade</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Resources">
+        <h3>Resources</h3>
+        <ul>
+          <li><a href="../#how-to">How to calculate your grade</a></li>
+          <li><a href="../#grade-scale">Grade scales</a></li>
+          <li><a href="../#faq">Frequently asked questions</a></li>
+          <li><a href="../#references">Official references</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Company">
+        <h3>Company</h3>
+        <ul class="foot-links">
+          <li><a href="../about/">About</a></li>
+          <li><a href="../contact/">Contact</a></li>
+          <li><a href="../privacy-policy/">Privacy Policy</a></li>
+          <li><a href="../terms/">Terms</a></li>
+          <li><a href="../disclaimer/">Disclaimer</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="footer-bottom">
+      <p>© <span id="year">2026</span></p>
+      <p>Results are estimates. Your school or university's grading rules determine the official grade.</p>
+    </div>
+  </div>
+</footer>
+
+<button class="to-top" id="to-top" type="button" aria-label="Back to top">↑</button>
+
+<script>
+var $=function(id){return document.getElementById(id);};
+
+/* --- Mobile drawer (the v4 stylesheet shows it via body.drawer-open) --- */
+var menuBtn=$("menu-btn"),drawer=$("drawer");
+function closeDrawer(){
+  document.body.classList.remove("drawer-open");
+  menuBtn.setAttribute("aria-expanded","false");
+  menuBtn.setAttribute("aria-label","Open menu");
+}
+menuBtn.addEventListener("click",function(){
+  var open=document.body.classList.toggle("drawer-open");
+  menuBtn.setAttribute("aria-expanded",open?"true":"false");
+  menuBtn.setAttribute("aria-label",open?"Close menu":"Open menu");
+});
+drawer.querySelectorAll("a").forEach(function(a){a.addEventListener("click",closeDrawer);});
+document.addEventListener("keydown",function(e){if(e.key==="Escape")closeDrawer();});
+
+/* --- Header shadow + back-to-top --- */
+var header=$("site-header"),toTop=$("to-top");
+window.addEventListener("scroll",function(){
+  var y=window.scrollY||document.documentElement.scrollTop;
+  header.classList.toggle("scrolled",y>8);
+  toTop.classList.toggle("show",y>600);
+},{passive:true});
+toTop.addEventListener("click",function(){window.scrollTo({top:0,behavior:"smooth"});});
+
+/* --- Footer year --- */
+$("year").textContent=new Date().getFullYear();
+</script>
+</body>
+</html>
