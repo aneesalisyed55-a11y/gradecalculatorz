@@ -1,0 +1,1187 @@
+<!DOCTYPE html>
+<!-- ============================================================
+  GPA Calculator — Calculate Your Grade Point Average
+  ------------------------------------------------------------
+  Single self-contained index.html file, in the same design system
+  as the Grade Calculator homepage (workspace/grade-calculator/).
+  Inline CSS and vanilla JavaScript only — no frameworks, no
+  sign-up, works offline. The logo lockups and the photo are
+  embedded in this file.
+
+  Brand, logo and all written content on this page are original.
+  ------------------------------------------------------------
+  Sections (top to bottom):
+  1. Sticky header (logo, nav, start button) + mobile drawer
+  2. Breadcrumbs + hero (intro left, calculator right)
+  3. Sticky "On this page" bar
+  4. What Is Grade Point Average (GPA)?
+  5. How to Calculate GPA (formula + worked example)
+  6. Common 4.0 GPA Scale Reference (table)
+  7. How to Use the GPA Calculator (4 steps)
+  8. Weighted GPA vs. Unweighted GPA (comparison table)
+  9. Semester GPA vs. Cumulative GPA
+  10. How Credit Hours Affect Your GPA (worked example)
+  11. Can You Convert a Percentage Directly to GPA?
+  12. GPA in the United States, United Kingdom, Canada, and Australia
+  13. What Can Change an Official GPA?
+  14. How to Improve Your GPA
+  15. FAQ (accessible accordion, 9 questions)
+  16. Official and Primary GPA References
+  17. Closing CTA band
+  18. Footer (navy, 4 columns)
+  ============================================================ -->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Free GPA calculator: work out your grade point average from course grades and credit hours, or estimate a cumulative GPA across terms. No sign-up.">
+<meta name="color-scheme" content="light">
+<meta name="theme-color" content="#4F46E5">
+<title>GPA Calculator: Calculate Your Grade Point Average</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22100%22%20height%3D%22100%22%20viewBox%3D%220%200%20100%20100%22%3E%0A%20%20%3Ctitle%3EGrade%20Calculator%3C%2Ftitle%3E%0A%20%20%3Cdefs%3E%0A%20%20%20%20%3ClinearGradient%20id%3D%22gc-grad%22%20x1%3D%220%25%22%20y1%3D%220%25%22%20x2%3D%22100%25%22%20y2%3D%22100%25%22%3E%0A%20%20%20%20%20%20%3Cstop%20offset%3D%220%22%20stop-color%3D%22%234F46E5%22%2F%3E%0A%20%20%20%20%20%20%3Cstop%20offset%3D%221%22%20stop-color%3D%22%237C3AED%22%2F%3E%0A%20%20%20%20%3C%2FlinearGradient%3E%0A%20%20%3C%2Fdefs%3E%0A%20%20%3Cg%3E%0A%20%20%20%20%20%20%3Crect%20x%3D%222%22%20y%3D%222%22%20width%3D%2296%22%20height%3D%2296%22%20rx%3D%2224%22%20fill%3D%22url%28%23gc-grad%29%22%2F%3E%0A%20%20%20%20%20%20%3Cg%20fill%3D%22%23FFFFFF%22%3E%3Crect%20x%3D%2221%22%20y%3D%2256%22%20width%3D%2215%22%20height%3D%2222%22%20rx%3D%223.5%22%2F%3E%3C%2Fg%3E%0A%20%20%20%20%20%20%3Cg%20fill%3D%22%23FFFFFF%22%3E%3Crect%20x%3D%2242.5%22%20y%3D%2244%22%20width%3D%2215%22%20height%3D%2234%22%20rx%3D%223.5%22%2F%3E%3C%2Fg%3E%0A%20%20%20%20%20%20%3Cg%20fill%3D%22%23FFFFFF%22%3E%3Crect%20x%3D%2264%22%20y%3D%2232%22%20width%3D%2215%22%20height%3D%2246%22%20rx%3D%223.5%22%2F%3E%3C%2Fg%3E%0A%20%20%20%20%20%20%3Cg%20stroke%3D%22%23FFFFFF%22%3E%3Cpolyline%20points%3D%2265%2C19%2072%2C27%2084%2C12%22%20fill%3D%22none%22%20stroke-width%3D%227%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%2F%3E%3C%2Fg%3E%0A%20%20%20%20%3C%2Fg%3E%0A%3C%2Fsvg%3E">
+<link rel="icon" type="image/png" sizes="32x32" href="../assets/logo/favicon-32.png">
+<link rel="apple-touch-icon" href="../assets/logo/apple-touch-icon-180.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"GPA Calculator","applicationCategory":"EducationalApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":"Free GPA calculator: work out your grade point average from course grades and credit hours, or estimate a cumulative GPA across terms. No sign-up."}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"../"},{"@type":"ListItem","position":2,"name":"GPA Calculator"}]}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"What is a 4.0 GPA?","acceptedAnswer":{"@type":"Answer","text":"A 4.0 GPA is the maximum on many standard US GPA scales, where an A is commonly assigned 4.0 grade points. Some institutions use an A+ value above 4.0 or apply other scale rules, so the maximum is not universal."}},
+{"@type":"Question","name":"How do I calculate my GPA?","acceptedAnswer":{"@type":"Answer","text":"Convert each course grade into the grade-point value used by your institution. Multiply each value by the course credits, add the quality points, and divide by the total credits included in the GPA calculation."}},
+{"@type":"Question","name":"Is GPA calculated by averaging percentages?","acceptedAnswer":{"@type":"Answer","text":"Not usually. Many GPA systems convert course results into grade points and weight those points by credit hours. The percentage-to-letter conversion is determined by the institution."}},
+{"@type":"Question","name":"What is the difference between weighted and unweighted GPA?","acceptedAnswer":{"@type":"Answer","text":"An unweighted GPA uses standard grade points. A weighted GPA may add points for courses that the school identifies as more advanced or academically demanding. The weighting policy varies by school."}},
+{"@type":"Question","name":"How do I calculate cumulative GPA?","acceptedAnswer":{"@type":"Answer","text":"Multiply your previous GPA by the credits it represents to estimate previous quality points. Add the quality points from the new term, then divide by all included credits. Use official transcript totals when available."}},
+{"@type":"Question","name":"Does a failed class affect GPA?","acceptedAnswer":{"@type":"Answer","text":"It may. At many institutions, an F contributes zero grade points but the course credits remain in the GPA denominator. Policies for repeats, withdrawals, and pass/fail courses vary, so check your registrar's rules."}},
+{"@type":"Question","name":"Do credit hours affect GPA?","acceptedAnswer":{"@type":"Answer","text":"Yes. In a credit-weighted GPA, a course with more credits contributes more quality points and has more influence on the result than a course with fewer credits."}},
+{"@type":"Question","name":"Can I convert my UK degree classification to a 4.0 GPA?","acceptedAnswer":{"@type":"Answer","text":"There is no universal conversion accepted by every university or evaluator. Use the conversion guidance provided by the institution or organization requesting the GPA."}},
+{"@type":"Question","name":"Is semester GPA the same as cumulative GPA?","acceptedAnswer":{"@type":"Answer","text":"No. Semester GPA covers eligible courses in one term. Cumulative GPA combines eligible courses across multiple terms, using the institution's rules and the credits associated with each course."}}
+]}
+</script>
+<style>
+/* ================= Design tokens (60/30/10) ================= */
+:root{
+  color-scheme:light;
+  --indigo:#4F46E5; --indigo-hover:#4338CA; --violet:#7C3AED;
+  --navy:#0F172A; --bg:#F5F7FF; --surface:#FFFFFF; --border:#E2E8F0;
+  --muted:#64748B; --text:#334155;
+  --green:#10B981; --amber:#F59E0B; --rose:#F43F5E; --tint:#EEF2FF;
+  /* Accessible dark variants for text on tints / badges (WCAG AA) */
+  --green-dark:#065F46; --green-bg:#D1FAE5; --green-badge:#059669;
+  --amber-dark:#92400E; --amber-bg:#FEF3C7; --amber-badge:#D97706;
+  --rose-dark:#9F1239; --rose-bg:#FFE4E6; --rose-badge:#E11D48;
+  --radius:16px; --radius-sm:12px;
+  --shadow:0 10px 30px rgba(15,23,42,.08);
+  --shadow-sm:0 2px 8px rgba(15,23,42,.06);
+  --header-h:68px; --toc-h:46px;
+  --font:'Inter',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:var(--font);font-size:17px;line-height:1.6;color:var(--text);background:var(--bg);-webkit-font-smoothing:antialiased}
+h1,h2,h3{color:var(--navy);line-height:1.25;margin:0 0 16px}
+h1{font-size:40px;font-weight:800;letter-spacing:-.02em}
+h2{font-size:28px;font-weight:700;letter-spacing:-.01em}
+h3{font-size:20px;font-weight:700}
+p{margin:0 0 16px}
+a{color:var(--indigo)}
+:focus-visible{outline:2px solid var(--indigo);outline-offset:2px;border-radius:4px}
+::selection{background:var(--tint)}
+.container{max-width:1200px;margin:0 auto;padding:0 24px}
+.narrow{max-width:760px}
+section{scroll-margin-top:calc(var(--header-h) + var(--toc-h) + 16px)}
+.section{padding:64px 0}
+.section.white{background:var(--surface)}
+.section.alt{background:var(--bg)}
+.eyebrow{font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--indigo);margin:0 0 8px}
+.lead{font-size:18px;color:var(--muted)}
+.skip-link{position:absolute;left:-999px;top:0;background:var(--navy);color:#fff;padding:10px 16px;border-radius:0 0 8px 0;z-index:200;font-weight:600}
+.skip-link:focus{left:0}
+
+/* ================= Buttons ================= */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;background:var(--indigo);color:#fff;border:1px solid var(--indigo);border-radius:10px;padding:12px 20px;font:inherit;font-weight:700;font-size:15px;cursor:pointer;text-decoration:none;transition:background .15s,border-color .15s,transform .15s;min-height:44px}
+.btn:hover{background:var(--indigo-hover);border-color:var(--indigo-hover)}
+.btn:active{transform:translateY(1px)}
+.btn-secondary{background:var(--surface);color:var(--navy);border-color:var(--border)}
+.btn-secondary:hover{background:#F8FAFC;border-color:#CBD5E1}
+.btn-white{background:#fff;color:var(--indigo);border-color:#fff}
+.btn-white:hover{background:var(--tint)}
+.btn-sm{padding:9px 14px;font-size:14px;min-height:40px}
+
+/* ================= Header ================= */
+.site-header{position:sticky;top:0;z-index:100;background:var(--surface);border-bottom:1px solid var(--border);transition:box-shadow .2s}
+.site-header.scrolled{box-shadow:0 4px 16px rgba(15,23,42,.08)}
+.header-inner{display:flex;align-items:center;gap:32px;height:var(--header-h)}
+.logo-link{display:flex;align-items:center;flex:none;line-height:0}
+.logo-link svg{display:block}
+.main-nav{display:flex;gap:4px;margin:0 auto}
+.main-nav a{color:var(--text);text-decoration:none;font-size:15px;font-weight:600;padding:8px 12px;border-radius:8px;position:relative;white-space:nowrap}
+.main-nav a:hover{color:var(--indigo);background:var(--tint)}
+.main-nav a.active{color:var(--indigo)}
+.main-nav a.active::after{content:"";position:absolute;left:12px;right:12px;bottom:2px;height:2px;border-radius:2px;background:var(--indigo)}
+.header-cta{flex:none}
+.menu-btn{display:none;background:none;border:1px solid var(--border);border-radius:10px;width:44px;height:44px;align-items:center;justify-content:center;cursor:pointer;color:var(--navy)}
+.menu-btn svg{display:block}
+.drawer{display:none;border-top:1px solid var(--border);background:var(--surface);padding:8px 0 16px}
+body.drawer-open .drawer{display:block}
+.drawer nav{display:flex;flex-direction:column}
+.drawer a{color:var(--navy);text-decoration:none;font-weight:600;font-size:16px;padding:12px 4px;min-height:44px;display:flex;align-items:center;border-bottom:1px solid #F1F5F9}
+.drawer a:last-child{border-bottom:0}
+.drawer a:hover,.drawer a.active{color:var(--indigo)}
+
+/* ================= Breadcrumbs ================= */
+.crumbs{padding:20px 0 0;font-size:14px;color:var(--muted)}
+.crumbs ol{list-style:none;margin:0;padding:0;display:flex;gap:8px;flex-wrap:wrap}
+.crumbs li{display:flex;gap:8px;align-items:center}
+.crumbs li+li::before{content:"/";color:#CBD5E1}
+.crumbs a{color:var(--muted);text-decoration:none}
+.crumbs a:hover{color:var(--indigo);text-decoration:underline}
+.crumbs [aria-current]{color:var(--navy);font-weight:600}
+
+/* ================= Hero ================= */
+.hero{padding:24px 0 72px}
+.hero-grid{display:grid;grid-template-columns:1fr 580px;gap:48px;align-items:start}
+.hero-copy{padding-top:16px}
+.badge{display:inline-flex;align-items:center;gap:8px;background:var(--tint);color:var(--indigo);font-size:13px;font-weight:700;padding:7px 14px;border-radius:999px;margin-bottom:20px}
+.badge .dot{width:8px;height:8px;border-radius:50%;background:var(--green);flex:none}
+.hero-intro{font-size:18px;color:var(--muted);max-width:520px}
+.tick-list{list-style:none;margin:24px 0 0;padding:0;display:flex;flex-direction:column;gap:12px}
+.tick-list li{display:flex;gap:12px;align-items:flex-start;font-weight:600;color:var(--navy);font-size:16px}
+.tick-list li span{color:var(--muted);font-weight:400}
+.tick{flex:none;width:24px;height:24px;border-radius:50%;background:var(--green-bg);color:var(--green-dark);display:inline-flex;align-items:center;justify-content:center;margin-top:1px}
+.tick svg{display:block}
+
+/* ================= Sticky "On this page" bar ================= */
+.toc-bar{position:sticky;top:var(--header-h);z-index:90;background:var(--surface);border-bottom:1px solid var(--border)}
+.toc-bar nav{display:flex;gap:4px;overflow-x:auto;scrollbar-width:none;padding:0 24px;max-width:1200px;margin:0 auto}
+.toc-bar nav::-webkit-scrollbar{display:none}
+.toc-bar a{color:var(--muted);text-decoration:none;font-size:14px;font-weight:600;padding:12px 10px;white-space:nowrap;border-bottom:2px solid transparent}
+.toc-bar a:hover{color:var(--indigo)}
+.toc-bar a.active{color:var(--indigo);border-bottom-color:var(--indigo)}
+
+/* ================= Calculator card ================= */
+.calc-card{background:var(--surface);border-radius:var(--radius);box-shadow:var(--shadow);border:1px solid var(--border);padding:24px;scroll-margin-top:calc(var(--header-h) + var(--toc-h) + 16px)}
+.calc-card h2{font-size:20px;margin-bottom:4px}
+.calc-sub{font-size:14px;color:var(--muted);margin-bottom:20px}
+.tabs{display:flex;gap:4px;background:#F1F5F9;border-radius:12px;padding:4px;margin-bottom:20px}
+.tabs [role="tab"]{flex:1;border:0;background:transparent;border-radius:9px;padding:10px 8px;font:inherit;font-size:14px;font-weight:700;color:var(--muted);cursor:pointer;min-height:44px;transition:background .15s,color .15s}
+.tabs [role="tab"]:hover{color:var(--navy)}
+.tabs [role="tab"][aria-selected="true"]{background:var(--surface);color:var(--indigo);box-shadow:var(--shadow-sm)}
+.calc-hint{font-size:14px;color:var(--muted);background:var(--tint);border-radius:10px;padding:10px 14px;margin:0 0 16px}
+.calc-rows{display:flex;flex-direction:column;gap:10px}
+.calc-row{display:grid;grid-template-columns:minmax(0,1.4fr) 96px 96px 96px 36px;gap:8px;align-items:start}
+.calc-row .col-head{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;color:var(--muted);padding:0 2px 2px}
+.calc-row input,.calc-row select{width:100%;border:1px solid var(--border);border-radius:10px;padding:10px 12px;font:inherit;font-size:15px;color:var(--navy);background:var(--surface);min-height:44px}
+.calc-row input:focus,.calc-row select:focus{border-color:var(--indigo);outline:2px solid var(--indigo);outline-offset:0}
+.calc-row input.invalid{border-color:var(--rose);outline-color:var(--rose)}
+/* Mode-specific columns (which row fields each calculator mode shows) */
+.calc-card.mode-points .calc-row{grid-template-columns:minmax(0,1.4fr) 96px 96px 36px}
+.calc-card.mode-points .c-weight{display:none}
+.calc-card.mode-percent .calc-row{grid-template-columns:minmax(0,1.4fr) 110px 36px}
+.calc-card.mode-percent .c-outof,.calc-card.mode-percent .c-weight{display:none}
+.calc-card.mode-weighted .calc-row{grid-template-columns:minmax(0,1.4fr) 96px 96px 96px 36px}
+.calc-card.mode-letter .calc-row{grid-template-columns:minmax(0,1.4fr) 110px 96px 36px}
+.calc-card.mode-letter .c-outof{display:none}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+figure{margin:24px 0 0}
+figure img{width:100%;height:auto;border-radius:var(--radius);box-shadow:var(--shadow);display:block}
+figure figcaption{font-size:13px;color:var(--muted);margin-top:10px;text-align:center}
+.field-error{font-size:13px;color:var(--rose-dark);margin-top:4px;display:none}
+.field-error.show{display:block}
+.row-remove{border:0;background:transparent;color:var(--muted);font-size:22px;line-height:1;cursor:pointer;border-radius:8px;width:36px;height:44px}
+.row-remove:hover{color:var(--rose-dark);background:var(--rose-bg)}
+.calc-actions{display:flex;gap:12px;margin-top:16px;flex-wrap:wrap}
+.calc-error{font-size:14px;color:var(--rose-dark);background:var(--rose-bg);border-radius:10px;padding:10px 14px;margin:16px 0 0;display:none}
+.calc-error.show{display:block}
+
+/* Result panel */
+.result{margin-top:20px;border-radius:var(--radius-sm);padding:20px;border:1px solid transparent;transition:background .2s}
+.result.band-a{background:var(--green-bg);border-color:#A7F3D0}
+.result.band-c{background:var(--amber-bg);border-color:#FDE68A}
+.result.band-f{background:var(--rose-bg);border-color:#FECDD3}
+.result-top{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+.letter-badge{width:64px;height:64px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-size:30px;font-weight:800;flex:none}
+.band-a .letter-badge{background:var(--green-badge)}
+.band-c .letter-badge{background:var(--amber-badge)}
+.band-f .letter-badge{background:var(--rose-badge)}
+.result-pct{font-size:36px;font-weight:800;color:var(--navy);line-height:1}
+.result-label{font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--muted)}
+.chip{display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:700;padding:6px 12px;border-radius:999px;margin-left:auto}
+.band-a .chip{background:#fff;color:var(--green-dark)}
+.band-c .chip{background:#fff;color:var(--amber-dark)}
+.band-f .chip{background:#fff;color:var(--rose-dark)}
+.result-meta{display:flex;gap:24px;flex-wrap:wrap;margin-top:16px;padding-top:16px;border-top:1px solid rgba(15,23,42,.1)}
+.result-meta div{font-size:14px;color:var(--muted)}
+.result-meta strong{display:block;font-size:18px;color:var(--navy)}
+.breakdown{list-style:none;margin:16px 0 0;padding:0;display:flex;flex-direction:column;gap:6px;font-size:14px;color:var(--text)}
+.breakdown li{display:flex;justify-content:space-between;gap:16px}
+.breakdown li span:last-child{font-weight:700;color:var(--navy);white-space:nowrap}
+.copy-btn{margin-top:16px}
+
+/* ================= Formula box ================= */
+.formula-card{background:var(--surface);border:1px solid var(--border);border-left:4px solid var(--indigo);border-radius:var(--radius-sm);box-shadow:var(--shadow-sm);padding:24px 28px;text-align:center}
+.formula-card .formula{font-size:22px;font-weight:700;color:var(--navy);margin:8px 0 4px}
+.formula-card p{margin:0;color:var(--muted);font-size:15px}
+
+/* ================= Method cards ================= */
+.method-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:32px}
+.method-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow-sm);padding:24px;display:flex;flex-direction:column}
+.method-card .step-no{font-size:13px;font-weight:700;color:var(--indigo);text-transform:uppercase;letter-spacing:.06em}
+.method-card h3{margin:8px 0 8px}
+.method-card p{font-size:15px}
+.formula-box{background:#F8FAFC;border:1px solid var(--border);border-radius:10px;padding:14px 16px;font-weight:700;color:var(--navy);font-size:15px;text-align:center;margin:8px 0 16px}
+.worked{margin-top:auto;border-top:1px dashed var(--border);padding-top:16px}
+.worked .worked-label{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin-bottom:10px}
+.steps{display:flex;flex-direction:column;gap:8px}
+.step{display:flex;align-items:center;gap:10px;background:var(--tint);border-radius:8px;padding:8px 12px;font-size:14px;font-weight:600;color:var(--navy)}
+.step .arrow{color:var(--indigo);font-weight:800}
+.step.result-step{background:var(--green-bg);color:var(--green-dark)}
+
+/* ================= Tables ================= */
+.table-scroll{margin-top:24px}
+.table-hint{display:none;font-size:13px;color:var(--muted);text-align:right;margin-bottom:6px}
+table.data{width:100%;border-collapse:separate;border-spacing:0;border:1px solid var(--border);border-radius:var(--radius-sm);background:var(--surface);font-size:15px}
+table.data th,table.data td{padding:13px 16px;text-align:left;border-top:1px solid var(--border);vertical-align:middle}
+table.data thead th{border-top:0}
+table.data thead tr:first-child th:first-child{border-top-left-radius:11px}
+table.data thead tr:first-child th:last-child{border-top-right-radius:11px}
+table.data tbody tr:last-child td:first-child{border-bottom-left-radius:11px}
+table.data tbody tr:last-child td:last-child{border-bottom-right-radius:11px}
+table.data thead th{background:var(--tint);color:var(--navy);font-size:12.5px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;position:sticky;top:calc(var(--header-h) + var(--toc-h));z-index:5}
+table.data tbody tr:nth-child(even) td{background:#F8FAFC}
+table.data tbody tr{transition:background .15s}
+table.data tbody tr:hover td{background:var(--tint)}
+table.data tbody tr:hover td:first-child{box-shadow:inset 3px 0 0 var(--indigo)}
+table.data td.num,table.data th.num{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+.letter-pill{display:inline-flex;align-items:center;justify-content:center;min-width:34px;height:28px;padding:0 8px;border-radius:8px;font-weight:800;font-size:14px;color:#fff}
+.pill-a{background:var(--green-badge)}.pill-b{background:#0EA5E9}.pill-c{background:var(--amber-badge)}.pill-d{background:#F97316}.pill-f{background:var(--rose-badge)}
+.table-note{font-size:14px;color:var(--muted);margin-top:12px}
+
+/* Scale tabs */
+.scale-tabs{max-width:520px}
+.scale-panel{margin-top:0}
+
+/* ================= Split blocks (photo + text) ================= */
+.split{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+.split figure{margin:0}
+.split img{width:100%;height:auto;border-radius:var(--radius);box-shadow:var(--shadow);display:block}
+.split figcaption{font-size:13px;color:var(--muted);margin-top:10px;text-align:center}
+
+/* ================= Final widget ================= */
+.final-grid{display:grid;grid-template-columns:1fr 480px;gap:48px;align-items:start}
+.mini-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow);padding:24px}
+.mini-card h3{font-size:19px;margin-bottom:4px}
+.field{margin-bottom:14px}
+.field label{display:block;font-size:14px;font-weight:600;color:var(--navy);margin-bottom:6px}
+.field input{width:100%;border:1px solid var(--border);border-radius:10px;padding:11px 12px;font:inherit;font-size:15px;color:var(--navy);min-height:44px}
+.field input:focus{border-color:var(--indigo);outline:2px solid var(--indigo);outline-offset:0}
+.field input.invalid{border-color:var(--rose);outline-color:var(--rose)}
+.field .suffix{font-size:13px;color:var(--muted);font-weight:400}
+.final-result{margin-top:16px;border-radius:var(--radius-sm);padding:18px 20px;display:none}
+.final-result.show{display:block}
+.final-result.ok{background:var(--green-bg)}
+.final-result.hard{background:var(--amber-bg)}
+.final-result.impossible{background:var(--rose-bg)}
+.final-result .big{font-size:28px;font-weight:800;color:var(--navy)}
+.final-result p{margin:4px 0 0;font-size:15px}
+
+/* ================= Card grids ================= */
+.card-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;margin-top:32px}
+.info-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow-sm);padding:24px}
+.info-card .icon{width:48px;height:48px;border-radius:12px;background:var(--tint);color:var(--indigo);display:flex;align-items:center;justify-content:center;margin-bottom:16px}
+.info-card h3{font-size:17px;margin-bottom:8px}
+.info-card p{font-size:15px;margin:0}
+a.info-card{text-decoration:none;color:inherit;display:block;transition:transform .15s,box-shadow .15s,border-color .15s}
+a.info-card:hover{transform:translateY(-2px);box-shadow:var(--shadow);border-color:var(--indigo)}
+a.info-card .go{display:inline-flex;align-items:center;gap:6px;margin-top:14px;font-weight:700;font-size:14px;color:var(--indigo)}
+a.info-card:hover .go{gap:10px}
+
+/* ================= Tips ================= */
+.tips-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px 32px;margin-top:32px;list-style:none;padding:0}
+.tips-grid li{display:flex;gap:12px;align-items:flex-start;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-sm);padding:16px 18px;font-size:15px}
+.tips-grid .tick{margin-top:0}
+
+/* ================= FAQ ================= */
+.faq-list{display:flex;flex-direction:column;gap:12px;margin-top:32px}
+.faq-item{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-sm);overflow:hidden}
+.faq-q{width:100%;display:flex;justify-content:space-between;align-items:center;gap:16px;background:none;border:0;padding:18px 20px;font:inherit;font-size:16px;font-weight:700;color:var(--navy);text-align:left;cursor:pointer;min-height:44px}
+.faq-q:hover{color:var(--indigo)}
+.faq-icon{flex:none;width:28px;height:28px;border-radius:50%;background:var(--tint);color:var(--indigo);display:inline-flex;align-items:center;justify-content:center;font-size:20px;font-weight:400;line-height:1;transition:transform .25s}
+.faq-q[aria-expanded="true"] .faq-icon{transform:rotate(45deg)}
+.faq-a{padding:0 20px 20px;font-size:15px}
+.faq-a p:last-child{margin-bottom:0}
+
+/* ================= References ================= */
+.ref-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:32px}
+.ref-card{display:flex;gap:16px;align-items:flex-start;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow-sm);padding:20px 24px;text-decoration:none;color:inherit;transition:transform .15s,box-shadow .15s,border-color .15s}
+.ref-card:hover{transform:translateY(-2px);box-shadow:var(--shadow);border-color:var(--indigo)}
+.ref-card h3{font-size:16px;margin:0 0 4px;color:var(--navy)}
+.ref-card p{font-size:14px;color:var(--muted);margin:0}
+.ref-card .ext{margin-left:auto;color:var(--muted);flex:none;padding-top:2px}
+.ref-card:hover .ext{color:var(--indigo)}
+
+/* ================= CTA band ================= */
+.cta-band{background:linear-gradient(135deg,var(--indigo),var(--violet));color:#fff;text-align:center;padding:64px 24px}
+.cta-band h2{color:#fff;font-size:30px;margin-bottom:8px}
+.cta-band p{color:#E0E7FF;margin-bottom:24px;font-size:17px}
+
+/* ================= Footer ================= */
+.site-footer{background:var(--navy);color:#CBD5E1;padding:56px 0 0;font-size:15px}
+.footer-grid{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:40px;padding-bottom:40px}
+.footer-brand p{font-size:14px;line-height:1.6;margin:16px 0 0;max-width:300px}
+.site-footer h3{color:#fff;font-size:14px;text-transform:uppercase;letter-spacing:.06em;margin-bottom:16px}
+.foot-links{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px}
+.foot-links a{color:#CBD5E1;text-decoration:none}
+.foot-links a:hover{color:#C7D2FE;text-decoration:underline}
+.foot-links .foot-text{color:#94A3B8}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.12);padding:20px 0;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-size:13px;color:#94A3B8}
+.footer-bottom p{margin:0}
+
+/* ================= Back to top ================= */
+.to-top{position:fixed;right:24px;bottom:24px;z-index:90;width:48px;height:48px;border-radius:50%;border:0;background:var(--indigo);color:#fff;font-size:20px;cursor:pointer;box-shadow:var(--shadow);display:none;align-items:center;justify-content:center}
+.to-top.show{display:flex}
+.to-top:hover{background:var(--indigo-hover)}
+
+/* ================= Responsive ================= */
+@media (max-width:1024px){
+  .main-nav,.header-cta{display:none}
+  .menu-btn{display:inline-flex;margin-left:auto}
+  .hero-grid{grid-template-columns:1fr;gap:32px}
+  .hero-copy{padding-top:0}
+  .method-grid{grid-template-columns:1fr 1fr}
+  .card-grid{grid-template-columns:1fr 1fr}
+  .final-grid{grid-template-columns:1fr}
+  .split{grid-template-columns:1fr;gap:32px}
+  .footer-grid{grid-template-columns:1fr 1fr}
+}
+@media (max-width:768px){
+  body{font-size:16px}
+  h1{font-size:32px}
+  h2{font-size:24px}
+  .container{padding:0 16px}
+  .section{padding:48px 0}
+  .calc-card{padding:20px 16px}
+  .calc-card.mode-points .calc-row,.calc-card.mode-percent .calc-row,.calc-card.mode-weighted .calc-row,.calc-card.mode-letter .calc-row{grid-template-columns:1fr 1fr;grid-template-areas:"name name" "score outof" "weight remove"}
+  .calc-row .c-name{grid-area:name}
+  .calc-row .c-score{grid-area:score}
+  .calc-row .c-outof{grid-area:outof}
+  .calc-row .c-weight{grid-area:weight}
+  .calc-row .c-remove{grid-area:remove;justify-self:end}
+  .calc-row .col-head{display:none}
+  .method-grid,.card-grid,.ref-grid,.tips-grid{grid-template-columns:1fr}
+  .table-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .table-hint.show{display:block}
+  table.data{min-width:560px}
+  table.data thead th{position:static}
+  .toc-bar{display:none}
+  .footer-grid{grid-template-columns:1fr;gap:32px}
+  .result-pct{font-size:30px}
+  .letter-badge{width:56px;height:56px;font-size:26px}
+  .chip{margin-left:0}
+}
+@media (max-width:400px){
+  .hero{padding-bottom:48px}
+  .tabs [role="tab"]{font-size:13px;padding:10px 4px}
+  .calc-row{grid-template-columns:1fr 1fr}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *{transition:none!important}
+}
+/* ---- GPA page extras ---- */
+.step-cards{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:32px}
+.step-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow-sm);padding:24px}
+.step-card p:last-child{margin-bottom:0}
+.step-num{width:36px;height:36px;border-radius:50%;background:var(--indigo);color:#fff;display:inline-flex;align-items:center;justify-content:center;font-weight:800;font-size:16px;margin-bottom:12px}
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:32px}
+.duo-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow-sm);padding:24px}
+.duo-card p:last-child{margin-bottom:0}
+.gpa-rows{display:flex;flex-direction:column;gap:10px;margin-bottom:12px}
+.gpa-row{display:grid;grid-template-columns:minmax(0,1.4fr) 96px 86px 36px;gap:8px;align-items:start}
+.gpa-row .col-head{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;color:var(--muted);padding:0 2px 2px}
+.gpa-row input,.gpa-row select{width:100%;border:1px solid var(--border);border-radius:10px;padding:10px 12px;font:inherit;font-size:15px;color:var(--navy);background:var(--surface);min-height:44px}
+.gpa-row input:focus,.gpa-row select:focus{border-color:var(--indigo);outline:2px solid var(--indigo);outline-offset:0}
+.gpa-row input.invalid{border-color:var(--rose);outline-color:var(--rose)}
+@media (max-width:768px){.step-cards,.duo{grid-template-columns:1fr}}
+@media (max-width:480px){.gpa-row{grid-template-columns:1fr 1fr 36px}.gpa-row .name-cell{grid-column:1/-1}}
+</style>
+</head>
+<body>
+<a class="skip-link" href="#calculator">Skip to calculator</a>
+
+<header class="site-header" id="site-header">
+  <div class="container header-inner">
+    <a class="logo-link" href="../" aria-label="Grade Calculator — home">
+      <svg xmlns="http://www.w3.org/2000/svg" width="189" height="35" viewBox="0 0 542 100" role="img" aria-label="Grade Calculator logo">
+  <title>Grade Calculator</title>
+  <defs>
+    <linearGradient id="gc-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0" stop-color="#4F46E5"/>
+      <stop offset="1" stop-color="#7C3AED"/>
+    </linearGradient>
+  </defs>
+  <g>
+      <rect x="2" y="2" width="96" height="96" rx="24" fill="url(#gc-grad)"/>
+      <g fill="#FFFFFF"><rect x="21" y="56" width="15" height="22" rx="3.5"/></g>
+      <g fill="#FFFFFF"><rect x="42.5" y="44" width="15" height="34" rx="3.5"/></g>
+      <g fill="#FFFFFF"><rect x="64" y="32" width="15" height="46" rx="3.5"/></g>
+      <g stroke="#FFFFFF"><polyline points="65,19 72,27 84,12" fill="none" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/></g>
+    </g>
+  <g fill="#0F172A" transform="translate(126 0)">
+      <path d="M795 -20Q586 -20 428.5 72.5Q271 165 182.5 336.5Q94 508 94 743Q94 985 186.0 1156.5Q278 1328 435.0 1419.0Q592 1510 788 1510Q914 1510 1022.5 1473.5Q1131 1437 1215.5 1370.0Q1300 1303 1353.5 1211.5Q1407 1120 1423 1009H1113Q1097 1063 1068.5 1105.5Q1040 1148 999.5 1178.0Q959 1208 907.0 1223.5Q855 1239 793 1239Q678 1239 590.0 1181.5Q502 1124 453.0 1014.0Q404 904 404 746Q404 588 452.5 477.5Q501 367 589.0 309.0Q677 251 797 251Q905 251 982.0 290.0Q1059 329 1100.5 401.5Q1142 474 1142 571L1206 562H818V794H1438V608Q1438 412 1355.0 271.5Q1272 131 1127.0 55.5Q982 -20 795 -20Z" transform="translate(0.000 68.916) scale(0.025391 -0.025391)"/>
+      <path d="M128 0V1118H418V923H430Q461 1027 533.5 1080.0Q606 1133 700 1133Q723 1133 750.0 1130.5Q777 1128 797 1123V855Q777 862 739.0 866.0Q701 870 667 870Q599 870 544.0 840.5Q489 811 458.5 758.5Q428 706 428 636V0Z" transform="translate(38.245 68.916) scale(0.025391 -0.025391)"/>
+      <path d="M440 -22Q334 -22 249.5 15.5Q165 53 116.5 127.5Q68 202 68 313Q68 406 102.5 469.0Q137 532 196.5 570.0Q256 608 331.5 628.0Q407 648 490 656Q587 666 646.5 674.5Q706 683 733.5 701.5Q761 720 761 756V761Q761 809 741.0 842.0Q721 875 681.5 892.5Q642 910 586 910Q528 910 485.0 892.5Q442 875 415.0 846.0Q388 817 375 781L100 826Q129 924 196.0 992.0Q263 1060 362.5 1096.0Q462 1132 587 1132Q677 1132 762.0 1110.5Q847 1089 914.5 1044.0Q982 999 1021.5 926.5Q1061 854 1061 753V0H777V155H767Q740 103 695.0 63.5Q650 24 586.5 1.0Q523 -22 440 -22ZM525 189Q596 189 649.5 217.0Q703 245 733.0 293.0Q763 341 763 400V521Q750 511 723.0 503.0Q696 495 663.0 489.0Q630 483 598.0 478.0Q566 473 541 470Q486 462 444.0 444.0Q402 426 379.0 396.5Q356 367 356 321Q356 278 378.0 248.5Q400 219 438.0 204.0Q476 189 525 189Z" transform="translate(57.930 68.916) scale(0.025391 -0.025391)"/>
+      <path d="M536 -19Q408 -19 304.5 47.5Q201 114 141.0 242.5Q81 371 81 557Q81 748 143.0 876.0Q205 1004 308.0 1068.0Q411 1132 535 1132Q630 1132 693.0 1100.0Q756 1068 795.0 1021.0Q834 974 853 930H863V1490H1163V0H868V179H853Q833 134 793.5 88.5Q754 43 691.0 12.0Q628 -19 536 -19ZM629 222Q705 222 759.0 264.0Q813 306 841.0 381.5Q869 457 869 558Q869 660 841.5 734.5Q814 809 760.0 850.5Q706 892 629 892Q550 892 496.5 849.0Q443 806 416.0 731.0Q389 656 389 558Q389 460 416.5 384.0Q444 308 497.5 265.0Q551 222 629 222Z" transform="translate(87.340 68.916) scale(0.025391 -0.025391)"/>
+      <path d="M633 -22Q462 -22 338.0 48.0Q214 118 147.5 247.0Q81 376 81 553Q81 726 147.0 856.0Q213 986 334.0 1059.0Q455 1132 618 1132Q728 1132 823.0 1097.0Q918 1062 990.0 991.5Q1062 921 1102.5 815.0Q1143 709 1143 565V481H204V669H996L856 619Q856 706 829.5 770.5Q803 835 750.5 870.5Q698 906 621 906Q543 906 488.5 870.0Q434 834 406.0 772.5Q378 711 378 632V499Q378 402 410.5 336.0Q443 270 501.5 237.0Q560 204 638 204Q691 204 734.0 219.0Q777 234 807.5 263.5Q838 293 854 336L1126 285Q1099 193 1032.0 123.5Q965 54 864.5 16.0Q764 -22 633 -22Z" transform="translate(119.339 68.916) scale(0.025391 -0.025391)"/>
+      <path d="M786 -20Q588 -20 431.5 70.0Q275 160 184.5 331.0Q94 502 94 744Q94 987 185.0 1158.5Q276 1330 433.0 1420.0Q590 1510 786 1510Q913 1510 1022.5 1474.5Q1132 1439 1217.0 1371.0Q1302 1303 1356.0 1204.5Q1410 1106 1427 980H1118Q1108 1042 1079.5 1089.5Q1051 1137 1008.5 1170.5Q966 1204 911.0 1221.5Q856 1239 792 1239Q676 1239 588.5 1181.0Q501 1123 452.5 1012.5Q404 902 404 744Q404 583 453.0 473.0Q502 363 589.0 307.0Q676 251 791 251Q855 251 909.5 268.5Q964 286 1007.5 319.5Q1051 353 1079.5 401.0Q1108 449 1119 510H1428Q1416 406 1366.5 311.0Q1317 216 1235.0 141.0Q1153 66 1040.0 23.0Q927 -20 786 -20Z" transform="translate(161.070 68.916) scale(0.025391 -0.025391)"/>
+      <path d="M440 -22Q334 -22 249.5 15.5Q165 53 116.5 127.5Q68 202 68 313Q68 406 102.5 469.0Q137 532 196.5 570.0Q256 608 331.5 628.0Q407 648 490 656Q587 666 646.5 674.5Q706 683 733.5 701.5Q761 720 761 756V761Q761 809 741.0 842.0Q721 875 681.5 892.5Q642 910 586 910Q528 910 485.0 892.5Q442 875 415.0 846.0Q388 817 375 781L100 826Q129 924 196.0 992.0Q263 1060 362.5 1096.0Q462 1132 587 1132Q677 1132 762.0 1110.5Q847 1089 914.5 1044.0Q982 999 1021.5 926.5Q1061 854 1061 753V0H777V155H767Q740 103 695.0 63.5Q650 24 586.5 1.0Q523 -22 440 -22ZM525 189Q596 189 649.5 217.0Q703 245 733.0 293.0Q763 341 763 400V521Q750 511 723.0 503.0Q696 495 663.0 489.0Q630 483 598.0 478.0Q566 473 541 470Q486 462 444.0 444.0Q402 426 379.0 396.5Q356 367 356 321Q356 278 378.0 248.5Q400 219 438.0 204.0Q476 189 525 189Z" transform="translate(198.757 68.916) scale(0.025391 -0.025391)"/>
+      <path d="M428 1490V0H128V1490Z" transform="translate(228.166 68.916) scale(0.025391 -0.025391)"/>
+      <path d="M628 -22Q459 -22 336.5 50.5Q214 123 147.5 252.5Q81 382 81 554Q81 728 147.5 857.5Q214 987 336.5 1059.5Q459 1132 628 1132Q727 1132 811.0 1106.0Q895 1080 960.0 1032.0Q1025 984 1067.0 915.0Q1109 846 1125 760L846 708Q837 752 818.0 786.5Q799 821 772.0 845.5Q745 870 709.5 883.0Q674 896 631 896Q551 896 496.5 853.0Q442 810 414.5 733.0Q387 656 387 555Q387 456 414.5 379.0Q442 302 496.5 258.0Q551 214 631 214Q674 214 710.0 227.5Q746 241 774.0 266.5Q802 292 821.0 328.0Q840 364 848 409L1127 358Q1111 269 1069.0 199.5Q1027 130 962.0 80.0Q897 30 812.5 4.0Q728 -22 628 -22Z" transform="translate(241.478 68.916) scale(0.025391 -0.025391)"/>
+      <path d="M513 -14Q397 -14 310.0 36.5Q223 87 175.5 181.5Q128 276 128 407V1118H428V459Q428 355 482.0 296.0Q536 237 630 237Q694 237 743.0 264.5Q792 292 819.5 344.5Q847 397 847 471V1118H1148V0H864L860 279H877Q833 138 742.5 62.0Q652 -14 513 -14Z" transform="translate(271.294 68.916) scale(0.025391 -0.025391)"/>
+      <path d="M428 1490V0H128V1490Z" transform="translate(302.887 68.916) scale(0.025391 -0.025391)"/>
+      <path d="M440 -22Q334 -22 249.5 15.5Q165 53 116.5 127.5Q68 202 68 313Q68 406 102.5 469.0Q137 532 196.5 570.0Q256 608 331.5 628.0Q407 648 490 656Q587 666 646.5 674.5Q706 683 733.5 701.5Q761 720 761 756V761Q761 809 741.0 842.0Q721 875 681.5 892.5Q642 910 586 910Q528 910 485.0 892.5Q442 875 415.0 846.0Q388 817 375 781L100 826Q129 924 196.0 992.0Q263 1060 362.5 1096.0Q462 1132 587 1132Q677 1132 762.0 1110.5Q847 1089 914.5 1044.0Q982 999 1021.5 926.5Q1061 854 1061 753V0H777V155H767Q740 103 695.0 63.5Q650 24 586.5 1.0Q523 -22 440 -22ZM525 189Q596 189 649.5 217.0Q703 245 733.0 293.0Q763 341 763 400V521Q750 511 723.0 503.0Q696 495 663.0 489.0Q630 483 598.0 478.0Q566 473 541 470Q486 462 444.0 444.0Q402 426 379.0 396.5Q356 367 356 321Q356 278 378.0 248.5Q400 219 438.0 204.0Q476 189 525 189Z" transform="translate(316.199 68.916) scale(0.025391 -0.025391)"/>
+      <path d="M683 1118V889H20V1118ZM174 1384H474V327Q474 274 497.5 248.5Q521 223 576 223Q593 223 624.0 227.5Q655 232 671 236L714 11Q664 -4 614.5 -10.0Q565 -16 520 -16Q352 -16 263.0 66.0Q174 148 174 301Z" transform="translate(345.608 68.916) scale(0.025391 -0.025391)"/>
+      <path d="M628 -22Q460 -22 337.0 50.5Q214 123 147.5 252.5Q81 382 81 554Q81 728 147.5 857.5Q214 987 337.0 1059.5Q460 1132 628 1132Q797 1132 919.5 1059.5Q1042 987 1108.5 857.5Q1175 728 1175 554Q1175 382 1108.5 252.5Q1042 123 919.5 50.5Q797 -22 628 -22ZM628 214Q708 214 762.0 258.5Q816 303 843.0 380.5Q870 458 870 555Q870 654 843.0 731.0Q816 808 762.0 852.0Q708 896 628 896Q548 896 494.5 852.0Q441 808 414.0 731.0Q387 654 387 555Q387 458 414.0 380.5Q441 303 494.5 258.5Q548 214 628 214Z" transform="translate(363.363 68.916) scale(0.025391 -0.025391)"/>
+      <path d="M128 0V1118H418V923H430Q461 1027 533.5 1080.0Q606 1133 700 1133Q723 1133 750.0 1130.5Q777 1128 797 1123V855Q777 862 739.0 866.0Q701 870 667 870Q599 870 544.0 840.5Q489 811 458.5 758.5Q428 706 428 636V0Z" transform="translate(394.474 68.916) scale(0.025391 -0.025391)"/>
+  </g>
+</svg>
+    </a>
+    <nav class="main-nav" aria-label="Main">
+      <a href="../">Grade Calculator</a>
+      <a href="../final-grade-calculator/">Final Grade</a>
+      <a href="../semester-grade-calculator/">Semester Grade</a>
+      <a href="./" class="active" aria-current="page">GPA Calculator</a>
+      <a href="../?mode=weighted#calculator">Weighted Grade</a>
+      <a href="../#how-to">Guides</a>
+    </nav>
+    <a class="btn header-cta" href="#calculator">Start Calculating</a>
+    <button class="menu-btn" id="menu-btn" type="button" aria-expanded="false" aria-controls="drawer" aria-label="Open menu">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+    </button>
+  </div>
+  <div class="drawer" id="drawer">
+    <div class="container">
+      <nav aria-label="Mobile">
+        <a href="../">Grade Calculator</a>
+        <a href="../final-grade-calculator/">Final Grade</a>
+        <a href="../semester-grade-calculator/">Semester Grade</a>
+        <a href="./" class="active">GPA Calculator</a>
+        <a href="../?mode=weighted#calculator">Weighted Grade</a>
+        <a href="../#how-to">Guides</a>
+      </nav>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+  <!-- ================= Hero + calculator ================= -->
+  <section class="hero" aria-labelledby="page-title">
+    <div class="container">
+      <nav class="crumbs" aria-label="Breadcrumb">
+        <ol>
+          <li><a href="../">Home</a></li>
+          <li><span aria-current="page">GPA Calculator</span></li>
+        </ol>
+      </nav>
+      <div class="hero-grid">
+        <div class="hero-copy">
+          <p class="badge"><span class="dot" aria-hidden="true"></span>100% Free. No Sign Up Required</p>
+          <h1 id="page-title">GPA Calculator: Calculate Your Grade Point Average</h1>
+          <p class="hero-intro">Use this GPA Calculator to calculate your grade point average from course grades and credit hours. Enter each course, choose the grade you earned, and add the credits assigned to that course. The calculator combines the grade points and credits to estimate your GPA.</p>
+          <ul class="tick-list">
+            <li><span class="tick" aria-hidden="true"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5 9.5 18 20 6.5"/></svg></span><div>Credit-weighted <span>— grade points multiplied by course credits</span></div></li>
+            <li><span class="tick" aria-hidden="true"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5 9.5 18 20 6.5"/></svg></span><div>Cumulative GPA <span>— combine past terms with a new semester</span></div></li>
+            <li><span class="tick" aria-hidden="true"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5 9.5 18 20 6.5"/></svg></span><div>4.0 scale <span>— the common US reference, with plus and minus grades</span></div></li>
+          </ul>
+        </div>
+
+        <div class="mini-card" id="calculator" style="scroll-margin-top:calc(var(--header-h) + var(--toc-h) + 16px)">
+          <h3>GPA calculator</h3>
+          <p class="calc-sub">Add your courses — or estimate a cumulative GPA across terms.</p>
+          <div class="tabs" role="tablist" aria-label="Calculator mode">
+            <button type="button" role="tab" id="tab-gpa" aria-selected="true" aria-controls="panel-gpa" data-widget="gpa">GPA calculator</button>
+            <button type="button" role="tab" id="tab-cum" aria-selected="false" aria-controls="panel-cum" data-widget="cum" tabindex="-1">Cumulative GPA</button>
+          </div>
+          <div id="panel-gpa" role="tabpanel" aria-labelledby="tab-gpa">
+            <div class="gpa-rows" id="gpa-rows"></div>
+            <button class="btn" type="button" id="add-row" style="width:100%;margin-bottom:12px">+ Add course</button>
+            <div class="final-result ok show" id="gpa-result" aria-live="polite">
+              <div class="big" id="gpa-value">Your GPA is 3.31</div>
+              <p id="gpa-line">English 12.0 + Mathematics 9.0 + History 6.0 + Biology 16.0 = 43.0 quality points ÷ 13 credits</p>
+            </div>
+            <p class="table-note" style="margin-top:12px">Grade points use the common 4.0 scale on this page. Always check your registrar's scale for the official values.</p>
+          </div>
+          <div id="panel-cum" role="tabpanel" aria-labelledby="tab-cum" hidden>
+            <form id="cum-form" novalidate>
+              <div class="field">
+                <label for="cum-prev-gpa">Previous GPA</label>
+                <input type="number" id="cum-prev-gpa" inputmode="decimal" min="0" max="5" step="any" value="3.20" aria-describedby="cum-prev-gpa-error">
+                <p class="field-error" id="cum-prev-gpa-error">Enter a GPA between 0 and 5.</p>
+              </div>
+              <div class="field">
+                <label for="cum-prev-credits">Previous credits</label>
+                <input type="number" id="cum-prev-credits" inputmode="decimal" min="0" max="999" step="any" value="30" aria-describedby="cum-prev-credits-error">
+                <p class="field-error" id="cum-prev-credits-error">Enter credits between 0 and 999.</p>
+              </div>
+              <div class="field">
+                <label for="cum-new-gpa">New semester GPA</label>
+                <input type="number" id="cum-new-gpa" inputmode="decimal" min="0" max="5" step="any" value="3.60" aria-describedby="cum-new-gpa-error">
+                <p class="field-error" id="cum-new-gpa-error">Enter a GPA between 0 and 5.</p>
+              </div>
+              <div class="field">
+                <label for="cum-new-credits">New semester credits</label>
+                <input type="number" id="cum-new-credits" inputmode="decimal" min="0" max="999" step="any" value="15" aria-describedby="cum-new-credits-error">
+                <p class="field-error" id="cum-new-credits-error">Enter credits between 0 and 999.</p>
+              </div>
+              <button class="btn" type="submit" style="width:100%">Calculate cumulative GPA</button>
+            </form>
+            <div class="final-result ok show" id="cum-result" aria-live="polite">
+              <div class="big" id="cum-value">Your cumulative GPA would be 3.33</div>
+              <p id="cum-line">(96.0 + 54.0) quality points ÷ 45 credits = 3.33</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= Sticky "On this page" ================= -->
+  <div class="toc-bar" aria-label="On this page">
+    <nav id="toc-nav">
+      <a href="#calculator" data-spy="calculator">Calculator</a>
+      <a href="#what-is" data-spy="what-is">What is GPA</a>
+      <a href="#how-to-calc" data-spy="how-to-calc">How to calculate</a>
+      <a href="#scale" data-spy="scale">4.0 scale</a>
+      <a href="#how-to" data-spy="how-to">How to use</a>
+      <a href="#weighted" data-spy="weighted">Weighted vs unweighted</a>
+      <a href="#semester-vs-cumulative" data-spy="semester-vs-cumulative">Semester vs cumulative</a>
+      <a href="#credit-hours" data-spy="credit-hours">Credit hours</a>
+      <a href="#percentage" data-spy="percentage">Percentage conversion</a>
+      <a href="#countries" data-spy="countries">GPA by country</a>
+      <a href="#changes" data-spy="changes">What can change GPA</a>
+      <a href="#improve" data-spy="improve">Improve your GPA</a>
+      <a href="#faq" data-spy="faq">FAQ</a>
+      <a href="#references" data-spy="references">References</a>
+    </nav>
+  </div>
+
+  <!-- ================= What is ================= -->
+  <section class="section white" id="what-is" aria-labelledby="what-is-title">
+    <div class="container">
+      <div class="split">
+        <div>
+          <h2 id="what-is-title">What Is Grade Point Average (GPA)?</h2>
+          <p>Grade Point Average, commonly called GPA, is a numerical summary of academic performance. In many US colleges, each letter grade is assigned a numerical grade-point value. The value is multiplied by the course's credit hours to calculate quality points.</p>
+          <p>The quality points from included courses are added together and divided by the total credits included in the GPA calculation.</p>
+          <p>A GPA is not simply the average of course percentages. It depends on the institution's letter-grade conversion and the credit hours assigned to each course.</p>
+          <p>GPA systems differ between schools, colleges, and countries. This page explains the common credit-weighted calculation used by many US institutions. Always check your registrar's grading policy for the official grade-point values and rules.</p>
+        </div>
+        <figure>
+          <img src="data:image/webp;base64,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" alt="A school report card with letter grades and an overall GPA beside a calculator" width="1440" height="810" loading="lazy" decoding="async">
+          <figcaption>Your report card shows the grades — the calculator turns them into a GPA with your school's credit weights.</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= How to calculate ================= -->
+  <section class="section alt" id="how-to-calc" aria-labelledby="how-to-calc-title">
+    <div class="container narrow">
+      <h2 id="how-to-calc-title">How to Calculate GPA</h2>
+      <p>The common credit-weighted formula is:</p>
+      <div class="formula-card">
+        <p class="formula">GPA = Total Quality Points ÷ Total GPA Credits</p>
+      </div>
+      <p style="margin-top:24px">For each course:</p>
+      <div class="formula-card">
+        <p class="formula">Course Quality Points = Grade Point Value × Course Credits</p>
+      </div>
+      <h3 style="margin-top:32px">GPA Calculation Example</h3>
+      <p>Suppose you completed these courses:</p>
+      <div class="table-scroll" data-scroll-hint>
+        <p class="table-hint">Scroll sideways to see the full table →</p>
+        <table class="data">
+          <thead><tr><th>Course</th><th>Letter grade</th><th class="num">Grade points</th><th class="num">Credits</th><th class="num">Quality points</th></tr></thead>
+          <tbody>
+            <tr><td>English</td><td><span class="letter-pill pill-a">A</span></td><td class="num">4.0</td><td class="num">3</td><td class="num">12.0</td></tr>
+            <tr><td>Mathematics</td><td><span class="letter-pill pill-b">B</span></td><td class="num">3.0</td><td class="num">3</td><td class="num">9.0</td></tr>
+            <tr><td>History</td><td><span class="letter-pill pill-c">C</span></td><td class="num">2.0</td><td class="num">3</td><td class="num">6.0</td></tr>
+            <tr><td>Biology</td><td><span class="letter-pill pill-a">A</span></td><td class="num">4.0</td><td class="num">4</td><td class="num">16.0</td></tr>
+            <tr><td><strong>Total</strong></td><td></td><td class="num"></td><td class="num"><strong>13</strong></td><td class="num"><strong>43.0</strong></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p style="margin-top:24px">Calculate GPA:</p>
+      <div class="steps">
+        <div class="step"><span>43.0 ÷ 13</span><span class="arrow">→</span><span>3.3077…</span></div>
+        <div class="step result-step"><span>= 3.31 — your GPA on the example 4.0 scale</span></div>
+      </div>
+      <p class="table-note">The grade-point values in this example are illustrative. Your institution may use plus/minus grades, a different scale, or different rules for courses that count toward GPA.</p>
+    </div>
+  </section>
+
+  <!-- ================= 4.0 scale reference ================= -->
+  <section class="section white" id="scale" aria-labelledby="scale-title">
+    <div class="container narrow">
+      <h2 id="scale-title">Common 4.0 GPA Scale Reference</h2>
+      <p>The following is a common US-style reference for institutions that use a 4.0 scale with plus and minus grades. It is not a universal conversion table.</p>
+      <div class="table-scroll" data-scroll-hint>
+        <p class="table-hint">Scroll sideways to see the full table →</p>
+        <table class="data">
+          <thead><tr><th>Letter grade</th><th class="num">Example grade points</th></tr></thead>
+          <tbody>
+            <tr><td><span class="letter-pill pill-a">A</span></td><td class="num">4.0</td></tr>
+            <tr><td><span class="letter-pill pill-a">A−</span></td><td class="num">3.7</td></tr>
+            <tr><td><span class="letter-pill pill-b">B+</span></td><td class="num">3.3</td></tr>
+            <tr><td><span class="letter-pill pill-b">B</span></td><td class="num">3.0</td></tr>
+            <tr><td><span class="letter-pill pill-b">B−</span></td><td class="num">2.7</td></tr>
+            <tr><td><span class="letter-pill pill-c">C+</span></td><td class="num">2.3</td></tr>
+            <tr><td><span class="letter-pill pill-c">C</span></td><td class="num">2.0</td></tr>
+            <tr><td><span class="letter-pill pill-c">C−</span></td><td class="num">1.7</td></tr>
+            <tr><td><span class="letter-pill pill-d">D+</span></td><td class="num">1.3</td></tr>
+            <tr><td><span class="letter-pill pill-d">D</span></td><td class="num">1.0</td></tr>
+            <tr><td><span class="letter-pill pill-d">D−</span></td><td class="num">0.7</td></tr>
+            <tr><td><span class="letter-pill pill-f">F</span></td><td class="num">0.0</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="table-note">Some institutions assign A+ a value of 4.0, while others use 4.3. Some do not use plus/minus grades at all. Arizona State University, for example, publishes a scale with A+ at 4.33 but caps cumulative GPA at 4.00. This is why you should use your own registrar's scale rather than treating a general table as official.</p>
+    </div>
+  </section>
+
+  <!-- ================= How to use ================= -->
+  <section class="section alt" id="how-to" aria-labelledby="how-to-title">
+    <div class="container">
+      <h2 id="how-to-title">How to Use the GPA Calculator</h2>
+      <div class="step-cards">
+        <article class="step-card">
+          <span class="step-num" aria-hidden="true">1</span>
+          <h3>Enter Your Course</h3>
+          <p>Add each course included in your GPA calculation. Use the course name to keep your entries organized.</p>
+        </article>
+        <article class="step-card">
+          <span class="step-num" aria-hidden="true">2</span>
+          <h3>Select Your Grade</h3>
+          <p>Choose the letter grade you received. If your institution provides a grade-point value directly, use that value if the calculator supports it.</p>
+          <p>If you only have a percentage, first check the institution's percentage-to-letter-grade scale. A percentage does not have one universal GPA equivalent.</p>
+        </article>
+        <article class="step-card">
+          <span class="step-num" aria-hidden="true">3</span>
+          <h3>Enter Credit Hours</h3>
+          <p>Enter the credits or units assigned to the course. A course with more credits has more influence on a credit-weighted GPA than a course with fewer credits.</p>
+        </article>
+        <article class="step-card">
+          <span class="step-num" aria-hidden="true">4</span>
+          <h3>Calculate Your GPA</h3>
+          <p>The calculator multiplies each grade-point value by its course credits, adds the quality points, and divides by the total included credits.</p>
+          <p>Review your institution's rules for pass/fail courses, withdrawals, incomplete grades, repeated courses, and transfer credits. These may be treated differently.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= Weighted vs unweighted ================= -->
+  <section class="section white" id="weighted" aria-labelledby="weighted-title">
+    <div class="container narrow">
+      <h2 id="weighted-title">Weighted GPA vs. Unweighted GPA</h2>
+      <p>An unweighted GPA uses the standard grade-point values assigned by the school without adding extra points for course difficulty.</p>
+      <p>A weighted GPA may give additional grade points for approved advanced courses, such as honors, Advanced Placement, International Baccalaureate, or dual-enrollment classes. The extra weighting is determined by the school or district.</p>
+      <div class="table-scroll" data-scroll-hint>
+        <p class="table-hint">Scroll sideways to see the full table →</p>
+        <table class="data">
+          <thead><tr><th>Feature</th><th>Unweighted GPA</th><th>Weighted GPA</th></tr></thead>
+          <tbody>
+            <tr><td>Standard grade points</td><td>Uses the school's standard scale</td><td>Uses standard points plus approved weighting</td></tr>
+            <tr><td>Advanced courses</td><td>Usually no additional points</td><td>May receive additional points</td></tr>
+            <tr><td>Maximum GPA</td><td>Often 4.0, depending on scale</td><td>May exceed 4.0</td></tr>
+            <tr><td>Policy</td><td>Set by school or institution</td><td>Set by school or district</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="table-note">Do not assume every honors or AP course receives the same bonus. Check the school's published weighting policy.</p>
+    </div>
+  </section>
+
+  <!-- ================= Semester vs cumulative ================= -->
+  <section class="section alt" id="semester-vs-cumulative" aria-labelledby="semester-vs-cumulative-title">
+    <div class="container">
+      <h2 id="semester-vs-cumulative-title">Semester GPA vs. Cumulative GPA</h2>
+      <div class="duo">
+        <article class="duo-card">
+          <h3>Semester GPA</h3>
+          <p>Semester GPA measures the grade-point average for courses included in one semester. It is calculated using the grade points and credits from that semester.</p>
+        </article>
+        <article class="duo-card">
+          <h3>Cumulative GPA</h3>
+          <p>Cumulative GPA combines eligible coursework across multiple terms. It is not usually calculated by taking a simple average of semester GPA figures when the semesters contain different numbers of credits.</p>
+        </article>
+      </div>
+      <div class="narrow" style="margin-top:32px">
+        <p>A useful formula is:</p>
+        <div class="formula-card">
+          <p class="formula">Cumulative GPA = Total Quality Points Across Terms ÷ Total Included Credits Across Terms</p>
+        </div>
+        <p style="margin-top:24px">Example:</p>
+        <ul>
+          <li>Previous GPA: 3.20 across 30 credits</li>
+          <li>New semester GPA: 3.60 across 15 credits</li>
+        </ul>
+        <div class="steps">
+          <div class="step"><span>Previous quality points: 3.20 × 30 = 96</span></div>
+          <div class="step"><span>New semester quality points: 3.60 × 15 = 54</span></div>
+          <div class="step"><span>Combined GPA: (96 + 54) ÷ (30 + 15) = 150 ÷ 45</span></div>
+          <div class="step result-step"><span>= 3.33 — the cumulative GPA, approximately</span></div>
+        </div>
+        <p class="table-note">You can try this with your own numbers in the "Cumulative GPA" mode of the calculator at the top of this page.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= Credit hours ================= -->
+  <section class="section white" id="credit-hours" aria-labelledby="credit-hours-title">
+    <div class="container narrow">
+      <h2 id="credit-hours-title">How Credit Hours Affect Your GPA</h2>
+      <p>Credit hours determine how strongly each course affects your GPA. A four-credit course has twice the credit weight of a two-credit course.</p>
+      <p>For example, consider two courses:</p>
+      <div class="table-scroll" data-scroll-hint>
+        <p class="table-hint">Scroll sideways to see the full table →</p>
+        <table class="data">
+          <thead><tr><th>Course</th><th class="num">Grade points</th><th class="num">Credits</th><th class="num">Quality points</th></tr></thead>
+          <tbody>
+            <tr><td>Course A</td><td class="num">4.0</td><td class="num">4</td><td class="num">16</td></tr>
+            <tr><td>Course B</td><td class="num">2.0</td><td class="num">2</td><td class="num">4</td></tr>
+            <tr><td><strong>Total</strong></td><td class="num"></td><td class="num"><strong>6</strong></td><td class="num"><strong>20</strong></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="steps" style="margin-top:24px">
+        <div class="step"><span>20 ÷ 6</span><span class="arrow">→</span><span>3.333…</span></div>
+        <div class="step result-step"><span>= 3.33 GPA</span></div>
+      </div>
+      <p class="table-note">A simple average of 4.0 and 2.0 would be 3.0, but the credit-weighted GPA is 3.33 because the A is attached to a course with more credits.</p>
+    </div>
+  </section>
+
+  <!-- ================= Percentage conversion ================= -->
+  <section class="section alt" id="percentage" aria-labelledby="percentage-title">
+    <div class="container narrow">
+      <h2 id="percentage-title">Can You Convert a Percentage Directly to GPA?</h2>
+      <p>There is no single official percentage-to-GPA conversion that applies to every institution. A percentage is first interpreted using the school's grading scale. The corresponding letter grade is then assigned its grade-point value under that institution's rules.</p>
+      <p>For example, the same percentage may map to different letter grades at different universities. A calculator that converts every percentage directly to one universal GPA value can therefore produce a result that does not match your transcript.</p>
+      <p>Use your institution's official grading chart. If you need to calculate your course percentage before converting it, use the <a href="../">Grade Calculator</a>.</p>
+    </div>
+  </section>
+
+  <!-- ================= GPA by country ================= -->
+  <section class="section white" id="countries" aria-labelledby="countries-title">
+    <div class="container">
+      <h2 id="countries-title">GPA in the United States, United Kingdom, Canada, and Australia</h2>
+      <div class="duo">
+        <article class="duo-card">
+          <h3>United States</h3>
+          <p>Many US colleges use a 4.0 GPA scale, but grade-point values, plus/minus rules, repeat policies, and exclusions vary. Some high schools also calculate weighted GPA for advanced courses.</p>
+        </article>
+        <article class="duo-card">
+          <h3>United Kingdom</h3>
+          <p>UK universities commonly report undergraduate achievement through degree classifications rather than a US-style 4.0 GPA. A direct conversion should not be assumed. Use the university's official transcript or conversion guidance when an application requests a GPA equivalent.</p>
+        </article>
+        <article class="duo-card">
+          <h3>Canada</h3>
+          <p>Canadian universities use institution-specific grading systems. Some report letter grades and grade points, while others emphasize percentages or different GPA scales. Use the conversion rules published by the university.</p>
+        </article>
+        <article class="duo-card">
+          <h3>Australia</h3>
+          <p>Australian universities commonly use grades such as High Distinction, Distinction, Credit, Pass, and Fail. These results should not be converted to a US 4.0 GPA using a generic chart unless the receiving institution provides or accepts that conversion.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= What can change GPA ================= -->
+  <section class="section alt" id="changes" aria-labelledby="changes-title">
+    <div class="container narrow">
+      <h2 id="changes-title">What Can Change an Official GPA?</h2>
+      <p>A calculator can estimate GPA from the grades and credits entered, but the official transcript may apply additional rules.</p>
+      <ul class="tips-grid">
+        <li><span class="tick" aria-hidden="true"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5 9.5 18 20 6.5"/></svg></span><div><strong>Pass/fail courses:</strong> Some pass grades do not contribute to GPA, while failing grades may be treated differently.</div></li>
+        <li><span class="tick" aria-hidden="true"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5 9.5 18 20 6.5"/></svg></span><div><strong>Withdrawals:</strong> A withdrawal may be excluded, but a withdrawal-failing grade may count.</div></li>
+        <li><span class="tick" aria-hidden="true"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5 9.5 18 20 6.5"/></svg></span><div><strong>Incomplete grades:</strong> Treatment depends on institutional policy and whether the grade is later completed.</div></li>
+        <li><span class="tick" aria-hidden="true"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5 9.5 18 20 6.5"/></svg></span><div><strong>Repeated courses:</strong> Some institutions replace an earlier grade; others include both attempts or apply limits.</div></li>
+        <li><span class="tick" aria-hidden="true"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5 9.5 18 20 6.5"/></svg></span><div><strong>Transfer credits:</strong> Transfer courses may count toward degree credit without being included in the institution's GPA.</div></li>
+        <li><span class="tick" aria-hidden="true"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5 9.5 18 20 6.5"/></svg></span><div><strong>Advanced-course weighting:</strong> High schools may add points for approved advanced courses.</div></li>
+        <li><span class="tick" aria-hidden="true"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5 9.5 18 20 6.5"/></svg></span><div><strong>Rounding:</strong> Institutions determine how many decimal places appear on official records.</div></li>
+      </ul>
+      <p class="table-note">For example, the University of Massachusetts Amherst explains which grade symbols are included in its GPA calculation, while Arizona State University publishes its own grade-point values and calculation method. These policies are institution-specific.</p>
+    </div>
+  </section>
+
+  <!-- ================= Improve your GPA ================= -->
+  <section class="section white" id="improve" aria-labelledby="improve-title">
+    <div class="container narrow">
+      <h2 id="improve-title">How to Improve Your GPA</h2>
+      <p>If you want to understand how future grades may affect your GPA, start by checking your current GPA and the credits it represents.</p>
+      <p>You can estimate a future cumulative GPA by combining your existing quality points with the quality points you expect to earn in upcoming courses. Remember that a large number of completed credits makes the cumulative result less responsive to one new term.</p>
+      <p>For a course-level result before it is converted into grade points, use the <a href="../">Grade Calculator</a>. If you want to find the score needed on a final exam, use the <a href="../final-grade-calculator/">Final Grade Calculator</a>. For a school-style term calculation based on grading periods, use the <a href="../semester-grade-calculator/">Semester Grade Calculator</a>.</p>
+    </div>
+  </section>
+
+  <!-- ================= FAQ ================= -->
+  <section class="section alt" id="faq" aria-labelledby="faq-title">
+    <div class="container narrow">
+      <h2 id="faq-title">Frequently Asked Questions</h2>
+      <div class="faq-list">
+        <div class="faq-item open">
+          <button class="faq-q" type="button" aria-expanded="true" aria-controls="fq1" id="fq1-btn">What is a 4.0 GPA?</button>
+          <div class="faq-a" id="fq1" role="region" aria-labelledby="fq1-btn">
+            <p>A 4.0 GPA is the maximum on many standard US GPA scales, where an A is commonly assigned 4.0 grade points. Some institutions use an A+ value above 4.0 or apply other scale rules, so the maximum is not universal.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" type="button" aria-expanded="false" aria-controls="fq2" id="fq2-btn">How do I calculate my GPA?</button>
+          <div class="faq-a" id="fq2" role="region" aria-labelledby="fq2-btn">
+            <p>Convert each course grade into the grade-point value used by your institution. Multiply each value by the course credits, add the quality points, and divide by the total credits included in the GPA calculation.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" type="button" aria-expanded="false" aria-controls="fq3" id="fq3-btn">Is GPA calculated by averaging percentages?</button>
+          <div class="faq-a" id="fq3" role="region" aria-labelledby="fq3-btn">
+            <p>Not usually. Many GPA systems convert course results into grade points and weight those points by credit hours. The percentage-to-letter conversion is determined by the institution.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" type="button" aria-expanded="false" aria-controls="fq4" id="fq4-btn">What is the difference between weighted and unweighted GPA?</button>
+          <div class="faq-a" id="fq4" role="region" aria-labelledby="fq4-btn">
+            <p>An unweighted GPA uses standard grade points. A weighted GPA may add points for courses that the school identifies as more advanced or academically demanding. The weighting policy varies by school.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" type="button" aria-expanded="false" aria-controls="fq5" id="fq5-btn">How do I calculate cumulative GPA?</button>
+          <div class="faq-a" id="fq5" role="region" aria-labelledby="fq5-btn">
+            <p>Multiply your previous GPA by the credits it represents to estimate previous quality points. Add the quality points from the new term, then divide by all included credits. Use official transcript totals when available.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" type="button" aria-expanded="false" aria-controls="fq6" id="fq6-btn">Does a failed class affect GPA?</button>
+          <div class="faq-a" id="fq6" role="region" aria-labelledby="fq6-btn">
+            <p>It may. At many institutions, an F contributes zero grade points but the course credits remain in the GPA denominator. Policies for repeats, withdrawals, and pass/fail courses vary, so check your registrar's rules.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" type="button" aria-expanded="false" aria-controls="fq7" id="fq7-btn">Do credit hours affect GPA?</button>
+          <div class="faq-a" id="fq7" role="region" aria-labelledby="fq7-btn">
+            <p>Yes. In a credit-weighted GPA, a course with more credits contributes more quality points and has more influence on the result than a course with fewer credits.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" type="button" aria-expanded="false" aria-controls="fq8" id="fq8-btn">Can I convert my UK degree classification to a 4.0 GPA?</button>
+          <div class="faq-a" id="fq8" role="region" aria-labelledby="fq8-btn">
+            <p>There is no universal conversion accepted by every university or evaluator. Use the conversion guidance provided by the institution or organization requesting the GPA.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" type="button" aria-expanded="false" aria-controls="fq9" id="fq9-btn">Is semester GPA the same as cumulative GPA?</button>
+          <div class="faq-a" id="fq9" role="region" aria-labelledby="fq9-btn">
+            <p>No. Semester GPA covers eligible courses in one term. Cumulative GPA combines eligible courses across multiple terms, using the institution's rules and the credits associated with each course.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= Official references ================= -->
+  <section class="section white" id="references" aria-labelledby="references-title">
+    <div class="container">
+      <h2 id="references-title">Official and Primary GPA References</h2>
+      <div class="ref-grid">
+        <a class="ref-card" href="https://registrar.asu.edu/grades" target="_blank" rel="noopener"><span class="ref-uni">Arizona State University</span><span class="ref-desc">Grades and grading policies</span><span class="ref-link">Visit registrar.asu.edu <span aria-hidden="true">↗</span></span></a>
+        <a class="ref-card" href="https://www.umass.edu/senate/book/export/html/25" target="_blank" rel="noopener"><span class="ref-uni">University of Massachusetts Amherst</span><span class="ref-desc">Grading system and GPA calculation</span><span class="ref-link">Visit umass.edu <span aria-hidden="true">↗</span></span></a>
+        <a class="ref-card" href="https://case.edu/registrar/grading-transcripts/understanding-grading" target="_blank" rel="noopener"><span class="ref-uni">Case Western Reserve University</span><span class="ref-desc">Understanding grading and GPA calculation</span><span class="ref-link">Visit case.edu <span aria-hidden="true">↗</span></span></a>
+        <a class="ref-card" href="https://registrar.arizona.edu/records-enrollment/enrollment/grades/grades-and-grade-point-average-gpa-calculation" target="_blank" rel="noopener"><span class="ref-uni">University of Arizona</span><span class="ref-desc">Grades and GPA calculation</span><span class="ref-link">Visit registrar.arizona.edu <span aria-hidden="true">↗</span></span></a>
+        <a class="ref-card" href="https://www.wm.edu/offices/studentsuccess/academic-wellbeing/resources/gradecalculation/" target="_blank" rel="noopener"><span class="ref-uni">William &amp; Mary</span><span class="ref-desc">Grade calculation and GPA</span><span class="ref-link">Visit wm.edu <span aria-hidden="true">↗</span></span></a>
+        <a class="ref-card" href="https://www.anu.edu.au/students/program-administration/assessments-exams/grading-scale" target="_blank" rel="noopener"><span class="ref-uni">Australian National University</span><span class="ref-desc">Grading scale</span><span class="ref-link">Visit anu.edu.au <span aria-hidden="true">↗</span></span></a>
+      </div>
+      <p class="table-note">External links open in a new tab. They lead to official university pages describing grading policies and grade calculation.</p>
+    </div>
+  </section>
+
+  <!-- ================= Closing CTA ================= -->
+  <section class="cta-band">
+    <div class="container">
+      <h2>Ready to check your GPA?</h2>
+      <p>Enter your courses, grades and credits — get your GPA in seconds.</p>
+      <a class="btn btn-light" href="#calculator">Open the calculator</a>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a class="logo-link" href="../" aria-label="Grade Calculator — home"><svg xmlns="http://www.w3.org/2000/svg" width="216" height="40" viewBox="0 0 542 100" role="img" aria-label="Grade Calculator logo">
+  <title>Grade Calculator</title>
+  <path d="M26,2 H74 A24,24 0 0 1 98,26 V74 A24,24 0 0 1 74,98 H26 A24,24 0 0 1 2,74 V26 A24,24 0 0 1 26,2 Z M24.5,56 H32.5 A3.5,3.5 0 0 1 36,59.5 V74.5 A3.5,3.5 0 0 1 32.5,78 H24.5 A3.5,3.5 0 0 1 21,74.5 V59.5 A3.5,3.5 0 0 1 24.5,56 Z M46.0,44 H54.0 A3.5,3.5 0 0 1 57.5,47.5 V74.5 A3.5,3.5 0 0 1 54.0,78 H46.0 A3.5,3.5 0 0 1 42.5,74.5 V47.5 A3.5,3.5 0 0 1 46.0,44 Z M67.5,32 H75.5 A3.5,3.5 0 0 1 79,35.5 V74.5 A3.5,3.5 0 0 1 75.5,78 H67.5 A3.5,3.5 0 0 1 64,74.5 V35.5 A3.5,3.5 0 0 1 67.5,32 Z M69.37,29.30 L69.86,29.77 L70.44,30.13 L71.07,30.37 L71.74,30.49 L72.42,30.48 L73.08,30.33 L73.70,30.06 L74.26,29.67 L74.73,29.19 L86.73,14.19 L87.11,13.61 L87.36,12.97 L87.49,12.30 L87.48,11.61 L87.34,10.94 L87.07,10.31 L86.68,9.75 L86.19,9.27 L85.61,8.89 L84.97,8.64 L84.30,8.51 L83.61,8.52 L82.94,8.66 L82.31,8.93 L81.75,9.32 L81.27,9.81 L71.88,21.55 L67.63,16.70 L67.13,16.23 L66.55,15.86 L65.91,15.62 L65.23,15.51 L64.55,15.53 L63.88,15.68 L63.25,15.97 L62.70,16.37 L62.23,16.87 L61.86,17.45 L61.62,18.09 L61.51,18.77 L61.53,19.45 L61.68,20.12 L61.97,20.75 L62.37,21.30 L69.37,29.30 Z" fill="#FFFFFF" fill-rule="evenodd"/>
+  <g fill="#FFFFFF" transform="translate(126 0)">
+      <path d="M795 -20Q586 -20 428.5 72.5Q271 165 182.5 336.5Q94 508 94 743Q94 985 186.0 1156.5Q278 1328 435.0 1419.0Q592 1510 788 1510Q914 1510 1022.5 1473.5Q1131 1437 1215.5 1370.0Q1300 1303 1353.5 1211.5Q1407 1120 1423 1009H1113Q1097 1063 1068.5 1105.5Q1040 1148 999.5 1178.0Q959 1208 907.0 1223.5Q855 1239 793 1239Q678 1239 590.0 1181.5Q502 1124 453.0 1014.0Q404 904 404 746Q404 588 452.5 477.5Q501 367 589.0 309.0Q677 251 797 251Q905 251 982.0 290.0Q1059 329 1100.5 401.5Q1142 474 1142 571L1206 562H818V794H1438V608Q1438 412 1355.0 271.5Q1272 131 1127.0 55.5Q982 -20 795 -20Z" transform="translate(0.000 68.916) scale(0.025391 -0.025391)"/>
+      <path d="M128 0V1118H418V923H430Q461 1027 533.5 1080.0Q606 1133 700 1133Q723 1133 750.0 1130.5Q777 1128 797 1123V855Q777 862 739.0 866.0Q701 870 667 870Q599 870 544.0 840.5Q489 811 458.5 758.5Q428 706 428 636V0Z" transform="translate(38.245 68.916) scale(0.025391 -0.025391)"/>
+      <path d="M440 -22Q334 -22 249.5 15.5Q165 53 116.5 127.5Q68 202 68 313Q68 406 102.5 469.0Q137 532 196.5 570.0Q256 608 331.5 628.0Q407 648 490 656Q587 666 646.5 674.5Q706 683 733.5 701.5Q761 720 761 756V761Q761 809 741.0 842.0Q721 875 681.5 892.5Q642 910 586 910Q528 910 485.0 892.5Q442 875 415.0 846.0Q388 817 375 781L100 826Q129 924 196.0 992.0Q263 1060 362.5 1096.0Q462 1132 587 1132Q677 1132 762.0 1110.5Q847 1089 914.5 1044.0Q982 999 1021.5 926.5Q1061 854 1061 753V0H777V155H767Q740 103 695.0 63.5Q650 24 586.5 1.0Q523 -22 440 -22ZM525 189Q596 189 649.5 217.0Q703 245 733.0 293.0Q763 341 763 400V521Q750 511 723.0 503.0Q696 495 663.0 489.0Q630 483 598.0 478.0Q566 473 541 470Q486 462 444.0 444.0Q402 426 379.0 396.5Q356 367 356 321Q356 278 378.0 248.5Q400 219 438.0 204.0Q476 189 525 189Z" transform="translate(57.930 68.916) scale(0.025391 -0.025391)"/>
+      <path d="M536 -19Q408 -19 304.5 47.5Q201 114 141.0 242.5Q81 371 81 557Q81 748 143.0 876.0Q205 1004 308.0 1068.0Q411 1132 535 1132Q630 1132 693.0 1100.0Q756 1068 795.0 1021.0Q834 974 853 930H863V1490H1163V0H868V179H853Q833 134 793.5 88.5Q754 43 691.0 12.0Q628 -19 536 -19ZM629 222Q705 222 759.0 264.0Q813 306 841.0 381.5Q869 457 869 558Q869 660 841.5 734.5Q814 809 760.0 850.5Q706 892 629 892Q550 892 496.5 849.0Q443 806 416.0 731.0Q389 656 389 558Q389 460 416.5 384.0Q444 308 497.5 265.0Q551 222 629 222Z" transform="translate(87.340 68.916) scale(0.025391 -0.025391)"/>
+      <path d="M633 -22Q462 -22 338.0 48.0Q214 118 147.5 247.0Q81 376 81 553Q81 726 147.0 856.0Q213 986 334.0 1059.0Q455 1132 618 1132Q728 1132 823.0 1097.0Q918 1062 990.0 991.5Q1062 921 1102.5 815.0Q1143 709 1143 565V481H204V669H996L856 619Q856 706 829.5 770.5Q803 835 750.5 870.5Q698 906 621 906Q543 906 488.5 870.0Q434 834 406.0 772.5Q378 711 378 632V499Q378 402 410.5 336.0Q443 270 501.5 237.0Q560 204 638 204Q691 204 734.0 219.0Q777 234 807.5 263.5Q838 293 854 336L1126 285Q1099 193 1032.0 123.5Q965 54 864.5 16.0Q764 -22 633 -22Z" transform="translate(119.339 68.916) scale(0.025391 -0.025391)"/>
+      <path d="M786 -20Q588 -20 431.5 70.0Q275 160 184.5 331.0Q94 502 94 744Q94 987 185.0 1158.5Q276 1330 433.0 1420.0Q590 1510 786 1510Q913 1510 1022.5 1474.5Q1132 1439 1217.0 1371.0Q1302 1303 1356.0 1204.5Q1410 1106 1427 980H1118Q1108 1042 1079.5 1089.5Q1051 1137 1008.5 1170.5Q966 1204 911.0 1221.5Q856 1239 792 1239Q676 1239 588.5 1181.0Q501 1123 452.5 1012.5Q404 902 404 744Q404 583 453.0 473.0Q502 363 589.0 307.0Q676 251 791 251Q855 251 909.5 268.5Q964 286 1007.5 319.5Q1051 353 1079.5 401.0Q1108 449 1119 510H1428Q1416 406 1366.5 311.0Q1317 216 1235.0 141.0Q1153 66 1040.0 23.0Q927 -20 786 -20Z" transform="translate(161.070 68.916) scale(0.025391 -0.025391)"/>
+      <path d="M440 -22Q334 -22 249.5 15.5Q165 53 116.5 127.5Q68 202 68 313Q68 406 102.5 469.0Q137 532 196.5 570.0Q256 608 331.5 628.0Q407 648 490 656Q587 666 646.5 674.5Q706 683 733.5 701.5Q761 720 761 756V761Q761 809 741.0 842.0Q721 875 681.5 892.5Q642 910 586 910Q528 910 485.0 892.5Q442 875 415.0 846.0Q388 817 375 781L100 826Q129 924 196.0 992.0Q263 1060 362.5 1096.0Q462 1132 587 1132Q677 1132 762.0 1110.5Q847 1089 914.5 1044.0Q982 999 1021.5 926.5Q1061 854 1061 753V0H777V155H767Q740 103 695.0 63.5Q650 24 586.5 1.0Q523 -22 440 -22ZM525 189Q596 189 649.5 217.0Q703 245 733.0 293.0Q763 341 763 400V521Q750 511 723.0 503.0Q696 495 663.0 489.0Q630 483 598.0 478.0Q566 473 541 470Q486 462 444.0 444.0Q402 426 379.0 396.5Q356 367 356 321Q356 278 378.0 248.5Q400 219 438.0 204.0Q476 189 525 189Z" transform="translate(198.757 68.916) scale(0.025391 -0.025391)"/>
+      <path d="M428 1490V0H128V1490Z" transform="translate(228.166 68.916) scale(0.025391 -0.025391)"/>
+      <path d="M628 -22Q459 -22 336.5 50.5Q214 123 147.5 252.5Q81 382 81 554Q81 728 147.5 857.5Q214 987 336.5 1059.5Q459 1132 628 1132Q727 1132 811.0 1106.0Q895 1080 960.0 1032.0Q1025 984 1067.0 915.0Q1109 846 1125 760L846 708Q837 752 818.0 786.5Q799 821 772.0 845.5Q745 870 709.5 883.0Q674 896 631 896Q551 896 496.5 853.0Q442 810 414.5 733.0Q387 656 387 555Q387 456 414.5 379.0Q442 302 496.5 258.0Q551 214 631 214Q674 214 710.0 227.5Q746 241 774.0 266.5Q802 292 821.0 328.0Q840 364 848 409L1127 358Q1111 269 1069.0 199.5Q1027 130 962.0 80.0Q897 30 812.5 4.0Q728 -22 628 -22Z" transform="translate(241.478 68.916) scale(0.025391 -0.025391)"/>
+      <path d="M513 -14Q397 -14 310.0 36.5Q223 87 175.5 181.5Q128 276 128 407V1118H428V459Q428 355 482.0 296.0Q536 237 630 237Q694 237 743.0 264.5Q792 292 819.5 344.5Q847 397 847 471V1118H1148V0H864L860 279H877Q833 138 742.5 62.0Q652 -14 513 -14Z" transform="translate(271.294 68.916) scale(0.025391 -0.025391)"/>
+      <path d="M428 1490V0H128V1490Z" transform="translate(302.887 68.916) scale(0.025391 -0.025391)"/>
+      <path d="M440 -22Q334 -22 249.5 15.5Q165 53 116.5 127.5Q68 202 68 313Q68 406 102.5 469.0Q137 532 196.5 570.0Q256 608 331.5 628.0Q407 648 490 656Q587 666 646.5 674.5Q706 683 733.5 701.5Q761 720 761 756V761Q761 809 741.0 842.0Q721 875 681.5 892.5Q642 910 586 910Q528 910 485.0 892.5Q442 875 415.0 846.0Q388 817 375 781L100 826Q129 924 196.0 992.0Q263 1060 362.5 1096.0Q462 1132 587 1132Q677 1132 762.0 1110.5Q847 1089 914.5 1044.0Q982 999 1021.5 926.5Q1061 854 1061 753V0H777V155H767Q740 103 695.0 63.5Q650 24 586.5 1.0Q523 -22 440 -22ZM525 189Q596 189 649.5 217.0Q703 245 733.0 293.0Q763 341 763 400V521Q750 511 723.0 503.0Q696 495 663.0 489.0Q630 483 598.0 478.0Q566 473 541 470Q486 462 444.0 444.0Q402 426 379.0 396.5Q356 367 356 321Q356 278 378.0 248.5Q400 219 438.0 204.0Q476 189 525 189Z" transform="translate(316.199 68.916) scale(0.025391 -0.025391)"/>
+      <path d="M683 1118V889H20V1118ZM174 1384H474V327Q474 274 497.5 248.5Q521 223 576 223Q593 223 624.0 227.5Q655 232 671 236L714 11Q664 -4 614.5 -10.0Q565 -16 520 -16Q352 -16 263.0 66.0Q174 148 174 301Z" transform="translate(345.608 68.916) scale(0.025391 -0.025391)"/>
+      <path d="M628 -22Q460 -22 337.0 50.5Q214 123 147.5 252.5Q81 382 81 554Q81 728 147.5 857.5Q214 987 337.0 1059.5Q460 1132 628 1132Q797 1132 919.5 1059.5Q1042 987 1108.5 857.5Q1175 728 1175 554Q1175 382 1108.5 252.5Q1042 123 919.5 50.5Q797 -22 628 -22ZM628 214Q708 214 762.0 258.5Q816 303 843.0 380.5Q870 458 870 555Q870 654 843.0 731.0Q816 808 762.0 852.0Q708 896 628 896Q548 896 494.5 852.0Q441 808 414.0 731.0Q387 654 387 555Q387 458 414.0 380.5Q441 303 494.5 258.5Q548 214 628 214Z" transform="translate(363.363 68.916) scale(0.025391 -0.025391)"/>
+      <path d="M128 0V1118H418V923H430Q461 1027 533.5 1080.0Q606 1133 700 1133Q723 1133 750.0 1130.5Q777 1128 797 1123V855Q777 862 739.0 866.0Q701 870 667 870Q599 870 544.0 840.5Q489 811 458.5 758.5Q428 706 428 636V0Z" transform="translate(394.474 68.916) scale(0.025391 -0.025391)"/>
+  </g>
+</svg></a>
+        <p>Free grade calculators for students, teachers and parents. No sign-up, no downloads — just your grade, worked out.</p>
+        <p class="footer-note">Results are estimates. Your school or university's grading rules determine the official grade.</p>
+      </div>
+      <nav aria-label="Calculators">
+        <h3>Calculators</h3>
+        <ul>
+          <li><a href="../">Grade Calculator</a></li>
+          <li><a href="../final-grade-calculator/">Final Grade Calculator</a></li>
+          <li><a href="../semester-grade-calculator/">Semester Grade Calculator</a></li>
+          <li><a href="./" aria-current="page">GPA Calculator</a></li>
+          <li><a href="../?mode=weighted#calculator">Weighted Grade Calculator</a></li>
+          <li><a href="../?mode=percent#calculator">Average Grade Calculator</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Resources">
+        <h3>Resources</h3>
+        <ul>
+          <li><a href="../#how-to">How to calculate your grade</a></li>
+          <li><a href="../#grade-scale">Grade scales</a></li>
+          <li><a href="#faq">Frequently asked questions</a></li>
+          <li><a href="#references">Official references</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Company">
+        <h3>Company</h3>
+        <ul class="foot-links">
+          <li><a href="../about/">About</a></li>
+          <!-- Contact has no page yet, so it stays as text. -->
+          <li><span class="foot-text">Contact</span></li>
+          <li><a href="../privacy-policy/">Privacy Policy</a></li>
+          <li><a href="../terms/">Terms</a></li>
+          <li><a href="../disclaimer/">Disclaimer</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="footer-bottom">
+      <p>© <span id="year">2026</span> Grade Calculator</p>
+      <p>Results are estimates. Your school or university's grading rules determine the official grade.</p>
+    </div>
+  </div>
+</footer>
+
+<button class="to-top" id="to-top" type="button" aria-label="Back to top">↑</button>
+
+<script>
+/* Common 4.0 grade-point scale (matches the reference table on this page). */
+var GRADE_POINTS={"A":4.0,"A-":3.7,"B+":3.3,"B":3.0,"B-":2.7,"C+":2.3,"C":2.0,"C-":1.7,"D+":1.3,"D":1.0,"D-":0.7,"F":0.0};
+var GRADE_ORDER=["A","A-","B+","B","B-","C+","C","C-","D+","D","D-","F"];
+
+var $=function(id){return document.getElementById(id);};
+function fmt1(x){return (Math.round(x*10)/10).toFixed(1);}
+function fmt2(x){return (Math.round(x*100)/100).toFixed(2);}
+function fmtCr(x){return Number.isInteger(x)?String(x):fmt1(x);}
+function setFieldError(input,errEl,show){input.classList.toggle("field-invalid",show);errEl.classList.toggle("show",show);input.setAttribute("aria-invalid",show?"true":"false");return !show;}
+function readNum(input,errEl,min,max){var v=parseFloat(input.value);var ok=!isNaN(v)&&v>=min&&v<=max;setFieldError(input,errEl,!ok);return ok?v:null;}
+
+/* --- Widget mode A: GPA from course rows --- */
+var gpaRows=[
+  {name:"English",grade:"A",credits:3},
+  {name:"Mathematics",grade:"B",credits:3},
+  {name:"History",grade:"C",credits:3},
+  {name:"Biology",grade:"A",credits:4}
+];
+function renderGpaRows(){
+  var wrap=$("gpa-rows");
+  wrap.innerHTML="";
+  var head=document.createElement("div");
+  head.className="gpa-row";head.setAttribute("aria-hidden","true");
+  head.innerHTML='<span class="col-head">Course</span><span class="col-head">Grade</span><span class="col-head">Credits</span><span></span>';
+  wrap.appendChild(head);
+  gpaRows.forEach(function(r,i){
+    var row=document.createElement("div");
+    row.className="gpa-row";
+    var nameCell=document.createElement("div");nameCell.className="name-cell";
+    var name=document.createElement("input");
+    name.type="text";name.value=r.name;name.setAttribute("aria-label","Course "+(i+1)+" name");name.placeholder="Course";
+    name.addEventListener("input",function(){r.name=name.value;calcGpa();});
+    nameCell.appendChild(name);
+    var grade=document.createElement("select");
+    grade.setAttribute("aria-label","Grade for "+(r.name||("course "+(i+1))));
+    GRADE_ORDER.forEach(function(g){
+      var opt=document.createElement("option");
+      opt.value=g;opt.textContent=g+" ("+GRADE_POINTS[g].toFixed(1)+")";
+      if(g===r.grade)opt.selected=true;
+      grade.appendChild(opt);
+    });
+    grade.addEventListener("change",function(){r.grade=grade.value;calcGpa();});
+    var credits=document.createElement("input");
+    credits.type="number";credits.inputMode="decimal";credits.min="0";credits.max="12";credits.step="any";credits.value=r.credits;
+    credits.setAttribute("aria-label","Credits for "+(r.name||("course "+(i+1))));
+    credits.addEventListener("input",function(){r.credits=credits.value;calcGpa();});
+    var rm=document.createElement("button");
+    rm.type="button";rm.className="row-remove";rm.textContent="×";rm.setAttribute("aria-label","Remove "+(r.name||("course "+(i+1))));
+    rm.addEventListener("click",function(){gpaRows.splice(i,1);renderGpaRows();calcGpa();});
+    row.appendChild(nameCell);row.appendChild(grade);row.appendChild(credits);row.appendChild(rm);
+    wrap.appendChild(row);
+  });
+}
+function calcGpa(){
+  var box=$("gpa-result");
+  var inputs=$("gpa-rows").querySelectorAll("input[type=number]");
+  var valid=true,totalCr=0,totalQp=0,parts=[];
+  gpaRows.forEach(function(r,i){
+    var c=parseFloat(r.credits);
+    var cOk=!isNaN(c)&&c>0&&c<=12;
+    inputs[i].classList.toggle("invalid",!cOk);
+    if(!cOk){valid=false;return;}
+    var qp=GRADE_POINTS[r.grade]*c;
+    totalCr+=c;totalQp+=qp;
+    parts.push((r.name||("Course "+(i+1)))+" "+fmt1(qp));
+  });
+  if(!valid||gpaRows.length===0){box.classList.remove("show");return;}
+  if(totalCr<=0){
+    box.className="final-result hard show";
+    $("gpa-value").textContent="Enter credits above 0 for at least one course";
+    $("gpa-line").textContent="Courses with 0 credits contribute nothing to the GPA.";
+    return;
+  }
+  var gpa=totalQp/totalCr;
+  var band=gpa>=3.0?"ok":(gpa>=2.0?"hard":"impossible");
+  box.className="final-result "+band+" show";
+  $("gpa-value").textContent="Your GPA is "+fmt2(gpa);
+  $("gpa-line").textContent=parts.join(" + ")+" = "+fmt1(totalQp)+" quality points ÷ "+fmtCr(totalCr)+" credits";
+}
+$("add-row").addEventListener("click",function(){
+  gpaRows.push({name:"",grade:"A",credits:""});
+  renderGpaRows();calcGpa();
+  var last=$("gpa-rows").querySelector(".gpa-row:last-child input");
+  if(last)last.focus();
+});
+
+/* --- Widget mode B: cumulative GPA --- */
+function calcCum(){
+  var prevGpa=readNum($("cum-prev-gpa"),$("cum-prev-gpa-error"),0,5);
+  var prevCr=readNum($("cum-prev-credits"),$("cum-prev-credits-error"),0,999);
+  var newGpa=readNum($("cum-new-gpa"),$("cum-new-gpa-error"),0,5);
+  var newCr=readNum($("cum-new-credits"),$("cum-new-credits-error"),0,999);
+  var box=$("cum-result");
+  if(prevGpa===null||prevCr===null||newGpa===null||newCr===null){box.classList.remove("show");return;}
+  var totalCr=prevCr+newCr;
+  if(totalCr<=0){
+    box.className="final-result hard show";
+    $("cum-value").textContent="Enter credits above 0 for at least one term";
+    $("cum-line").textContent="A GPA needs credits to divide by.";
+    return;
+  }
+  var prevQp=prevGpa*prevCr,newQp=newGpa*newCr;
+  var gpa=(prevQp+newQp)/totalCr;
+  var band=gpa>=3.0?"ok":(gpa>=2.0?"hard":"impossible");
+  box.className="final-result "+band+" show";
+  $("cum-value").textContent="Your cumulative GPA would be "+fmt2(gpa);
+  $("cum-line").textContent="("+fmt1(prevQp)+" + "+fmt1(newQp)+") quality points ÷ "+fmtCr(totalCr)+" credits = "+fmt2(gpa);
+}
+$("cum-form").addEventListener("submit",function(e){e.preventDefault();calcCum();});
+["cum-prev-gpa","cum-prev-credits","cum-new-gpa","cum-new-credits"].forEach(function(id){$(id).addEventListener("input",calcCum);});
+
+/* --- Widget mode tabs --- */
+var widgetTabs=Array.prototype.slice.call(document.querySelectorAll('[data-widget]'));
+function setWidget(mode){
+  widgetTabs.forEach(function(t){
+    var on=t.getAttribute("data-widget")===mode;
+    t.setAttribute("aria-selected",on?"true":"false");
+    t.tabIndex=on?0:-1;
+  });
+  $("panel-gpa").hidden=mode!=="gpa";
+  $("panel-cum").hidden=mode!=="cum";
+}
+widgetTabs.forEach(function(t){
+  t.addEventListener("click",function(){setWidget(t.getAttribute("data-widget"));});
+  t.addEventListener("keydown",function(e){
+    if(e.key!=="ArrowRight"&&e.key!=="ArrowLeft")return;
+    var i=widgetTabs.indexOf(t);
+    var next=widgetTabs[(i+(e.key==="ArrowRight"?1:widgetTabs.length-1))%widgetTabs.length];
+    setWidget(next.getAttribute("data-widget"));
+    next.focus();
+  });
+});
+
+/* --- Mobile drawer (the v4 stylesheet shows it via body.drawer-open) --- */
+var menuBtn=$("menu-btn"),drawer=$("drawer");
+function closeDrawer(){
+  document.body.classList.remove("drawer-open");
+  menuBtn.setAttribute("aria-expanded","false");
+  menuBtn.setAttribute("aria-label","Open menu");
+}
+menuBtn.addEventListener("click",function(){
+  var open=document.body.classList.toggle("drawer-open");
+  menuBtn.setAttribute("aria-expanded",open?"true":"false");
+  menuBtn.setAttribute("aria-label",open?"Close menu":"Open menu");
+});
+drawer.querySelectorAll("a").forEach(function(a){a.addEventListener("click",closeDrawer);});
+document.addEventListener("keydown",function(e){if(e.key==="Escape")closeDrawer();});
+
+/* --- FAQ accordion --- */
+document.querySelectorAll(".faq-q").forEach(function(btn){
+  btn.addEventListener("click",function(){
+    var item=btn.parentElement,open=item.classList.contains("open");
+    document.querySelectorAll(".faq-item.open").forEach(function(i){
+      i.classList.remove("open");
+      i.querySelector(".faq-q").setAttribute("aria-expanded","false");
+    });
+    if(!open){item.classList.add("open");btn.setAttribute("aria-expanded","true");}
+  });
+});
+
+/* --- Sticky "On this page" scroll-spy --- */
+var tocLinks=Array.prototype.slice.call(document.querySelectorAll("#toc-nav a"));
+function setActiveSpy(id){
+  tocLinks.forEach(function(a){a.classList.toggle("active",a.getAttribute("data-spy")===id);});
+}
+if("IntersectionObserver" in window){
+  var spy=new IntersectionObserver(function(entries){
+    entries.forEach(function(en){if(en.isIntersecting)setActiveSpy(en.target.id);});
+  },{rootMargin:"-25% 0px -70% 0px"});
+  tocLinks.forEach(function(a){var el=$(a.getAttribute("data-spy"));if(el)spy.observe(el);});
+}
+
+/* --- Header shadow + back-to-top --- */
+var header=$("site-header"),toTop=$("to-top");
+window.addEventListener("scroll",function(){
+  var y=window.scrollY||document.documentElement.scrollTop;
+  header.classList.toggle("scrolled",y>8);
+  toTop.classList.toggle("show",y>600);
+},{passive:true});
+toTop.addEventListener("click",function(){window.scrollTo({top:0,behavior:"smooth"});});
+
+/* --- Table scroll hint --- */
+document.querySelectorAll("[data-scroll-hint]").forEach(function(wrap){
+  if(wrap.scrollWidth>wrap.clientWidth+4)wrap.classList.add("overflowing");
+});
+
+/* --- Footer year --- */
+$("year").textContent=new Date().getFullYear();
+
+/* --- Initial render --- */
+renderGpaRows();
+calcGpa();
+calcCum();
+</script>
+</body>
+</html>
