@@ -778,44 +778,44 @@ a.info-card:hover .go{gap:10px}
       <h2 id="faq-title">Frequently Asked Questions</h2>
       <div class="faq-list">
         <div class="faq-item open">
-          <button class="faq-q" type="button" aria-expanded="true" aria-controls="fq1" id="fq1-btn">How do I calculate my semester grade?</button>
+          <button class="faq-q" type="button" aria-expanded="true" aria-controls="fq1" id="fq1-btn">How do I calculate my semester grade?<span class="faq-icon" aria-hidden="true">+</span></button>
           <div class="faq-a" id="fq1" role="region" aria-labelledby="fq1-btn">
             <p>Multiply each grading-period grade by its assigned weight, add the contributions, and divide by 100 if the weights are expressed as percentages totaling 100%. Use the weights published by your school.</p>
           </div>
         </div>
         <div class="faq-item">
-          <button class="faq-q" type="button" aria-expanded="false" aria-controls="fq2" id="fq2-btn">Is a semester grade always 40/40/20?</button>
-          <div class="faq-a" id="fq2" role="region" aria-labelledby="fq2-btn">
+          <button class="faq-q" type="button" aria-expanded="false" aria-controls="fq2" id="fq2-btn">Is a semester grade always 40/40/20?<span class="faq-icon" aria-hidden="true">+</span></button>
+          <div class="faq-a" id="fq2" role="region" hidden aria-labelledby="fq2-btn">
             <p>No. A 40% first quarter, 40% second quarter, and 20% exam structure is one possible arrangement, not a universal standard. Schools and districts set their own policies.</p>
           </div>
         </div>
         <div class="faq-item">
-          <button class="faq-q" type="button" aria-expanded="false" aria-controls="fq3" id="fq3-btn">What if my semester has no final exam?</button>
-          <div class="faq-a" id="fq3" role="region" aria-labelledby="fq3-btn">
+          <button class="faq-q" type="button" aria-expanded="false" aria-controls="fq3" id="fq3-btn">What if my semester has no final exam?<span class="faq-icon" aria-hidden="true">+</span></button>
+          <div class="faq-a" id="fq3" role="region" hidden aria-labelledby="fq3-btn">
             <p>Use the grading periods that actually count toward the semester. If two periods have equal weight, their average is the semester grade. If they have different weights, use those published weights.</p>
           </div>
         </div>
         <div class="faq-item">
-          <button class="faq-q" type="button" aria-expanded="false" aria-controls="fq4" id="fq4-btn">Can I calculate a semester grade with three grading periods?</button>
-          <div class="faq-a" id="fq4" role="region" aria-labelledby="fq4-btn">
+          <button class="faq-q" type="button" aria-expanded="false" aria-controls="fq4" id="fq4-btn">Can I calculate a semester grade with three grading periods?<span class="faq-icon" aria-hidden="true">+</span></button>
+          <div class="faq-a" id="fq4" role="region" hidden aria-labelledby="fq4-btn">
             <p>Yes. Enter all three period grades and the weight assigned to each. If they are equally weighted, each contributes one-third of the result. If they are not equally weighted, use the school's percentages.</p>
           </div>
         </div>
         <div class="faq-item">
-          <button class="faq-q" type="button" aria-expanded="false" aria-controls="fq5" id="fq5-btn">How do I calculate the grade I need on my semester exam?</button>
-          <div class="faq-a" id="fq5" role="region" aria-labelledby="fq5-btn">
+          <button class="faq-q" type="button" aria-expanded="false" aria-controls="fq5" id="fq5-btn">How do I calculate the grade I need on my semester exam?<span class="faq-icon" aria-hidden="true">+</span></button>
+          <div class="faq-a" id="fq5" role="region" hidden aria-labelledby="fq5-btn">
             <p>Use your completed grading-period contribution, your desired semester grade, and the exam's weight. The calculator can work backward to find the exam score needed. Make sure the completed grades and exam weights represent the entire semester.</p>
           </div>
         </div>
         <div class="faq-item">
-          <button class="faq-q" type="button" aria-expanded="false" aria-controls="fq6" id="fq6-btn">Is semester grade the same as semester GPA?</button>
-          <div class="faq-a" id="fq6" role="region" aria-labelledby="fq6-btn">
+          <button class="faq-q" type="button" aria-expanded="false" aria-controls="fq6" id="fq6-btn">Is semester grade the same as semester GPA?<span class="faq-icon" aria-hidden="true">+</span></button>
+          <div class="faq-a" id="fq6" role="region" hidden aria-labelledby="fq6-btn">
             <p>No. A semester grade is generally a percentage or letter result for a course or grading period. Semester GPA is calculated from grade points and credits for courses taken during that term. Use the <a href="../gpa-calculator/">GPA Calculator</a> for GPA.</p>
           </div>
         </div>
         <div class="faq-item">
-          <button class="faq-q" type="button" aria-expanded="false" aria-controls="fq7" id="fq7-btn">Can I use this for college courses?</button>
-          <div class="faq-a" id="fq7" role="region" aria-labelledby="fq7-btn">
+          <button class="faq-q" type="button" aria-expanded="false" aria-controls="fq7" id="fq7-btn">Can I use this for college courses?<span class="faq-icon" aria-hidden="true">+</span></button>
+          <div class="faq-a" id="fq7" role="region" hidden aria-labelledby="fq7-btn">
             <p>You can use the weighted calculation for college courses if you enter the assessment categories and weights from the syllabus. Many college courses do not use school-style quarters, so enter the actual course components rather than assuming a two-quarter structure.</p>
           </div>
         </div>
@@ -1060,9 +1060,13 @@ document.querySelectorAll(".faq-q").forEach(function(btn){
     var item=btn.parentElement,open=item.classList.contains("open");
     document.querySelectorAll(".faq-item.open").forEach(function(i){
       i.classList.remove("open");
-      i.querySelector(".faq-q").setAttribute("aria-expanded","false");
+      var q=i.querySelector(".faq-q");q.setAttribute("aria-expanded","false");
+      var p=document.getElementById(q.getAttribute("aria-controls"));if(p)p.hidden=true;
     });
-    if(!open){item.classList.add("open");btn.setAttribute("aria-expanded","true");}
+    if(!open){
+      item.classList.add("open");btn.setAttribute("aria-expanded","true");
+      var panel=document.getElementById(btn.getAttribute("aria-controls"));if(panel)panel.hidden=false;
+    }
   });
 });
 
